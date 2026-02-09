@@ -1,0 +1,66 @@
+body {
+    font-family: sans-serif;
+    background-image: url('../img/logo tecno.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    transition: opacity 0.8s ease;
+    opacity: 0; /* Empieza invisible */
+}
+
+body.visible {
+    opacity: 1; /* Se vuelve visible con efecto */
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+}
+
+.intro-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-contenido {
+    margin-top: 3%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    background: #00c853;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Mostrar correcto / incorrecto */
+.correcto {
+    background-color: #2e7d32; /* verde oscuro */
+    color: white;
+}
+
+.incorrecto {
+    background-color: #c62828; /* rojo oscuro */
+    color: white;
+}

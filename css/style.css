@@ -1,0 +1,690 @@
+body {
+    background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755973391/dise%C3%B1o_iconos_3_hgbuzi.png');
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center center; /* Centra la imagen en la página */
+    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+    background-attachment: fixed; /*Hace que la imagen se quede fija al hacer scroll */
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+/* ----------------------------------------------------------------------------------------- */
+/*                                         HEADER                                            */
+/* ----------------------------------------------------------------------------------------- */
+
+header {
+    height: 150px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.logos_header { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: white;
+    padding: 10px;
+}
+
+.logo_sena_header {
+    height: 207px;
+}
+
+/* redirecion a trivia */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+}
+
+
+
+/* --- MENÚ PRINCIPAL --- */
+.menu {
+    border-radius: 10px;
+    background-color: #11890d;
+    padding: 1.5rem;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 9999;
+}
+
+.menu_navegacion {
+    display: flex;
+    justify-content: center;
+    gap: 80px; /* espacio entre cada <li> */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu_navegacion li {
+    display: inline-block;
+    position: relative;
+}
+
+.menu_navegacion a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+
+.menu_navegacion .icono {
+    width: 40px;
+    height: 40px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.menu_navegacion a:hover .icono {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu_navegacion a:hover{
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.menu_navegacion .texto {
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+/* --- SUBMENÚ --- */
+.submenu_lineas {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: calc(100% + 10px); /* un poco más abajo */
+    left: 0;
+    padding: 14px 0px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    border-radius: 8%;
+    /* visibilidad y opacidad con transición */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+}
+
+.menu_navegacion li:hover .submenu_lineas {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+}
+
+.submenu_lineas li {
+    text-align: center;
+    margin: 0 0px
+}
+
+.submenu_lineas li a {
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+.submenu_lineas li a:hover {
+    background-color: #C7EAD6;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+
+
+
+/* ------------------------------------------------------------------------------------- */
+/*                                  CONTENIDO                                            */
+/* ------------------------------------------------------------------------------------- */
+#conoce_la_tecno {
+    text-align: center;
+    margin: 2rem 0 1rem;
+    font-size: 2rem;
+    color: #11890d;
+}
+
+.slider_container {
+    position: relative;
+    width: 100%;
+    max-width: 825px;
+    aspect-ratio: 3 / 2;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.slider_container ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+.slider_container li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 100%;
+    list-style: none;
+    height: 100%;
+}
+
+.slider_container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    background-color: #fff;
+}
+
+.slider_container .prev,
+.slider_container .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 2em;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.slider_container .prev { left: 10px; }
+.slider_container .next { right: 10px; }
+
+
+
+/*tarjetas flip cards*/
+/* propiedades de la tarjeta */
+
+.tarjetas_flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 200px;
+    margin-top: 90px;
+}
+
+
+.tarjetas_container {
+    perspective: 1000px;
+    width: 250px;
+    height: 150px;
+    margin: 0;
+}
+
+.tarjeta {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.tarjetas_container:hover .tarjeta {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 20px;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.front {
+    background: #3498db;
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+    justify-content: center;
+    gap: 18px;             /* separación logo–texto */
+    flex-wrap: nowrap;  
+}
+
+.front h3 {
+    margin: 0; 
+}
+
+.front img {
+    width: 65px;           /* ajusta tamaño del logo */
+    height: auto;
+}
+
+.back{
+    background: #2ecc71;
+    transform: rotateY(180deg);
+}
+.back img {
+    width: 80px; 
+    height: auto;
+}
+
+
+.reveal{
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* === CARRUSEL DE COLEGIOS (tira horizontal auto, limpio) === */
+.container_colegios{
+  /* “viewport” del carrusel */
+  display: flex;               /* hijos .colegio en fila */
+  overflow: hidden;            /* oculta lo que sale por los lados */
+  gap: 20px;                   /* espacio entre tarjetas */
+  margin: 130px auto 40px;      /* TOP=96px, HORIZ=auto, BOTTOM=40px */
+  padding-top: 60px;
+  padding: 6px 1vw;            /* respiro vertical y lateral */
+  max-width: 98vw;             /* casi todo el ancho de pantalla */
+  scroll-behavior: auto;       /* lo controlas por JS */
+}
+
+
+/* Cada logo en SU PROPIO CONTENEDOR */
+.container_colegios .colegio{
+    margin-block-start: 72px;
+  flex: 0 0 auto;         
+  width: 220px;      
+  height: 220px;     
+  box-sizing: border-box;   /* ← el padding NO aumenta el tamaño real */
+  display: grid;
+  place-items: center;
+  overflow: hidden;         /* evita “1–2 px” de desborde por redondeo */
+  padding: 10px;
+  background: rgba(255,255,255,.85);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.12);
+  line-height: 0;           /* ← elimina el hueco baseline de imágenes inline */
+}
+
+/* La imagen ocupa el CUADRADO interior y no se desborda */
+.container_colegios .colegio img{
+  width: 100%;              /* ← fijo al ancho disponible del contenedor */
+  height: 100%;             /* ← fijo al alto disponible del contenedor */
+  object-fit: contain;      /* ← encaja completa sin recortar ni deformar */
+  display: block;           /* ← sin espacio extra de línea */
+}
+
+
+
+
+
+
+
+
+/* FOOTER en una sola línea */
+footer{
+  width: 100%;
+  background-color: #11890d;
+  color: white;
+  margin-top: 180px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;        /* centra verticalmente los 3 bloques */
+  justify-content: space-between;
+  flex-wrap: nowrap;          /* evita que salten a otra línea */
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+/* Permite que los hijos puedan encogerse sin provocar scroll lateral */
+footer > *{
+  min-width: 0;
+}
+
+/* MAPA a la izquierda: ahora puede encogerse si falta espacio */
+.map{
+  flex: 0 1 320px;            /* antes 0 0 340px */
+  max-width: 40vw;            /* no pase del 40% de la pantalla */
+  width: 100%;                /* permite encoger con el flex */
+  height: 160px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.map iframe{
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}
+
+.steam { 
+    justify-content: center;
+    align-items: center; 
+    min-width: 0;
+    /* Mueve el bloque hacia arriba con un margen negativo */
+    margin-top: -15px;
+}
+
+/* Estilos de la imagen */
+footer .steam_footer img,
+footer .steam img {
+  /* border: 2px solid rgb(255, 51, 0); */
+    width: 360px !important;
+    height: auto !important;
+    object-fit: contain;
+    display: block;
+}
+
+/* DERECHA: redes en línea, pero que puedan encogerse si hace falta */
+.logos_redes{
+  flex: 0 1 auto;             /* antes 0 0 auto */
+  display: flex;
+  gap: 14px;
+  margin-left: 0;
+}
+.logos_redes a img{
+  width: 80px;
+  height: 80px;
+  transition: transform .2s ease, filter .2s ease;
+}
+.logos_redes a img:hover{
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+
+
+
+
+/* Utilidad global para que el atributo [hidden] funcione siempre */
+[hidden] { display: none !important; }
+
+/* ====== SOLO DESKTOP (>=769px) ====== */
+/* ====== SOLO DESKTOP (>=769px) ====== */
+@media (min-width: 769px) {
+  .menu { display: block; }
+  .menu_toggle,
+  .sidebar,
+  .drawer_backdrop,
+  .drawer_close { display: none !important; }
+}
+
+/* ====== SOLO MÓVIL (<=768px) ====== */
+@media (max-width: 768px) {
+    /* Header en móvil */
+    header{
+        height: 140px;             /* ← alto del header (ajusta 120–160 si quieres) */
+        position: relative;
+        display: flex;
+        align-items: center;       /* centra verticalmente el logo (usa flex-start si lo quieres pegado arriba) */
+        justify-content: center;   /* centra horizontalmente */
+        padding: 0;
+        margin: 0;
+        overflow: hidden;          /* por si algo intenta salirse del header */
+    }
+
+      /* Contenedor del logo sin espacios fantasma */
+    .logos_header{
+        height: 100%;              /* el contenedor ocupa todo el header */
+        display: flex;
+        align-items: center;       /* debe coincidir con el header */
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+        /* border: 3px solid red; */
+    }
+
+    /* La IMAGEN del logo se adapta al alto del header sin deformarse */
+    .logos_header img{
+        height: 100%;              /* ocupa el 100% del alto del header */
+        width: auto;               /* mantiene proporción */
+        max-width: 90vw;           /* no más ancho que la pantalla */
+        object-fit: contain;       /* seguridad extra si en otro breakpoint fijas ancho/alto */
+        display: block;
+        position: relative; z-index: 1;
+    }
+    .menu { display: none; }
+
+    .menu_toggle{
+        display: inline-flex;   /* ← vuelve a mostrarse */
+        position: absolute;
+        left: 12px;
+        top: 50px;
+        transform: none;
+        z-index: 10002;
+        background: transparent;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+        pointer-events: auto;
+    }
+      
+    .menu_toggle img { width: 30px; height: 30px; display:block}
+
+    /* Oculta el botón cuando el menú está abierto */
+    .menu_toggle[aria-expanded="true"] {
+        display: none;                 /* opción simple */
+    }
+
+
+    
+
+  /* Sidebar móvil (cerrado por defecto) */
+  .sidebar {
+    display: block;               /* anula cualquier display:none previo */
+    position: fixed;
+    top: 0; left: -260px;         /* oculto a la izquierda */
+    width: 260px; height: 100%;
+    background-color: #11890d;
+    padding: 2rem 1rem 1rem;
+    transition: left .3s ease;
+    z-index: 10001;
+    overflow-y: auto;
+  }
+  .sidebar.open { left: 0; }
+
+  /* Botón ✕ dentro del sidebar */
+  .sidebar .drawer_close {
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 40px; height: 40px;    /* tap target cómodo */
+    font-size: 22px;
+    line-height: 40px;
+    text-align: center;
+    background: none;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10003;               /* ← clave: por encima del contenido */
+    pointer-events: auto;
+  }
+
+
+
+  /* Oculta la X cuando el sidebar está CERRADO (aria-hidden="true") */
+  #mobile-sidebar[aria-hidden="true"] .drawer_close {
+    display: none !important;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Muestra la X cuando el sidebar está ABIERTO (aria-hidden="false") */
+  #mobile-sidebar[aria-hidden="false"] .drawer_close {
+    display: block !important;
+    visibility: visible;
+    pointer-events: auto;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    font-size: 1.75rem;
+    background: none;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+  }
+
+
+
+  /* Backdrop */
+  .drawer_backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    z-index: 10000;
+    touch-action: none;
+  }
+
+  .sidebar.open + .drawer_backdrop { display: block; }
+
+
+  /* ======== SIDEBAR: lista ordenada y legible ======== */
+  .sidebar nav ul {
+    list-style: none;
+    padding: 50px 0 8px;
+    margin: 0;
+  }
+
+  .sidebar nav li {
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .sidebar nav li:last-child { border-bottom: 0; }
+
+  /* Fila: icono + texto (en vez de columna) */
+  .sidebar nav a {
+    display: flex !important;             /* anula el column del menú desktop */
+    flex-direction: row !important;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 10px;                   /* buen “tap target” */
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.1;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Iconos más pequeños y alineados */
+  .sidebar nav a .icono {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+  }
+
+  /* Texto sin margen extra debajo */
+  .sidebar nav a .texto {
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: .2px;
+  }
+
+  /* Estados: hover/focus/active */
+  .sidebar nav a:hover { background: rgba(255,255,255,0.08); }
+  .sidebar nav a:focus-visible {
+    outline: 2px solid rgba(255,255,255,0.7);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  .sidebar nav a:active { background: rgba(255,255,255,0.14); }
+
+  /* ======== Submenú “Líneas” dentro del sidebar ======== */
+
+  /* Resetea estilos de desktop (dropdown absoluto) para móvil */
+  .sidebar .submenu_lineas {
+    position: static !important;   /* NO absoluto en móvil */
+    top: auto; left: auto; width: auto;
+    visibility: visible !important;
+    opacity: 1 !important;
+    box-shadow: none; border-radius: 0;
+    background: rgba(255,255,255,0.04);
+    margin: 0;
+    padding: 6px 0 10px 32px;                  /* antes 44px */
+    border-left: 2px solid rgba(255,255,255,0.25);
+  }
+  .sidebar .submenu_lineas li {
+    border: 0;                     /* sin divisores aquí */
+    text-align: left;
+  }
+  .sidebar .submenu_lineas a {
+    font-size: 15px;
+    color: #eaffea;
+    display: inline-block !important;          /* evita que ocupe todo el ancho */
+    padding: 6px 8px !important;               /* hover más bajo y angosto */
+  }
+
+  
+  /* Sliders en móvil */
+  .slider_container { max-width: 95%; aspect-ratio: 4 / 3; margin: 20px auto; }
+  .slider_container img { object-fit: cover; }
+  #conoce_la_tecno { font-size: 1.5rem; }
+  .slider_container .prev, .slider_container .next { font-size: 1.5em; padding: 8px 12px; }
+
+  /* Tarjetas en columna */
+  .tarjetas_flex { flex-direction: column; align-items: center; gap: 20px; }
+  .tarjetas_container { width: 90%; max-width: 300px; }
+
+  /* Footer en columna */
+  footer { flex-direction: column; align-items: center; text-align: center; }
+  .logos_redes { flex-direction: row; margin-top: 20px; margin-left: 0; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(50px); transition: all 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+
+  .container_colegios{
+    gap: 12px;
+    max-width: 95vw;
+  }
+  .container_colegios .colegio{
+    width: 140px;
+    height: 100px;
+    border-radius: 10px;
+  }
+
+}

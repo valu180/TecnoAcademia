@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Nosotros</title>
+    <link rel="stylesheet" href="css/style_nosotros.css" />
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dojnr09ua/image/upload/v1755973991/logo_SENA_mfo42g.png">
+</head>
+<body>
+
+    <header>
+        <!-- Botón toggle solo visible en móviles -->
+        <button class="menu_toggle" aria-expanded="false" aria-controls="mobile-sidebar" onclick="toggleSidebar()">
+            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755978283/icono_menu_movil_l9u3w0.png" alt="Abrir menú"> <!-- Ícono hamburguesa -->
+        </button>
+        
+        <div class="logos_header">
+            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1756505797/Logo_Tecnoacademia_Risaralda_p2_nvg4cn.png" alt="logo" class="logo_sena_header">
+        </div>
+    </header>
+    <div class="menu">
+        <ul class="menu_navegacion">
+
+            <li>
+                <a href="/index.html">
+                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912718/pagina-de-inicio_g7bzwk.png" alt="inicio" class="icono">
+                    <span class="texto">Inicio</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/nosotros/index_nosotros.html">
+                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912768/sobre-nosotros_cpvvc8.png" alt="nosotros" class="icono"> <!--descargada en 24px--> 
+                    <span class="texto">Nosotros</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912833/rompecabezas_fxzekp.png" alt="" class="icono">
+                    <span class="texto">Líneas</span>
+                </a>
+                <ul class="submenu_lineas">
+                    <li><a href="/lineas/diseño/index_diseno.html">Diseño de productos</a></li>
+                    <li><a href="/lineas/robotica/index_robotica.html">Tics e Inteligencia Artificial</a></li>
+                    <li><a href="/lineas/biotecnologia/index_biotec.html">Materiales y biotecnología</a></li>
+                    <li><a href="/lineas/quimica/index_quimica.html">Economia popular y campesina</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="../orientacion_vocacional/index_orientacion.html"> 
+                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912884/activo-intangible_tmu7jy.png" alt="" class="icono">
+                    <span class="texto">Orientación vocacional</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="../proyectos/index_proyectos-DESKTOP-MNHV70V.html">
+                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912940/proyectos_ygcu54.png" alt="" class="icono">
+                    <span class="texto">Proyectos</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="../colegios/index_colegios.html">
+                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912994/educacion_s4jozs.png" alt="formacion" class="icono">
+                    <span class="texto">Colegios</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- PARA DISPOSITIVOS MÓVILES -->
+    <div id="mobile-sidebar" class="sidebar"  aria-hidden="true">
+        <button class="drawer_close" aria-label="Cerrar menú" type="button" onclick="toggleSidebar()">✕</button>
+        <nav>
+            <ul>
+            <li>
+                <a href="/index.html">
+                <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912718/pagina-de-inicio_g7bzwk.png" alt="inicio" class="icono">
+                <span class="texto">Inicio</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/nosotros/index_nosotros.html">
+                <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912768/sobre-nosotros_cpvvc8.png" alt="nosotros" class="icono">
+                <span class="texto">Nosotros</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912833/rompecabezas_fxzekp.png" alt="" class="icono">
+                <span class="texto">Líneas</span>
+                </a>
+                <ul class="submenu_lineas">
+                <li><a href="/lineas/diseño/index_diseno.html">Diseño de productos</a></li>
+                <li><a href="/lineas/robotica/index_robotica.html">Tics e Inteligencia Artificial</a></li>
+                <li><a href="/lineas/biotecnologia/index_biotec.html">Materiales y biotecnología</a></li>
+                <li><a href="/lineas/quimica/index_quimica.html">Economia popular y campesina</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="/orientacion_vocacional/index_orientacion.html">
+                <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912884/activo-intangible_tmu7jy.png" alt="" class="icono">
+                <span class="texto">Orientación vocacional</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912940/proyectos_ygcu54.png" alt="" class="icono">
+                <span class="texto">Proyectos</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912994/educacion_s4jozs.png" alt="formacion" class="icono">
+                <span class="texto">Colegios</span>
+                </a>
+            </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="drawer_backdrop" hidden></div>
+
+    <!-- CONTENIDO -->
+    <main>
+        <div class="titulo_quienes_somos">¿QUIÉNES SOMOS?</div>
+        <div class="container_texto">
+        <p>La Tecnoacademia SENA es un espacio único y privilegiado, diseñado para nutrir el desarrollo de competencias investigativas en talentos jóvenes. Aquí, transformamos su percepción de la ciencia y la tecnología. Vamos más allá de un aula tradicional; creamos un entorno vibrante donde la ciencia cobra vida, volviéndose divertida y didáctica a través de ejemplos de la vida cotidiana y la experimentación práctica a escala de laboratorio. Nuestro principal objetivo es empoderar a los participantes para que descubran sus vocaciones científicas, organicen sus ideas y exploren nuevos caminos para su futuro.</p>
+        <p>En esencia, la Tecnoacademia es un equipo de trabajo dedicado a la formación integral de cada individuo. Reconocemos la importancia de la calidez humana y el apoyo, creando un ambiente propicio para el aprendizaje y el crecimiento. Somos un espacio que trasciende lo meramente educativo, priorizando el desarrollo personal y el bienestar de cada participante, influyendo positivamente en sus vidas y ayudándolos a construir una base sólida para su futuro en el ámbito de la ciencia, la tecnología y la innovación.</p>
+        </div>
+
+    <div class="titulo_nuestro_equipo">NUESTRO EQUIPO</div>
+
+    <div class="container_fila1">
+
+        <div class="card">
+            <div class="foto" style="background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755908583/foto_pedro_qrdns5.jpg')"></div>
+            <div class="pie">
+            <h2>Pedro</h2>
+            <p>Dinamizador</p>
+            </div>
+            <div class="info_extra">
+            <p class="titulo_principal">Ingeniero de Sistemas</p>
+            <p>Maestría en Teledetección</p>
+            <p class="nombre">Pedro Emilio Caicedo Ríos</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="foto" style="background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755909110/foto_maye_ygtmvq.jpg')"></div>
+            <div class="pie">
+            <h2>Maye</h2>
+            <p>Instructora SENNOVA</p>
+            </div>
+            <div class="info_extra">
+            <p class="titulo_principal">Ingeniera ambiental</p>
+            <p>Maestria en planeación urbana y regional</p>
+            <p class="nombre">Mayeline Gómez Agudelo</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="foto" style="background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755909214/foto_lore_suckwn.jpg');"></div>
+            <div class="pie">
+            <h2>Lorena</h2>
+            <p>Orientadora Vocacional</p>
+            </div>
+            <div class="info_extra">
+            <p class="titulo_principal">Psicóloga profesional</p> <!--maximo 30 palabras-->
+            <p>Especialista en proyecto de desarrollo</p> <!--maximo 30 palabras-->
+            <p class="nombre">Judith Lorena Parra Franqui</p>
+            </div>
+        </div>
+    </div>
+    <div class="container_fila2">
+
+        <div class="card">
+            <div class="foto" style="background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755909241/foto_lau_cywaer.jpg')"></div>
+            <div class="pie">
+            <h2>Laura</h2>
+            <p>Facilitadora</p>
+            <p>Materiales y Biotecnología</p>
+            </div>
+            <div class="info_extra">
+            <p class="titulo_principal">Química industrial</p>
+            <p>Maestria en biología molecular y biotecnología</p>
+            <p>Laura Mosquera Morales</p>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="foto" style="background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755909310/foto_jose_vynhf7.jpg');"></div>
+            <div class="pie">
+            <h2>Jose</h2>
+            <p>Facilitador</p>
+            <p>TIC e Inteligencia Artificial</p>
+            </div>
+            <div class="info_extra">
+            <p class="titulo_principal">Ingeniero mecatrónico</p>
+            <p>Maestria en enseñanza de matemáticas</p>
+            <p>José Carlos Sanchez Batista</p>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="foto" style="background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755909330/foto_levi_hiu1iw.jpg');"></div>
+            <div class="pie">
+            <h2>Levi</h2>
+            <p>Facilitador</p>
+            <p>Economía Popular y Campesina</p>
+            </div>
+            <div class="info_extra">
+            <p class="titulo_principal">Químico industrial</p>
+            <p>Maestria en ciencias</p>
+            <p>Levi Andrés Bonilla Rave</p>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="foto" style="background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755909262/foto_dala_sluaem.jpg');"></div>
+            <div class="pie">
+            <h2>Daladier</h2>
+            <p>Facilitador</p>
+            <p>Diseño de Productos</p>
+            </div>
+            <div class="info_extra">
+            <p class="titulo_principal">Físico teorico</p>
+            <p>Maestria en instrumentación física</p>
+            <p>Daladier Enrique Blanco Ávila</p>
+            </div>
+        </div>
+
+    </div> <!-- FIN container card-->
+
+  <!-- JS menú móvil -->
+    <script src="/js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia</title>
+    <link rel="stylesheet" href="css/trivia_style.css">
+</head>
+<body>
+    <div class="intro-container">
+        <div class="intro-contenido">
+        <h1>Preguntas</h1>
+
+        <div class="pregunta">
+            <p>¿Cuántos planetas hay en el sistema solar?</p>
+            <input type="text" class="respuesta" data-correcta="8">
+        </div>
+
+        <div class="pregunta">
+            <p>¿Quién formuló la ley de la gravedad?</p>
+            <input type="text" class="respuesta" data-correcta="Newton">
+        </div>
+
+        <div class="pregunta">
+            <p>¿Cuál es el resultado de 7 x 8?</p>
+            <input type="text" class="respuesta" data-correcta="56">
+        </div>
+
+        <button onclick="verificarRespuestas()">Enviar respuestas</button>
+        <button onclick="irAPagina()">Continuar a la página</button>
+
+        <p class="desliza">También puedes deslizar para continuar</p>
+        </div>
+    </div>
+
+    <script src="js/trivia_script.js"></script>
+</body>
+</html>

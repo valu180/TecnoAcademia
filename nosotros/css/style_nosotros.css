@@ -1,0 +1,428 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+/* ===== Header ===== */
+ header {
+    height: 150px;                 /* alto fijo del header */
+    background: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;           /* centra verticalmente */
+    justify-content: center;       /* centra horizontalmente */
+    padding: 0 24px;
+    overflow: hidden;              /* evita que algo se salga */
+  }
+
+.logos_header { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: white;
+    padding: 10px;
+}
+
+.logo_sena_header {
+    height: 207px;
+}
+
+  /* Botón hamburguesa en desktop: normalmente se oculta */
+  .menu_toggle { display: none; }
+
+/* ===== Menú desktop ===== */
+.menu {
+  background-color: #11890d;
+  padding: 1.5rem;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.menu_navegacion {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.menu_navegacion li { display: inline-block; position: relative; }
+.menu_navegacion a {
+  display: flex; flex-direction: column; align-items: center;
+  color: white; text-decoration: none; font-weight: bold;
+  transition: transform 0.3s ease;
+}
+.menu_navegacion .icono { width: 40px; height: 40px; transition: transform 0.3s ease; }
+.menu_navegacion a:hover { transform: scale(1.1); }
+.menu_navegacion .texto { margin-top: 5px; font-size: 20px; }
+
+/* Submenú desktop */
+.submenu_lineas {
+  width: 220px; display: flex; flex-direction: column;
+  background: #fff; position: absolute; top: calc(100% + 10px); left: 0;
+  padding: 14px 0; box-shadow: 0 0 10px rgba(0,0,0,0.3); z-index: 10;
+  border-radius: 10px;
+  visibility: hidden; opacity: 0; transition: opacity .25s ease, visibility 0s linear .25s;
+}
+.menu_navegacion li:hover .submenu_lineas { visibility: visible; opacity: 1; transition-delay: 0s; }
+.submenu_lineas li { text-align: center; margin: 0; }
+.submenu_lineas li a { padding: 10px 16px; color: #111; text-decoration: none; display: block; }
+.submenu_lineas li a:hover { background-color: #C7EAD6; transform: scale(1.03); }
+
+/* ===== Títulos ===== */
+.titulo_quienes_somos,
+.titulo_nuestro_equipo {
+  text-align: center;
+  color: #333;
+  background-color: #fff;
+  font-weight: bold;
+  margin: 2.5rem auto 1rem;
+}
+.titulo_quienes_somos { font-size: 48px; margin-top: 3.5rem; }
+.titulo_nuestro_equipo { font-size: 38px; margin-top: 2.5rem; }
+
+/* ===== Texto Intro ===== */
+.container_texto {
+  width: 80%; max-width: 1000px; margin: 0 auto; margin-top: 1rem; margin-bottom: 2.5rem;
+  padding: 20px;
+  text-align: justify; line-height: 1.6;
+  background-color: #ebebec; border-radius: 8px;
+  font-family: "Work Sans", Arial, sans-serif; font-size: 1.15rem;
+}
+
+/* container tarjetas */
+
+.container_fila1 {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+.container_fila2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    width: 100%;
+    max-width: 300px; /* mantiene un límite de tamaño en pantallas grandes */
+    aspect-ratio: 3 / 4; /* mantiene la proporción 300x400 automáticamente */
+    margin: 15px;
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+}
+
+.nombre {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: initial;
+}
+
+.foto {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center top; /* para que se muestre la parte de arriba de la foto */
+}
+
+.pie {
+    padding: 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.pie h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.pie p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.titulo_principal {
+    font-weight: bold;
+}
+
+/* Info extra al hover */
+.info_extra {
+  position: absolute; left: 0; right: 0; bottom: -100%;
+  padding: 14px; text-align: center;
+  background-color: #cfecea;
+  transition: bottom 0.3s ease;
+}
+.card:hover .info_extra { bottom: 0; }
+
+
+
+
+/* ====== Utilidad: [hidden] ====== */
+[hidden] { display: none !important; }
+
+/* =================== BREAKPOINTS =================== */
+/* <= 1200px: 3 columnas */
+@media (max-width: 1200px) {
+
+  .container_fila1 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .container_fila2 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* <= 992px: 2 columnas y foto un poco más baja */
+@media (max-width: 992px) {
+  .container_fila1,
+  .container_fila2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .foto { height: 220px; }
+}
+
+/* <= 768px: 1 columna (móvil) y foto más alta para proporción */
+@media (max-width: 768px) {
+  .container_fila1,
+  .container_fila2 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 0 auto 40px;
+  }
+  .foto { height: 240px; } /* ajusta a gusto (200–260) */
+}
+
+/* ====== SOLO DESKTOP (>=769px) ====== */
+@media (min-width: 769px) {
+  .menu { display: block; }
+  .menu_toggle,
+  .sidebar,
+  .drawer_backdrop,
+  .drawer_close { display: none !important; }
+}
+
+/* ====== SOLO MÓVIL (<=768px) ====== */
+@media (max-width: 768px) {
+  /* Header con altura fija */
+  header{
+    height: 140px;             
+    position: relative;
+    display: flex;
+    align-items: center;      
+    justify-content: center;  
+    padding: 0;
+    margin: 0;
+    overflow: hidden;       
+    border-bottom: 3px solid #11890d;   
+  }
+
+  /* Contenedor del logo sin espacios fantasma */
+  .logos_header{
+    height: 100%;              /* el contenedor ocupa todo el header */
+    display: flex;
+    align-items: center;       /* debe coincidir con el header */
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    /* border: 3px solid red; */
+  }
+
+  /* La IMAGEN del logo se adapta al alto del header sin deformarse */
+  .logos_header img{
+    height: 100%;              /* ocupa el 100% del alto del header */
+    width: auto;               /* mantiene proporción */
+    max-width: 90vw;           /* no más ancho que la pantalla */
+    object-fit: contain;       /* seguridad extra si en otro breakpoint fijas ancho/alto */
+    display: block;
+    position: relative; z-index: 1;
+  }
+
+  /* Ocultar menú desktop en móvil */
+  .menu { display: none; }
+
+
+    /* Botón hamburguesa centrado verticalmente con el logo */
+  .menu_toggle{
+      display: inline-flex;   /* ← vuelve a mostrarse */
+      position: absolute;
+      left: 12px;
+      top: 50px;
+      transform: none;
+      z-index: 10002;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+      
+  .menu_toggle img { width: 30px; height: 30px; display:block}
+
+  /* Oculta el botón cuando el menú está abierto */
+  .menu_toggle[aria-expanded="true"] {
+    display: none;                 /* opción simple */
+  }
+
+
+  /* Sidebar móvil */
+  .sidebar {
+    display: block;
+    position: fixed;
+    top: 0; left: -260px;
+    width: 260px; height: 100%;
+    background-color: #11890d;
+    padding: 2.25rem 1rem 1rem; /* ↑ un poco para no pisar el botón ✕ */
+    transition: left .3s ease;
+    z-index: 10001;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  .sidebar.open { left: 0; }
+
+  /* Botón ✕ dentro del sidebar */
+  .sidebar .drawer_close {
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 40px; height: 40px;    /* tap target cómodo */
+    font-size: 22px;
+    line-height: 40px;
+    text-align: center;
+    background: none;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10003;               /* ← clave: por encima del contenido */
+    pointer-events: auto;
+  }
+
+  /* Backdrop */
+  .drawer_backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    z-index: 10000;
+    touch-action: none;
+  }
+  .sidebar.open + .drawer_backdrop { display: block; }
+
+  /* ======== Estilos del menú en la sidebar ======== */
+  .sidebar nav ul {
+    list-style: none;
+    padding: 40px 0 8px;
+    margin: 0;
+  }
+  .sidebar nav li { border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .sidebar nav li:last-child { border-bottom: 0; }
+
+  .sidebar nav a {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.1;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sidebar nav a .icono { width: 22px; height: 22px; flex: 0 0 22px; }
+  .sidebar nav a .texto { margin: 0; font-weight: 600; letter-spacing: .2px; }
+  .sidebar nav a:hover { background: rgba(255,255,255,0.08); }
+  .sidebar nav a:focus-visible {
+    outline: 2px solid rgba(255,255,255,0.7);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  .sidebar nav a:active { background: rgba(255,255,255,0.14); }
+
+  /* Submenú “Líneas” */
+  .sidebar .submenu_lineas {
+    position: static !important;
+    top: auto; left: auto; width: auto;
+    visibility: visible !important;
+    opacity: 1 !important;
+    box-shadow: none; border-radius: 0;
+    background: rgba(255,255,255,0.04);
+    margin: 0;
+    padding: 6px 0 10px 32px;
+    border-left: 2px solid rgba(255,255,255,0.25);
+  }
+  .sidebar .submenu_lineas li {
+    border: 0;                     /* sin divisores aquí */
+    text-align: left;
+  }
+  .sidebar .submenu_lineas a {
+    font-size: 15px;
+    color: #eaffea;
+    display: inline-block !important;          /* evita que ocupe todo el ancho */
+    padding: 6px 8px !important;               /* hover más bajo y angosto */
+  }
+
+  /* Títulos y texto */
+  .titulo_quienes_somos { font-size: 32px; margin-top: 0; }
+  .titulo_nuestro_equipo { font-size: 26px; margin-top: 1.25rem; }
+  .container_texto { width: 92%; font-size: 1rem; padding: 16px; }
+
+  /* 2 columnas centradas en móvil */
+  .container_fila1,
+  .container_fila2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columnas fluidas */
+    gap: 16px;
+
+    /* CENTRADO del bloque en la pantalla */
+    width: min(100%, 720px);
+    margin: 0 auto 40px;    /* centra el contenedor */
+    padding: 0 12px;        /* padding simétrico a ambos lados */
+    box-sizing: border-box;
+
+    /* CENTRADO de los ítems dentro de cada celda */
+    justify-content: center; /* centra las pistas si sobra espacio */
+    justify-items: center;   /* centra cada card en su celda */
+  }
+
+
+  /* por si alguna card tiene width propio y empuja */
+  .card { min-width: 0; }
+
+  /* alto de la imagen dentro de la card (ajústalo si quieres) */
+  .foto {
+    height: 240px;
+    background-size: cover;
+    background-position: center top;
+  }
+} /* Fin media móvil */
+
+/* ====== Ajustes globales extra ====== */
+.drawer_backdrop[hidden] { display: none !important; }
+@media (min-width: 769px) {
+  #mobile-sidebar { display: none; }
+  .drawer_backdrop { display: none !important; }
+}
