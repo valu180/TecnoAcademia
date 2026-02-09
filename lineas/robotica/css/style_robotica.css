@@ -1,0 +1,766 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+body {
+    background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755912275/fondo2_robotica_qqzbum.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ===== Header ===== */
+ header {
+    height: 150px;                 /* alto fijo del header */
+    background: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;           /* centra verticalmente */
+    justify-content: center;       /* centra horizontalmente */
+    padding: 0 24px;
+    overflow: hidden;              /* evita que algo se salga */
+  }
+
+.logos_header { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: white;
+    padding: 10px;
+}
+
+.logo_sena_header {
+    height: 207px;
+}
+
+  /* Botón hamburguesa en desktop: normalmente se oculta */
+  .menu_toggle { display: none; }
+
+/* ===== Menú desktop ===== */
+.menu {
+  background-color: white;
+  padding: 1.5rem;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  border-bottom: 3px solid RGB(250, 53, 50);
+}
+
+.menu_navegacion {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.menu_navegacion li { display: inline-block; position: relative; }
+.menu_navegacion a {
+  display: flex; flex-direction: column; align-items: center;
+  color: black; text-decoration: none; font-weight: bold;
+  transition: transform 0.3s ease;
+}
+.menu_navegacion .icono { width: 40px; height: 40px; transition: transform 0.3s ease; }
+.menu_navegacion a:hover { transform: scale(1.1); }
+.menu_navegacion .texto { margin-top: 5px; font-size: 20px; }
+
+/* Submenú desktop */
+.submenu_lineas {
+  width: 220px; display: flex; flex-direction: column;
+  background: #fff; position: absolute; top: calc(100% + 10px); left: 0;
+  padding: 14px 0; box-shadow: 0 0 10px rgba(0,0,0,0.3); z-index: 10;
+  border-radius: 10px;
+  visibility: hidden; opacity: 0; transition: opacity .25s ease, visibility 0s linear .25s;
+}
+.menu_navegacion li:hover .submenu_lineas { visibility: visible; opacity: 1; transition-delay: 0s; }
+.submenu_lineas li { text-align: center; margin: 0; }
+.submenu_lineas li a { padding: 10px 16px; color: #111; text-decoration: none; display: block; }
+.submenu_lineas li a:hover { background-color: #C7EAD6; transform: scale(1.03); }
+
+
+/* ------------------------------------------------------------------------------------- */
+/*                                  CONTENIDO                                            */
+/* ------------------------------------------------------------------------------------- */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+    transition-delay: 0.1s; /*retrasa la revelación*/
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+h1 {
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 650; 
+    font-style: normal;
+    color: white;
+
+    padding-top: 20px;
+    text-align: center;
+    margin: 2rem 0 1rem;
+    margin-top: 4%;
+    font-size: 5.5rem;
+    
+}
+
+.titulo_intro {
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 650; 
+    font-style: normal;
+
+    padding-top: 20px;
+    text-align: center;
+    margin: 2rem 0 1rem;
+    margin-top: -1%;
+    font-size: 4.5rem;
+}
+
+
+h2 {
+    padding-top: 40px;
+}
+
+
+.intro {
+    padding-top: 80px;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+
+
+.container_subtitulos {
+    width: 80%;
+    max-width: 1000px;
+    min-height: 250px; /* Altura mínima en pantallas grandes */
+    height: auto;      /* Se ajusta al contenido */
+    text-align: center;
+
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; 
+    font-style: normal;
+    font-size: 1.4rem;
+
+    margin: 0 auto;
+    margin-top: 5%;
+    padding: 20px 10px; /* menos espacio horizontal */
+    background-color: rgba(14, 56, 79, 0.514);
+    border-radius: 8px;
+}
+
+
+.subtitulos {
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 650; 
+    font-style: normal;
+    color: white;
+
+    padding-top: 20px;
+    text-align: center;
+    margin: 2rem 0 1rem;
+    margin-top: 4%;
+    font-size: 5.5rem;
+}
+
+.carrusel_btn { display: none; }
+
+.contenedor_fotos {
+    /* border: 2px solid rgb(255, 51, 0); */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+
+    /* Centrar contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+
+    /* Tamaño del contenedor */
+    width: 100%;
+    max-width: 1300px;
+    height: auto;
+    min-height: 400px;
+    margin: 50px auto 0 auto; /*margen superior para separarlo del contenido*/
+}
+
+.contenedor_fotos img {
+    max-width: 100%;
+    max-height: 600px;
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.container_fotos_horizontal {
+    /* border: 2px solid rgb(255, 51, 0); */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+
+    /* Centrar contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 22px;
+
+    /* Tamaño del contenedor */
+    width: 100%;
+    max-width: 1300px;
+    height: auto;
+    min-height: 200px;
+    margin: 50px auto 0 auto;
+    margin-bottom: 4%;
+}
+
+.container_fotos_horizontal img {
+    max-width: 100%;
+    max-height: 270px;
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+.contenedor_intro {
+    width: 80%; 
+    max-width: 1000px;
+    text-align: center;
+
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; 
+    font-style: normal;
+    font-size: 1.4rem;
+
+    margin: 0 auto;
+    margin-top: 5%;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+}
+
+.contenedor_info {
+    width: 80%; 
+    max-width: 1000px;
+    text-align: justify;
+
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; 
+    font-style: normal;
+    font-size: 1.4rem;
+
+    margin: 0 auto;
+    margin-top: 1%;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+}
+
+.contenedor_titulo {
+    width: 80%;
+    max-width: 1000px;
+    text-align: justify;
+
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; 
+    font-style: normal;
+    font-size: 1.4rem;
+
+    margin: 0 auto;
+    margin-top: 5%;
+    padding: 20px 10px; /* menos espacio horizontal */
+    background-color: rgba(14, 56, 79, 0.514);
+    border-radius: 8px;
+}
+.contenedor_titulo_intro {
+    width: 80%;
+    max-width: 1000px;
+    text-align: center;
+
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600; 
+    font-style: normal;
+    font-size: 2.4rem;
+
+    margin: 0 auto;
+    margin-top: 1%;
+    padding: 20px 10px; /* menos espacio horizontal */
+    background-color: rgba(14, 56, 79, 0.514);
+    border-radius: 8px;
+}
+
+
+
+
+/* ====== Utilidad: [hidden] ====== */
+[hidden] { display: none !important; }
+
+/* ====== SOLO DESKTOP (>=769px) ====== */
+@media (min-width: 769px) {
+  .menu { display: block; }
+  .menu_toggle,
+  .sidebar,
+  .drawer_backdrop,
+  .drawer_close { display: none !important; }
+}
+
+
+
+/* ====== SOLO MÓVIL (<=768px) —  ====== */
+@media (max-width: 768px) {
+
+body {
+    background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755912275/fondo2_robotica_qqzbum.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+    background-attachment: fixed;
+
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+ /* Header con altura fija y sin aire extra */
+  header{
+    height: 140px;             /* ← alto del header (ajusta 120–160 si quieres) */
+    position: relative;
+    display: flex;
+    align-items: center;       /* centra verticalmente el logo (usa flex-start si lo quieres pegado arriba) */
+    justify-content: center;   /* centra horizontalmente */
+    padding: 0;
+    margin: 0;
+    overflow: hidden;          /* por si algo intenta salirse del header */
+    border-bottom: 3px solid RGB(250, 53, 50);
+  }
+
+  /* Contenedor del logo sin espacios fantasma */
+  .logos_header{
+    height: 100%;              /* el contenedor ocupa todo el header */
+    display: flex;
+    align-items: center;       /* debe coincidir con el header */
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    /* border: 3px solid red; */
+  }
+
+  /* La IMAGEN del logo se adapta al alto del header sin deformarse */
+  .logos_header img{
+    height: 100%;              /* ocupa el 100% del alto del header */
+    width: auto;               /* mantiene proporción */
+    max-width: 90vw;           /* no más ancho que la pantalla */
+    object-fit: contain;       /* seguridad extra si en otro breakpoint fijas ancho/alto */
+    display: block;
+    position: relative; z-index: 1;
+  }
+
+  /* Ocultar menú desktop en móvil */
+  .menu { display: none; }
+
+
+    /* Botón hamburguesa centrado verticalmente con el logo */
+  .menu_toggle{
+      display: inline-flex;   /* ← vuelve a mostrarse */
+      position: absolute;
+      left: 12px;
+      top: 50px;
+      transform: none;
+      z-index: 10002;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+      
+  .menu_toggle img { width: 30px; height: 30px; display:block}
+
+  /* Oculta el botón cuando el menú está abierto */
+  .menu_toggle[aria-expanded="true"] {
+    display: none;                 /* opción simple */
+  }
+
+
+  /* Sidebar móvil */
+  .sidebar {
+    display: block;
+    position: fixed;
+    top: 0; left: -260px;
+    width: 260px; height: 100%;
+    background-color: #11890d;
+    padding: 2.25rem 1rem 1rem; /* ↑ un poco para no pisar el botón ✕ */
+    transition: left .3s ease;
+    z-index: 10001;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  .sidebar.open { left: 0; }
+
+  /* Botón ✕ dentro del sidebar */
+  .sidebar .drawer_close {
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 40px; height: 40px;    /* tap target cómodo */
+    font-size: 22px;
+    line-height: 40px;
+    text-align: center;
+    background: none;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10003;               /* ← clave: por encima del contenido */
+    pointer-events: auto;
+  }
+
+  /* Backdrop */
+  .drawer_backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    z-index: 10000;
+    touch-action: none;
+  }
+  .sidebar.open + .drawer_backdrop { display: block; }
+
+  /* ======== Estilos del menú en la sidebar ======== */
+  .sidebar nav ul {
+    list-style: none;
+    padding: 40px 0 8px;
+    margin: 0;
+  }
+  .sidebar nav li { border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .sidebar nav li:last-child { border-bottom: 0; }
+
+  .sidebar nav a {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.1;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sidebar nav a .icono { width: 22px; height: 22px; flex: 0 0 22px; }
+  .sidebar nav a .texto { margin: 0; font-weight: 600; letter-spacing: .2px; }
+  .sidebar nav a:hover { background: rgba(255,255,255,0.08); }
+  .sidebar nav a:focus-visible {
+    outline: 2px solid rgba(255,255,255,0.7);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  .sidebar nav a:active { background: rgba(255,255,255,0.14); }
+
+  /* Submenú “Líneas” */
+  .sidebar .submenu_lineas {
+    position: static !important;
+    top: auto; left: auto; width: auto;
+    visibility: visible !important;
+    opacity: 1 !important;
+    box-shadow: none; border-radius: 0;
+    background: rgba(255,255,255,0.04);
+    margin: 0;
+    padding: 6px 0 10px 32px;
+    border-left: 2px solid rgba(255,255,255,0.25);
+  }
+  .sidebar .submenu_lineas li {
+    border: 0;                     /* sin divisores aquí */
+    text-align: left;
+  }
+  .sidebar .submenu_lineas a {
+    font-size: 15px;
+    color: #eaffea;
+    display: inline-block !important;          /* evita que ocupe todo el ancho */
+    padding: 6px 8px !important;               /* hover más bajo y angosto */
+  }
+
+
+    /* CONTENIDO RESPOSIVE */
+     /* Tipografías y espaciados grandes */
+  h1,
+  .subtitulos {
+    font-size: 3rem;
+    margin: 1.2rem 0 0.6rem;
+    padding-top: 12px;
+    text-align: center;
+  }
+
+  .titulo_intro {
+    font-size: 2.4rem;
+    margin-top: 0.2rem;
+    padding-top: 12px;
+    text-align: center;
+  }
+
+  h2 {
+    padding-top: 24px;
+  }
+
+  .intro {
+    padding-top: 40px;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  /* Contenedores de texto (ancho + legibilidad) */
+  .contenedor_intro,
+  .contenedor_info,
+  .container_subtitulos,
+  .contenedor_titulo,
+  .contenedor_titulo_intro {
+    width: 92%;
+    max-width: none;
+    margin-top: 1rem;
+    padding: 16px 14px;
+    font-size: 1.1rem;
+  }
+
+  .contenedor_info {
+    text-align: left; /* mejor lectura en pantallas estrechas */
+  }
+
+  .container_subtitulos {
+    min-height: 0;      /* evita alturas mínimas rígidas en móvil */
+    height: auto;
+  }
+
+  .contenedor_titulo_intro {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .carrusel { position: relative; max-width: 1300px; margin: 0 auto; }
+
+  /* Flechas visibles y posicionadas */
+  .carrusel_btn {
+    display: grid;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px; height: 44px;
+    border: 0; border-radius: 999px;
+    background: rgba(0,0,0,.45); color: #fff;
+    font-size: 22px; line-height: 1;
+    place-items: center; cursor: pointer; z-index: 2;
+    backdrop-filter: blur(2px);
+  }
+  .carrusel_btn:hover { background: rgba(0,0,0,.6); }
+  .carrusel_btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .carrusel_btn.prev { left: 8px; }
+  .carrusel_btn.next { right: 8px; }
+
+  /* Slider por scroll-snap solo en móvil */
+  .container_fotos_horizontal { scroll-snap-type: x mandatory; scroll-behavior: smooth; }
+  .container_fotos_horizontal img { scroll-snap-align: center; scroll-snap-stop: always; }
+
+
+.container_fotos_horizontal {
+  /* border: 2px solid rgb(255, 51, 0); */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+
+  /* Fila única */
+  display: flex;
+  justify-content: flex-start;  /* inicia a la izquierda */
+  align-items: center;
+  flex-wrap: nowrap;            /* una sola fila */
+  gap: 22px;
+
+  /* Tamaño del contenedor */
+  width: 100%;
+  max-width: 1300px;
+  height: auto;
+  min-height: 200px;
+  margin: 50px auto 0;
+  margin-bottom: 4%;
+
+  /* Scroll horizontal si no caben */
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  /* añade esto para ocultar la barra */
+  scrollbar-width: none;     /* Firefox (Android) */
+  -ms-overflow-style: none;  /* IE/Edge antiguo */
+}
+/* y este pseudo-elemento WebKit (Chrome/Safari/Edge móvil) */
+.container_fotos_horizontal::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.container_fotos_horizontal img {
+  flex: 0 0 auto;      /* no se encogen; mantienen su ancho natural */
+  display: block;
+  max-width: 100%;
+  max-height: 270px;
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+
+}
+
+/* --- Teléfonos pequeños (≤ 480px) --- */
+@media (max-width: 480px) {
+
+  h1,
+  .subtitulos {
+    font-size: 2.2rem;
+    margin: 1rem 0 0.5rem;
+    padding-top: 10px;
+  }
+
+  .titulo_intro {
+    font-size: 1.8rem;
+    margin-top: 0.2rem;
+    padding-top: 10px;
+  }
+
+  .intro {
+    padding-top: 28px;
+    margin-bottom: 1.2rem;
+  }
+
+  .contenedor_intro,
+  .contenedor_info,
+  .container_subtitulos,
+  .contenedor_titulo,
+  .contenedor_titulo_intro {
+    width: 95%;
+    padding: 14px 12px;
+    font-size: 1rem;
+    margin-top: 0.8rem;
+  }
+
+  .contenedor_titulo_intro {
+    font-size: 1.3rem;
+  }
+
+
+  .carrusel { position: relative; max-width: 1300px; margin: 0 auto; }
+
+  /* Flechas visibles y posicionadas */
+  .carrusel_btn {
+    display: grid;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px; height: 44px;
+    border: 0; border-radius: 999px;
+    background: rgba(0,0,0,.45); color: #fff;
+    font-size: 22px; line-height: 1;
+    place-items: center; cursor: pointer; z-index: 2;
+    backdrop-filter: blur(2px);
+  }
+  .carrusel_btn:hover { background: rgba(0,0,0,.6); }
+  .carrusel_btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .carrusel_btn.prev { left: 8px; }
+  .carrusel_btn.next { right: 8px; }
+
+  /* Slider por scroll-snap solo en móvil */
+  .container_fotos_horizontal { scroll-snap-type: x mandatory; scroll-behavior: smooth; }
+  .container_fotos_horizontal img { scroll-snap-align: center; scroll-snap-stop: always; }
+
+
+.container_fotos_horizontal {
+  /* border: 2px solid rgb(255, 51, 0); */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+
+  /* Fila única */
+  display: flex;
+  justify-content: flex-start;  /* inicia a la izquierda */
+  align-items: center;
+  flex-wrap: nowrap;            /* una sola fila */
+  gap: 22px;
+
+  /* Tamaño del contenedor */
+  width: 100%;
+  max-width: 1300px;
+  height: auto;
+  min-height: 200px;
+  margin: 50px auto 0;
+  margin-bottom: 4%;
+
+  /* Scroll horizontal si no caben */
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  /* añade esto para ocultar la barra */
+  scrollbar-width: none;     /* Firefox (Android) */
+  -ms-overflow-style: none;  /* IE/Edge antiguo */
+}
+/* y este pseudo-elemento WebKit (Chrome/Safari/Edge móvil) */
+.container_fotos_horizontal::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.container_fotos_horizontal img {
+  flex: 0 0 auto;      /* no se encogen; mantienen su ancho natural */
+  display: block;
+  max-width: 100%;
+  max-height: 270px;
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+}
