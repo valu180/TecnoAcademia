@@ -1,0 +1,66 @@
+/* =====================================================================
+   PROYECTOS.CSS - Estilos exclusivos de la página Proyectos
+   ===================================================================== */
+
+/* Título principal */
+.titulo_proyecto {
+    width: 80%;
+    max-width: 1000px;
+    margin: 3rem auto 1.5rem;     /* espacio arriba y abajo reducido */
+    text-align: right;              /* alineado a la derecha */
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #333333;
+    /* Sin fondo, sin padding, sin caja */
+}
+
+/* Subtítulos de cada línea */
+.subtitulo_linea,
+.subtitulo_linea_diseño,
+.subtitulo_linea_c {
+    width: 80%;
+    max-width: 1000px;
+    margin: 3rem auto 1.4rem;     /* más pegado arriba y abajo */
+    text-align: right;              /* alineado a la derecha */
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #333333;
+    /* Sin fondo, sin padding, sin caja */
+}
+
+/* Contenedor de texto (sin cambios importantes) */
+.container_texto {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0.8rem auto 2rem;
+    padding: 1.8rem 2rem;
+    text-align: justify;
+    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.15rem;
+    background-color: #ebebec;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .titulo_proyecto {
+        font-size: 2.6rem;
+        margin: 2rem auto 0.6rem;
+    }
+
+    .subtitulo_linea,
+    .subtitulo_linea_diseño,
+    .subtitulo_linea_c {
+        font-size: 2.2rem;
+        margin: 1.8rem auto 0.5rem;
+    }
+
+    .container_texto {
+        width: 92%;
+        margin: 0.6rem auto 1.5rem;
+        padding: 1.4rem 1.2rem;
+        font-size: 1.05rem;
+    }
+}

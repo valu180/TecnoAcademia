@@ -1,0 +1,196 @@
+/* =====================================================================
+   ORIENTACION.CSS - Estilos exclusivos de Orientación Vocacional
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Fondo específico */
+body {
+    background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755911848/fondo2_orientacion_rrwt7y.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Títulos principales */
+h1, .subtitulos {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 650;
+    color: white;
+    text-align: center;
+    margin: 4% 0 1rem;
+    font-size: 5.5rem;
+    padding-top: 20px;
+}
+
+.titulo_intro {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 650;
+    text-align: center;
+    margin: -1% 0 1rem;
+    font-size: 4.5rem;
+    padding-top: 20px;
+}
+
+.intro {
+    padding-top: 80px;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+/* Contenedores de texto */
+.contenedor_intro,
+.contenedor_info,
+.contenedor_titulo,
+.contenedor_titulo_intro,
+.contenedor_final,
+.container_subtitulos {
+    width: 80%;
+    max-width: 1000px;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 1.4rem;
+}
+
+.container_subtitulos,
+.contenedor_titulo,
+.contenedor_titulo_intro {
+    background-color: rgba(14, 56, 79, 0.514);
+    color: white;
+}
+
+.contenedor_intro,
+.contenedor_info,
+.contenedor_final {
+    background-color: rgba(255, 255, 255, 0.85);
+    text-align: justify;
+}
+
+/* Alineaciones específicas */
+.contenedor_intro {
+    text-align: center;
+}
+
+.contenedor_titulo_intro {
+    font-weight: 600;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Carrusel unificado para todas las imágenes (horizontal) */
+.carrusel {
+    position: relative;
+    max-width: 1300px;
+    margin: 3rem auto 4%;
+}
+
+.container_fotos_horizontal {
+    width: 80%;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.container_fotos_horizontal::-webkit-scrollbar {
+    display: none;
+}
+
+.container_fotos_horizontal img {
+    width: 33%;                         /* 3 imágenes → llenan el ancho */
+    max-width: none;
+    max-height: 380px;                  /* tamaño consistente con otros módulos */
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    flex: 1 1 auto;
+    scroll-snap-align: center;
+}
+
+/* Botones carrusel (ocultos) */
+.carrusel_btn {
+    display: none !important;
+}
+
+/* Media queries específicas */
+@media (max-width: 768px) {
+    body {
+        background-position: left center;
+    }
+
+    h1, .subtitulos {
+        font-size: 3rem;
+        margin: 1.2rem 0;
+    }
+
+    .titulo_intro {
+        font-size: 2.4rem;
+        margin-top: 0;
+    }
+
+    .contenedor_intro,
+    .contenedor_info,
+    .contenedor_titulo,
+    .contenedor_titulo_intro {
+        width: 92%;
+        font-size: 1.1rem;
+        margin: 1rem auto;
+        padding: 16px;
+    }
+
+    .container_fotos_horizontal {
+        width: 92%;
+        padding: 0.8rem;
+        justify-content: flex-start;
+    }
+
+    .container_fotos_horizontal img {
+        width: 100%;
+        max-height: 280px;
+        flex: 0 0 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1, .subtitulos { font-size: 2.2rem; }
+    .titulo_intro { font-size: 1.8rem; }
+    .contenedor_titulo_intro { font-size: 1.6rem; }
+}
+
+/* Menú específico para Orientación: fondo blanco + borde morado inferior */
+.menu {
+    background-color: white !important;
+    border-bottom: 3px solid rgb(192, 52, 220) !important;
+    box-shadow: none !important;
+}
+
+/* Texto e iconos en negro */
+.menu_navegacion a {
+    color: black !important;
+}
+
+/* Hover más suave */
+.menu_navegacion a:hover {
+    color: rgb(192, 52, 220) !important;
+    transform: scale(1.08);
+}
+
+/* Submenú */
+.submenu_lineas {
+    background: white !important;
+    border: 1px solid rgba(192, 52, 220, 0.3) !important;
+}
