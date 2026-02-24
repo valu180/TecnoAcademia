@@ -47,7 +47,7 @@ h1 {
     max-width: 1000px;
 }
 
-/* Subtítulos: una sola línea, izquierda por defecto, primer centrado */
+/* Subtítulos */
 .subtitulos {
     width: 80%;
     max-width: 1000px;
@@ -62,7 +62,7 @@ h1 {
     text-align: left;
     white-space: nowrap;            /* fuerza una sola línea */
     overflow: hidden;
-    text-overflow: ellipsis;        /* ... si es muy largo (opcional) */
+    text-overflow: ellipsis;        
 }
 
 /* Primer subtítulo centrado */
@@ -93,7 +93,7 @@ h1 {
     background-color: rgba(255, 255, 255, 0.85);
 }
 
-/* Carrusel de fotos (horizontal, sin flechas ni barra) */
+/* Carrusel de fotos */
 .carrusel {
     position: relative;
     max-width: 1300px;
@@ -185,7 +185,7 @@ h1 {
     color: black !important;
 }
 
-/* Ocultar flechas */
+
 .carrusel_btn {
     display: none !important;
 }

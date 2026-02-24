@@ -1,19 +1,19 @@
 /* =====================================================================
-   QUIMICA.CSS - Estilos exclusivos de Economía Popular y Campesina
+   TICS.CSS - Estilos exclusivos de TICS e Inteligencia Artificial
    ===================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Fondo específico */
 body {
-    background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755912484/fondo_quimica2_sf9bad.png');
+    background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755912275/fondo2_robotica_qqzbum.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
 
-/* Título principal en contenedor */
+/* Título principal dentro de contenedor */
 .contenedor_titulo {
     width: 80%;
     max-width: 1000px;
@@ -32,7 +32,7 @@ h1 {
     font-size: 5.5rem;
 }
 
-/* Título intro */
+/* Título intro (debajo del principal) */
 .contenedor_titulo_intro {
     font-family: "Work Sans", sans-serif;
     font-weight: 600;
@@ -47,7 +47,7 @@ h1 {
     max-width: 1000px;
 }
 
-/* Subtítulos: una sola línea, izquierda por defecto, primer centrado */
+/* Subtítulos */
 .subtitulos {
     width: 80%;
     max-width: 1000px;
@@ -59,13 +59,13 @@ h1 {
     font-family: "Work Sans", sans-serif;
     font-weight: 650;
     font-size: 4.8rem;
-    text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    text-align: left;               /* izquierda por defecto */
+    white-space: nowrap;            /* fuerza una sola línea, sin salto */
+    overflow: hidden;               /* evita desborde si el texto es muy largo */
+    text-overflow: ellipsis;        /* pone ... si no cabe (opcional, quítalo si prefieres que se extienda) */
 }
 
-/* Primer subtítulo centrado */
+/* El primer subtítulo (después del título principal) centrado */
 .subtitulos:first-of-type {
     text-align: center;
 }
@@ -93,7 +93,7 @@ h1 {
     background-color: rgba(255, 255, 255, 0.85);
 }
 
-/* Carrusel de fotos (horizontal, sin flechas ni barra) */
+/* Carrusel de fotos (horizontal, sin flechas) */
 .carrusel {
     position: relative;
     max-width: 1300px;
@@ -145,7 +145,7 @@ h1 {
     .subtitulos { 
         font-size: 2.8rem; 
         margin: 2.5rem auto 1rem;
-        white-space: nowrap;
+        white-space: nowrap; 
     }
 
     .contenedor_intro,
@@ -175,17 +175,17 @@ h1 {
     .subtitulos { font-size: 2.2rem; }
 }
 
-/* Menú específico: blanco + borde celeste */
+/* Menú específico: fondo blanco + borde rojo */
 .menu {
     background-color: white !important;
-    border-bottom: 3px solid rgb(107, 220, 255) !important;
+    border-bottom: 3px solid rgb(250, 53, 50) !important;
 }
 
 .menu_navegacion a {
     color: black !important;
 }
 
-/* Ocultar flechas del carrusel */
+
 .carrusel_btn {
     display: none !important;
 }

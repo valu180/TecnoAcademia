@@ -7,7 +7,7 @@
     --color-primary:     #11890d;       /* Verde principal del menú y footer */
     --color-primary-dark:#0e6f0b;
     --color-accent:      #C7EAD6;       /* Verde claro para hovers */
-    --color-text:        #111;       /* ← más oscuro y contrastante, como el original */
+    --color-text:        #111;       
     --color-text-light:  #444;       /* para textos secundarios */
     --color-bg-light:    rgba(255,255,255,0.85);
     --shadow-soft:       0 4px 10px rgba(0,0,0,0.12);
