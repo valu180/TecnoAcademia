@@ -1,0 +1,52 @@
+/* =====================================================================
+   HOME.CSS - Estilos exclusivos de la página de inicio (index.html)
+   ===================================================================== */
+
+#conoce_la_tecno {
+    text-align: center;
+    margin: 1rem 0 2rem;          /* Equilibrado: 30px arriba y abajo */
+    font-size: 2rem;              /* Tamaño original */
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+/* Removemos el margen automático entre reveals para tener control manual */
+.reveal + .reveal {
+    margin-top: 0;                /* ← clave: quitamos el espacio extra */
+}
+
+/* Sliders en home: ancho original para ambos */
+.slider_1,
+.slider_tecno {
+    max-width: 825px;             /* Ancho original, ajustable si necesitas menos */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Espaciado general entre secciones grandes del home (más pegado) */
+.reveal {
+    margin-bottom: 40px;          /* Menos espacio abajo para "pegar" secciones */
+}
+
+/* El último reveal (el de las tarjetas) puede tener menos espacio abajo */
+.reveal:last-child {
+    margin-bottom: 30px;
+}
+
+/* Ajustes mobile */
+@media (max-width: 768px) {
+    #conoce_la_tecno {
+        font-size: 1.5rem;
+        margin: 20px 0 20px;      /* Más equilibrado y pegado en móvil */
+    }
+
+    .slider_1,
+    .slider_tecno {
+        max-width: 95%;
+        margin: 15px auto;        /* Menos margen para pegar verticalmente */
+    }
+
+    .reveal {
+        margin-bottom: 30px;      /* Aún más pegado en móvil */
+    }
+}

@@ -1,0 +1,147 @@
+/* =====================================================================
+   DISENO.CSS - Estilos exclusivos de Diseño de Productos
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Fondo específico de esta página */
+body {
+    background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755912174/fondo_diseno_yp5rbw.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Títulos principales (tonalidad más oscura en primer h1) */
+h1 {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 650;
+    color: #222;                    /* ← tonalidad un poco más oscura que #333 */
+    text-align: center;
+    margin: 3rem 0 1rem;
+    font-size: 5.5rem;
+    padding-top: 1rem;
+}
+
+.titulo_intro {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 650;
+    text-align: center;
+    margin: -0.5rem 0 2rem;
+    font-size: 4.5rem;
+}
+
+/* Subtítulos */
+.subtitulos {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 650;
+    text-align: center;
+    margin: 3rem 0 1.5rem;
+    font-size: 4.8rem;
+    padding-top: 2rem;
+}
+
+/* Contenedores de texto */
+.contenedor_intro,
+.contenedor_info,
+.contenedor_final {
+    width: 80%;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1.8rem 2rem;
+    border-radius: 8px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+.contenedor_intro,
+.contenedor_final {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.contenedor_info {
+    text-align: justify;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Carrusel genérico */
+.carrusel {
+    position: relative;
+    max-width: 1300px;
+    margin: 2.5rem auto 4%;
+}
+
+/* Contenedor base para fotos (horizontal en desktop, scroll en móvil) */
+.container_fotos_horizontal,
+.container_fotos_vertical {
+    width: 80%;                         /* mismo ancho que contenedores de texto */
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem;                      /* padding mínimo alrededor de imágenes */
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: nowrap;                  /* fuerza fila horizontal */
+    justify-content: space-between;     /* distribuye para que lleguen a los bordes */
+    align-items: center;
+    gap: 1rem;                          /* espacio entre imágenes */
+    overflow-x: auto;                   /* scroll si necesario */
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;              /* oculta barra en Firefox */
+    -ms-overflow-style: none;           /* oculta en Edge/IE */
+}
+
+/* Oculta barra en Chrome/Safari/Edge */
+.container_fotos_horizontal::-webkit-scrollbar,
+.container_fotos_vertical::-webkit-scrollbar {
+    display: none;
+}
+
+/* Imágenes: mismo tamaño que las de arriba (ajustado para llenar bordes) */
+.container_fotos_horizontal img,
+.container_fotos_vertical img {
+    width: 33%;                         /* 3 imágenes → cada una ~33% del contenedor */
+    max-width: none;
+    max-height: 380px;                  /* ← mismo alto máximo que las de arriba */
+    height: auto;
+    object-fit: cover;                  /* llena el espacio sin distorsión */
+    border-radius: 6px;
+    flex: 1 1 auto;                     /* permite que se agranden hasta llenar */
+    scroll-snap-align: center;
+}
+
+/* En móvil: scroll horizontal + cada imagen ocupa todo el ancho */
+@media (max-width: 768px) {
+    .container_fotos_horizontal,
+    .container_fotos_vertical {
+        width: 92%;
+        padding: 0.8rem;
+        margin: 1.5rem auto;
+        justify-content: flex-start;
+    }
+
+    .container_fotos_horizontal img,
+    .container_fotos_vertical img {
+        width: 100%;                    /* en móvil, cada imagen ocupa el ancho completo para scroll */
+        max-height: 280px;
+        flex: 0 0 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2.8rem; }
+    .titulo_intro { font-size: 2.2rem; }
+    .subtitulos { font-size: 2.2rem; }
+}
+
+/* Menú específico: fondo blanco + borde azul */
+.menu {
+    background-color: white !important;
+    border-bottom: 3px solid rgb(23,123,218) !important;
+}
+
+.menu_navegacion a { color: black !important; }
