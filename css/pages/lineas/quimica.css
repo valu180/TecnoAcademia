@@ -1,0 +1,191 @@
+/* =====================================================================
+   QUIMICA.CSS - Estilos exclusivos de Economía Popular y Campesina
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Fondo específico */
+body {
+    background-image: url('https://res.cloudinary.com/dojnr09ua/image/upload/v1755912484/fondo_quimica2_sf9bad.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Título principal en contenedor */
+.contenedor_titulo {
+    width: 80%;
+    max-width: 1000px;
+    margin: 3rem auto 2rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    background-color: rgba(14, 56, 79, 0.514);
+    border-radius: 8px;
+    color: white;
+}
+
+h1 {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 650;
+    margin: 0;
+    font-size: 5.5rem;
+}
+
+/* Título intro */
+.contenedor_titulo_intro {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto 2rem;
+    font-size: 2.4rem;
+    padding: 1rem;
+    background-color: rgba(14, 56, 79, 0.514);
+    color: white;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1000px;
+}
+
+/* Subtítulos: una sola línea, izquierda por defecto, primer centrado */
+.subtitulos {
+    width: 80%;
+    max-width: 1000px;
+    margin: 3rem auto 1.5rem;
+    padding: 1.5rem 1rem;
+    background-color: rgba(14, 56, 79, 0.514);
+    border-radius: 8px;
+    color: white;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 650;
+    font-size: 4.8rem;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Primer subtítulo centrado */
+.subtitulos:first-of-type {
+    text-align: center;
+}
+
+/* Contenedores de texto */
+.contenedor_intro,
+.contenedor_info {
+    width: 80%;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1.8rem 2rem;
+    border-radius: 8px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+.contenedor_intro {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.contenedor_info {
+    text-align: justify;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Carrusel de fotos (horizontal, sin flechas ni barra) */
+.carrusel {
+    position: relative;
+    max-width: 1300px;
+    margin: 2.5rem auto 4%;
+}
+
+.container_fotos_horizontal {
+    width: 80%;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.container_fotos_horizontal::-webkit-scrollbar {
+    display: none;
+}
+
+.container_fotos_horizontal img {
+    width: 33%;
+    max-width: none;
+    max-height: 380px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    flex: 1 1 auto;
+    scroll-snap-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        background-position: left center;
+    }
+
+    h1 { font-size: 3.5rem; margin: 2rem 0 1rem; }
+    .contenedor_titulo_intro { font-size: 2rem; margin: 1rem auto; }
+    .subtitulos { 
+        font-size: 2.8rem; 
+        margin: 2.5rem auto 1rem;
+        white-space: nowrap;
+    }
+
+    .contenedor_intro,
+    .contenedor_info {
+        width: 92%;
+        font-size: 1.1rem;
+        padding: 1.4rem 1.2rem;
+        margin: 1.5rem auto;
+    }
+
+    .container_fotos_horizontal {
+        width: 92%;
+        padding: 0.8rem;
+        justify-content: flex-start;
+    }
+
+    .container_fotos_horizontal img {
+        width: 100%;
+        max-height: 280px;
+        flex: 0 0 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2.8rem; }
+    .contenedor_titulo_intro { font-size: 1.8rem; }
+    .subtitulos { font-size: 2.2rem; }
+}
+
+/* Menú específico: blanco + borde celeste */
+.menu {
+    background-color: white !important;
+    border-bottom: 3px solid rgb(107, 220, 255) !important;
+}
+
+.menu_navegacion a {
+    color: black !important;
+}
+
+/* Ocultar flechas del carrusel */
+.carrusel_btn {
+    display: none !important;
+}
