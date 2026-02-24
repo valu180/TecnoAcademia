@@ -1,4 +1,4 @@
-// js/components/carrusel-orientacion.js
+
 // Carrusel con botones y scroll-snap para orientación vocacional
 
 document.addEventListener('DOMContentLoaded', () => {
