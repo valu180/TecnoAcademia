@@ -177,7 +177,7 @@
     display: block;
 }
 
-/* Ajustes mobile para componentes (se pueden mover a home.css si prefieres) */
+/* Ajustes mobile para componentes */
 @media (max-width: 768px) {
     .slider_container {
         max-width: 95%;
