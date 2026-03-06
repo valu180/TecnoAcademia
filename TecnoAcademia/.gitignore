@@ -1,0 +1,34 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores y IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos temporales
+*.log
+*.tmp
+*.bak
+
+# Dependencias (si usas herramientas frontend)
+node_modules/
+bower_components/
+
+# Archivos de build (si usas algún generador o bundler)
+dist/
+build/
+.cache/
+
+# Variables de entorno
+.env
+.env.*
+
+# Archivos comprimidos
+*.zip
+*.tar
+*.tar.gz
+*.rar
