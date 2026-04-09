@@ -1,0 +1,82 @@
+/* ========== INICIO: mover a css/home.css ========== */
+    /* Hero / contenido de ejemplo (página de inicio) */
+    .hero {
+        padding: 4rem 1.5rem 3rem;
+        max-width: 80rem;
+        margin: 0 auto;
+      }
+  
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        font-size: 0.75rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+  
+      .hero-title {
+        font-size: clamp(2rem, 3vw + 1rem, 2.75rem);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        margin-bottom: 0.75rem;
+        color: var(--foreground);
+        text-align: center;
+      }
+  
+      .hero-subtitle {
+        max-width: 40rem;
+        margin: 0 auto 2.5rem;
+        font-size: 0.95rem;
+        color: var(--muted-fg);
+        text-align: center;
+      }
+  
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+  
+      @media (min-width: 768px) {
+        .hero-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+  
+      .hero-card {
+        background: var(--card);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--border);
+      }
+  
+      .hero-card-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.75rem;
+        background: var(--primary-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        color: var(--primary-dark);
+      }
+  
+      .hero-card-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--foreground);
+      }
+  
+      .hero-card-text {
+        font-size: 0.875rem;
+        color: var(--muted-fg);
+      }
+      /* ========== FIN: css/home.css ========== */
