@@ -8,7 +8,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
 body {
-    background-color: #f1f7f2;
+    background-color: #f9fdfa;
     padding-top: 90px; 
 }
 
@@ -140,192 +140,244 @@ header {
     font-size: 0.7rem; 
 }
 
-/* --- SECCIÓN FILTROS DE PROYECTOS --- */
-.proyectos-header {
-    background-color: #f1f7f2; /* Un verde muy pálido como el de la imagen */
-    padding: 60px 8%;
-    width: 100%;
+/* HERO */
+.hero { 
+    height: 450px; 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../../img/fondo_equipo_t.jpeg");
+    background-size: cover; 
+    background-position: center; 
+    display: flex;
+    align-items: center; 
+    padding: 0 8%; 
+    color: white;
 }
 
-.proyectos-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* Para que en móvil se acomode */
+.hero h1 { 
+    font-size: 3.5rem; 
+    line-height: 1.1; 
+    margin: 15px 0; 
+}
+
+.badge { 
+    background: rgba(41, 180, 62, 0.2); 
+    border: 1px solid var(--primary); 
+    padding: 6px 16px; 
+    border-radius: 20px; 
+    font-size: 0.8rem; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+    color: #52ff78; 
+}
+
+/* --- SECCIÓN MISIÓN Y VISIÓN --- */
+.mision-vision-section {
+    padding: 80px 8%;
+    background-color: #f9fdfa; /* Un fondo muy sutil para que las tarjetas resalten */
+}
+
+.mv-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
     gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.proyectos-info h1 {
-    font-size: 2.5rem;
-    color: #051408; /* Tu color dark-green */
-    font-weight: 800;
-    margin-bottom: 5px;
+.mv-card {
+    padding: 50px 40px;
+    border-radius: 25px; /* Bordes redondeados como en la imagen */
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-.proyectos-info p {
-    color: #888;
-    font-size: 0.95rem;
-}
-
-.filtros-container {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
-.filtro-btn {
-    padding: 10px 22px;
-    border-radius: 12px;
-    border: 1px solid #e0eadd;
+/* Estilo Tarjeta Misión (Blanca) */
+.mv-card.mision {
     background-color: var(--white);
-    color: #444;
-    font-weight: 500;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    color: #333;
 }
 
-.filtro-btn:hover {
-    background-color: #f8fdf9;
-    border-color: var(--primary);
+.mv-card.mision .mv-icon {
+    background-color: #f0faf1; /* Verde muy clarito */
     color: var(--primary);
 }
 
-.filtro-btn.active {
+/* Estilo Tarjeta Visión (Verde) */
+.mv-card.vision {
     background-color: var(--primary);
     color: var(--white);
-    border-color: var(--primary);
-    box-shadow: 0 4px 15px rgba(41, 180, 62, 0.3);
 }
 
-.proyectos-grid-container {
-    max-width: 1200px;
-    margin: 40px auto;
+.mv-card.vision .mv-icon {
+    background-color: rgba(255, 255, 255, 0.2); /* Blanco transparente */
+    color: var(--white);
+}
+
+/* Iconos circulares pequeños */
+.mv-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
     display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 0 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
 }
 
-.proyecto-card {
-    display: flex; /* Mantiene el formato horizontal */
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 1px solid #e0eadd;
-    min-height: 300px;
+.mv-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
-.proyecto-img {
-    flex: 1;
-    min-width: 300px;
+.mv-card p {
+    line-height: 1.7;
+    font-size: 1.05rem;
+    opacity: 0.9;
 }
 
-.proyecto-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* --- SECCIÓN VALORES --- */
+.valores-section {
+    padding: 20px 8% !important;
+    background-color: #f9fdfa; /* Fondo muy claro */
+    text-align: center;
 }
 
-.proyecto-body {
-    flex: 2;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-}
-
-.proyecto-tags-top {
-    display: flex;
-    justify-content: space-between;
+.sub-title-centrado {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
     margin-bottom: 15px;
 }
 
-.tag-categoria {
-    padding: 5px 15px;
+.titulo-centrado {
+    font-size: 2.8rem;
+    color: var(--dark-green);
+    margin-bottom: 60px;
+    font-weight: 800;
+}
+
+.valores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas exactas */
+    gap: 25px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.valor-card {
+    background: var(--white);
+    padding: 50px 30px;
     border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
-
-/* Colores según tu paleta */
-.tech, .bio, .tics { background: #e8f5e9; color: #29b43e; }
-.diseño { background: #fff3e0; color: #ff8c2e; }
-
-.proyecto-body h3 {
-    font-size: 1.8rem;
-    color: #051408;
-    margin-bottom: 10px;
-}
-
-.proyecto-body p {
-    color: #666;
-    font-size: 0.95rem;
-    flex-grow: 1;
-}
-
-.proyecto-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #eee;
-    padding-top: 15px;
-    margin-top: 15px;
-}
-
-.chip {
-    background: #f1f7f2;
-    padding: 4px 10px;
-    border-radius: 5px;
-    font-size: 0.75rem;
-    margin-left: 5px;
-}
-
-/* --- ADICIONES NECESARIAS PARA FILTROS Y BOTÓN VER MÁS --- */
-
-/* Asegura que el botón activo resalte (clase que pondrá el JS) */
-.filtro-btn.active {
-    background-color: var(--primary) !important;
-    color: var(--white) !important;
-    border-color: var(--primary) !important;
-    box-shadow: 0 4px 12px rgba(41, 180, 62, 0.2);
-}
-
-/* Estilo del botón "Ver más" dentro de la tarjeta */
-.btn-ver-mas {
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    width: fit-content;
-    margin-top: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
     transition: all 0.3s ease;
-    display: inline-flex;
+    border: 1px solid #f0f0f0;
+}
+
+.valor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+}
+
+.valor-icon {
+    width: 65px;
+    height: 65px;
+    background-color: #f0faf1; /* Verde pálido de fondo */
+    color: var(--primary); /* El verde fuerte de tu marca */
+    border-radius: 50%; /* Circular */
+    display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 30px;
+    transition: 0.3s;
 }
 
-.btn-ver-mas:hover {
-    background-color: var(--dark-green);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.valor-card:hover .valor-icon {
+    background-color: var(--primary);
+    color: white;
 }
 
-/* Animación de entrada para cuando se filtran los proyectos */
-.proyecto-card {
-    transition: all 0.4s ease;
+.valor-card h3 {
+    font-size: 1.4rem;
+    color: #222;
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
-/* Clase de utilidad para ocultar proyectos que no coinciden con el filtro */
-/* El JS se encargará de poner o quitar esta clase o manejar el display */
-.proyecto-card.hidden {
-    display: none;
+.valor-card p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* --- SECCIÓN EQUIPO (6 PERSONAS) --- */
+.equipo-directivo-section {
+    padding-top: 60px !important;
+    background-color: #f9fdfa; /* Fondo coherente con tus valores */
+    text-align: center;
+}
+
+.descripcion-equipo {
+    color: #666;
+    max-width: 800px;
+    margin: -30px auto 60px;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.team-grid {
+    display: grid;
+    /* Esto crea 3 columnas en PC y se ajusta solo */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px 30px; /* 40px de espacio vertical, 30px horizontal */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-card {
+    text-align: center;
+    background: transparent;
+}
+
+.team-img-wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 25px; /* Bordes redondeados según diseño */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* Sombra suave */
+}
+
+.team-img-wrapper img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Fotos cuadradas para uniformidad */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+/* Efecto al pasar el mouse */
+.team-card:hover img {
+    transform: scale(1.08);
+}
+
+.team-card h3 {
+    font-size: 1.3rem;
+    color: var(--dark-green);
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.team-role {
+    color: var(--primary); /* Tu verde #29b43e */
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Contenedor padre para dar espacio (el "despegue") */
