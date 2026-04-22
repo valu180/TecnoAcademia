@@ -1,7 +1,8 @@
 /* Página de materia - estilos específicos */
 
 .subject-page {
-  background: var(--background);
+  background: #f7f9f6;
+  color: #5d665b;
 }
 
 .subject-hero {
@@ -100,9 +101,17 @@
   border-color: var(--primary);
 }
 
+.subject-tab .icon {
+  color: #071605;
+}
+
+.subject-tab.active .icon {
+  color: currentColor;
+}
+
 /* Layout principal */
 .subject-layout {
-  background: var(--background);
+  background: #f7f9f6;
 }
 
 .subject-layout-inner {
@@ -118,6 +127,7 @@
   .subject-layout-inner {
     grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.1fr);
     align-items: flex-start;
+    gap: 3rem;
   }
 }
 
@@ -125,11 +135,17 @@
   background: none;
 }
 
+.subject-main-overview {
+  display: grid;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
 .subject-main-header {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 1.25rem;
+  margin-bottom: 0;
 }
 
 .subject-main-icon {
@@ -151,22 +167,26 @@
 .subject-main-intro {
   flex: 1;
   min-width: 0;
+  margin-top: -0.125rem;
 }
 
 .subject-main-title {
-  font-size: 1.5rem;
+  margin: 0;
+  font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: -0.02em;
+  color: #071605;
 }
 
 .subject-main-description {
-  margin-top: 0.5rem;
-  font-size: 0.95rem;
-  color: var(--muted-fg);
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #5d665b;
 }
 
 .subject-main-image {
-  margin: 1.25rem 0 2rem;
+  margin: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: #ffffff;
@@ -188,6 +208,7 @@
   font-size: 1.05rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
+  color: #071605;
 }
 
 /* Objetivos */
@@ -216,6 +237,7 @@
 .subject-objective-text {
   font-size: 1.05rem;
   line-height: 1.6;
+  color: #5d665b;
 }
 
 /* Temas */
@@ -251,6 +273,7 @@
 .subject-topic-text {
   font-size: 1.05rem;
   font-weight: 600;
+  color: #071605;
 }
 
 /* Sidebar */
@@ -272,6 +295,7 @@
   font-size: 0.95rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
+  color: #071605;
 }
 
 .subject-info-card {
@@ -332,12 +356,13 @@
   font-size: 0.9rem;
   text-transform: none;
   letter-spacing: 0;
-  color: var(--muted-fg);
+  color: #5d665b;
 }
 
 .subject-info-value {
   font-size: 0.95rem;
   font-weight: 600;
+  color: #071605;
 }
 
 .subject-other-list {
@@ -353,18 +378,19 @@
   padding: 0.15rem 0;
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--foreground);
+  color: #071605;
   background: transparent;
   border-radius: 0;
   transition: color 0.15s;
 }
 
 .subject-other-item:hover {
-  color: var(--primary-dark);
+  color: #071605;
+  opacity: 0.88;
 }
 
 .subject-other-item.active {
-  color: var(--foreground);
+  color: #071605;
 }
 
 .subject-other-card {
@@ -399,6 +425,7 @@
 .subject-other-text {
   font-size: 1rem;
   line-height: 1.3;
+  color: #071605;
 }
 
 @media (max-width: 767px) {
