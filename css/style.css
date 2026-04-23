@@ -117,7 +117,7 @@
 .subject-layout-inner {
   max-width: 80rem;
   margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
+  padding: 3.75rem 1.5rem 4rem;
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
@@ -285,10 +285,13 @@
 
 .subject-card {
   background: #ffffff;
-  border-radius: var(--radius-lg);
-  padding: 1.25rem;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid #e0e4db;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
 }
 
 .subject-card-title {
@@ -299,33 +302,32 @@
 }
 
 .subject-info-card {
-  background: #f4f5f4;
-  border-radius: 1.1rem;
-  padding: 1.45rem 1.5rem;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  row-gap: 0.75rem;
 }
 
 .subject-info-card .subject-card-title {
   font-size: 1.05rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.subject-info-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  margin-bottom: 0;
 }
 
 .subject-info-item {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
   gap: 0.75rem;
-  padding: 0.95rem 0;
+  padding: 0 0 0.95rem;
 }
 
-.subject-info-item:not(:last-child) {
+.subject-info-card > .subject-info-item:not(:last-child) {
   border-bottom: 1px solid #d2d6d2;
+}
+
+.subject-info-card > .subject-info-item + .subject-info-item {
+  margin-top: 0.75rem;
 }
 
 .subject-info-icon {
@@ -349,6 +351,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
+  flex: 1;
   min-width: 0;
 }
 
@@ -363,12 +366,6 @@
   font-size: 0.95rem;
   font-weight: 600;
   color: #071605;
-}
-
-.subject-other-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
 }
 
 .subject-other-item {
@@ -394,15 +391,20 @@
 }
 
 .subject-other-card {
-  background: #f4f5f4;
-  border-radius: 1.1rem;
-  padding: 1.45rem 1.5rem;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  row-gap: 0.75rem;
 }
 
 .subject-other-card .subject-card-title {
   font-size: 1.85rem;
   font-weight: 700;
-  margin-bottom: 0.95rem;
+  margin-bottom: 0;
+}
+
+.subject-other-card > .subject-other-item + .subject-other-item {
+  margin-top: 0.9rem;
 }
 
 .subject-other-icon {
