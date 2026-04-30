@@ -1,6 +1,6 @@
 <header class="header">
   <div class="header-inner">
-    <a href="/index.html" class="logo">
+    <a href="/index.html" class="logo" aria-label="Ir al inicio de Verde Saber">
       <div class="logo-icon">
         <svg class="icon-lg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M6 4.5C6 3.67 6.67 3 7.5 3H18C18.83 3 19.5 3.67 19.5 4.5V17.25C19.5 17.66 19.16 18 18.75 18C16.5 18 13.75 18.75 12 20.25C10.25 18.75 7.5 18 5.25 18C4.84 18 4.5 17.66 4.5 17.25V4.5C4.5 3.67 5.17 3 6 3H6Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -31,7 +31,7 @@
       </a>
 
       <div class="dropdown" id="materiasDropdown">
-        <button class="dropdown-trigger" type="button" aria-expanded="false" aria-haspopup="true">
+        <button class="dropdown-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="materiasDropdownMenu">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 7v14"></path>
             <path d="M3 18a1 1 0 01-1-1V4a1 1 0 011-1h5a4 4 0 014 4 4 4 0 014-4h5a1 1 0 011 1v13a1 1 0 01-1 1h-6a3 3 0 00-3 3 3 3 0 00-3-3z"></path>
@@ -41,7 +41,7 @@
             <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        <div class="dropdown-menu" role="menu" aria-label="Materias">
+        <div class="dropdown-menu" id="materiasDropdownMenu" role="menu" aria-label="Materias">
           <a class="dropdown-item" href="/pages/materias.html?subject=matematicas"><span class="dropdown-dot"></span><span>Matemáticas</span></a>
           <a class="dropdown-item" href="/pages/materias.html?subject=lenguaje"><span class="dropdown-dot"></span><span>Lenguaje</span></a>
           <a class="dropdown-item" href="/pages/materias.html?subject=ciencias-naturales"><span class="dropdown-dot"></span><span>Ciencias Naturales</span></a>
@@ -58,7 +58,7 @@
       </a>
     </nav>
 
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú">
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
       <svg class="icon-lg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M4 7H20M4 12H20M4 17H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -73,7 +73,7 @@
       <a href="#" class="mobile-nav-link">
         <span>Nosotros</span>
       </a>
-      <button class="mobile-nav-link" type="button" id="mobileMateriasBtn">
+      <button class="mobile-nav-link" type="button" id="mobileMateriasBtn" aria-expanded="false" aria-controls="mobileSubmenu">
         <span>Materias</span>
         <svg class="icon dropdown-arrow" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

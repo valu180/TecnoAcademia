@@ -1,6 +1,10 @@
-/* ========== INICIO: mover a css/layout.css ========== */
-    /* Variables globales, reset, tipografía base e iconos */
-    :root {
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), local("Inter Regular");
+  font-display: swap;
+}
+
+:root {
       --primary: #39A900;
       --primary-dark: #2D8700;
       --primary-light: rgba(57, 169, 0, 0.1);
@@ -14,9 +18,16 @@
       --radius: 0.625rem;
       --radius-lg: 1rem;
       --radius-xl: 1.25rem;
-      --shadow-sm: 0 1px 3px rgba(26, 46, 26, 0.06);
-      --shadow-md: 0 4px 12px rgba(26, 46, 26, 0.08);
-      --shadow-lg: 0 8px 24px rgba(26, 46, 26, 0.1);
+      --space-2xs: 0.25rem;
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --shadow-sm: 0 0.0625rem 0.1875rem rgba(26, 46, 26, 0.06);
+      --shadow-md: 0 0.25rem 0.75rem rgba(26, 46, 26, 0.08);
+      --shadow-lg: 0 0.5rem 1.5rem rgba(26, 46, 26, 0.1);
     }
 
     * {
@@ -25,14 +36,14 @@
       padding: 0;
     }
 
-    body {
+body {
       font-family: "Inter", system-ui, -apple-system, sans-serif;
       color: var(--foreground);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       background: var(--background);
-      padding-top: 4.25rem; /* compensa la altura del header fijo */
+      padding-top: 4.25rem;
     }
 
     a {
@@ -45,60 +56,80 @@
       display: block;
     }
 
-    .icon {
+.icon {
       width: 1rem;
       height: 1rem;
       flex-shrink: 0;
     }
 
-    .icon-lg {
+.icon-lg {
       width: 1.5rem;
       height: 1.5rem;
       flex-shrink: 0;
     }
 
-    .icon-xl {
+.icon-xl {
       width: 1.75rem;
       height: 1.75rem;
       flex-shrink: 0;
     }
-    /* ========== FIN: css/layout.css (parte 1 - base) ========== */
 
-/* ========== INICIO: mover a css/layout.css ========== */
-  /* Header, menú desktop, dropdown Materias, menú móvil */
-  /* HEADER */
-  .header {
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1000;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  background: #ffffff;
+  color: #071605;
+  border: 0.0625rem solid var(--border);
+  transform: translateY(-140%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 0.125rem solid #2D8700;
+  outline-offset: 0.125rem;
+}
+
+.header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
       background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(0.75rem);
+      -webkit-backdrop-filter: blur(0.75rem);
+      border-bottom: 0.0625rem solid var(--border);
       box-shadow: var(--shadow-sm);
     }
 
-    .header-inner {
+.header-inner {
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
       justify-content: space-between;
-      gap: 0.5rem;
-      padding: 0.75rem 1.25rem;
+      gap: var(--space-xs);
+      padding: var(--space-sm) 1.25rem;
       max-width: 80rem;
       margin: 0 auto;
     }
 
-    .logo {
+.logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: var(--space-sm);
       flex-shrink: 0;
     }
 
-    .logo-icon {
+.logo-icon {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -109,12 +140,12 @@
       color: #ffffff;
     }
 
-    .logo-text {
+.logo-text {
       display: flex;
       flex-direction: column;
     }
 
-    .logo-name {
+.logo-name {
       font-size: 1.125rem;
       font-weight: 700;
       color: #1a2e1a;
@@ -122,26 +153,26 @@
       letter-spacing: -0.02em;
     }
 
-    .logo-sub {
+.logo-sub {
       font-size: 0.7rem;
       color: #6b7f6b;
       line-height: 1.2;
     }
 
-    .desktop-nav {
+.desktop-nav {
       display: none;
       align-items: center;
-      gap: 0.25rem;         /* ← reducido de 0.4rem */
+      gap: var(--space-2xs);
       flex-wrap: nowrap;
       margin-left: auto;
-      min-width: 0;         /* ← clave: permite que flexbox comprima el nav */
+      min-width: 0;
       flex-shrink: 0;
     }
 
-    .nav-link {
+.nav-link {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: var(--space-xs);
       padding-top: 0.5rem;
       padding-right: 1rem;
       padding-bottom: 0.5rem;
@@ -152,8 +183,8 @@
       color: #1a2e1a;
       background: transparent;
       transition: background 0.2s, color 0.2s;
-      white-space: nowrap;  /* ← evita que el texto salte de línea */
-      flex-shrink: 0;       /* ← cada ítem mantiene su tamaño mínimo */
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .nav-link:hover {
@@ -166,14 +197,14 @@
     }
 
     /* Dropdown Materias */
-    .dropdown {
+.dropdown {
       position: relative;
     }
 
-    .dropdown-trigger {
+.dropdown-trigger {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: var(--space-xs);
       padding-top: 0.5rem;
       padding-right: 1rem;
       padding-bottom: 0.5rem;
@@ -187,7 +218,7 @@
       border: none;
       transition: background 0.2s, color 0.2s;
       cursor: pointer;
-      white-space: nowrap;  /* ← evita que el texto salte de línea */
+      white-space: nowrap;
       flex-shrink: 0;
     }
 
@@ -205,7 +236,7 @@
       color: #ffffff !important;
     }
 
-    .dropdown-arrow {
+.dropdown-arrow {
       transition: transform 0.2s;
     }
 
@@ -213,7 +244,7 @@
       transform: rotate(180deg);
     }
 
-    .dropdown-menu {
+.dropdown-menu {
       display: none;
       position: absolute;
       top: calc(100% + 0.25rem);
@@ -221,21 +252,21 @@
       width: 14rem;
       border-radius: 1.25rem;
       background: #ffffff;
-      border: 1px solid #dde8da;
-      box-shadow: 0 8px 24px rgba(26, 46, 26, 0.1);
-      padding: 0;              /* sin padding para que los items toquen los bordes */
+      border: 0.0625rem solid #dde8da;
+      box-shadow: 0 0.5rem 1.5rem rgba(26, 46, 26, 0.1);
+      padding: 0;
       z-index: 200;
-      overflow: hidden;        /* el hover respeta bordes redondeados */
+      overflow: hidden;
     }
 
     .dropdown.open .dropdown-menu {
       display: block;
     }
 
-    .dropdown-item {
+.dropdown-item {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: var(--space-sm);
       padding: 0.7rem 1rem;
       font-size: 0.875rem;
       color: #1a2e1a;
@@ -262,7 +293,7 @@
       background: #eef5eb;
     }
 
-    .dropdown-dot {
+.dropdown-dot {
       width: 0.375rem;
       height: 0.375rem;
       border-radius: 50%;
@@ -271,7 +302,7 @@
     }
 
     /* Mobile menu */
-    .mobile-menu-btn {
+.mobile-menu-btn {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -288,9 +319,9 @@
       background: #eef5eb;
     }
 
-    .mobile-menu {
+.mobile-menu {
       display: none;
-      border-top: 1px solid #dde8da;
+      border-top: 0.0625rem solid #dde8da;
       background: #ffffff;
       padding: 1rem;
     }
@@ -299,16 +330,16 @@
       display: block;
     }
 
-    .mobile-nav {
+.mobile-nav {
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      gap: var(--space-2xs);
     }
 
-    .mobile-nav-link {
+.mobile-nav-link {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: var(--space-sm);
       padding: 0.75rem 1rem;
       border-radius: 0.625rem;
       font-size: 0.875rem;
@@ -330,7 +361,7 @@
       color: #ffffff;
     }
 
-    .mobile-submenu {
+.mobile-submenu {
       display: none;
       margin-left: 1.5rem;
       margin-top: 0.25rem;
@@ -342,7 +373,7 @@
       display: flex;
     }
 
-    .mobile-submenu a {
+.mobile-submenu a {
       display: flex;
       align-items: center;
       padding: 0.625rem 1rem;
@@ -354,33 +385,29 @@
       font-family: inherit;
     }
 
-    .mobile-submenu a:hover {
+.mobile-submenu a:hover {
       background: #eef5eb;
     }
-    /* ========== FIN: css/layout.css (parte 2 - header) ========== */
 
-/* ========== INICIO: mover a css/layout.css ========== */
-  /* Footer (incluye media queries compartidas 768px con header) */
-  /* FOOTER */
-  .footer {
+.footer {
       background: #1a2e1a;
       color: #ffffff;
       margin-top: 4rem;
     }
 
-    .footer-inner {
+.footer-inner {
       max-width: 80rem;
       margin: 0 auto;
       padding: 4rem 1.5rem;
     }
 
-    .footer-grid {
+.footer-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: var(--space-2xl);
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 48rem) {
       .desktop-nav {
         display: flex;
       }
@@ -394,33 +421,34 @@
       }
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 64rem) {
       .footer-grid {
         grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
       }
     }
 
-    .footer-brand p {
+.footer-brand p {
       font-size: 0.875rem;
       line-height: 1.6;
       opacity: 0.8;
-      margin-top: 1rem;
+      margin-top: var(--space-md);
     }
 
-    .footer-col h3 {
+.footer-col h3 {
       font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       opacity: 0.6;
       color: #ffffff;
-      margin-bottom: 1rem;
+      margin-bottom: var(--space-md);
     }
 
-    .footer-links {
+.footer-links {
+      list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: var(--space-xs);
     }
 
     .footer-links a {
@@ -434,11 +462,11 @@
       color: var(--primary);
     }
 
-    .footer-contact-item {
+.footer-contact-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
     }
 
     .footer-contact-item svg {
@@ -452,11 +480,11 @@
       opacity: 0.8;
     }
 
-    .footer-social {
+.footer-social {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      margin-top: 1rem;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
     }
 
     .footer-social a {
@@ -474,29 +502,36 @@
       background: var(--primary);
     }
 
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+.footer-logo-name {
+  color: #ffffff;
+}
+
+.footer-logo-sub {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-bottom {
+      border-top: 0.0625rem solid rgba(255, 255, 255, 0.1);
     }
 
-    .footer-bottom-inner {
+.footer-bottom-inner {
       max-width: 80rem;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: var(--space-md) 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
+      gap: var(--space-xs);
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 48rem) {
       .footer-bottom-inner {
         flex-direction: row;
         justify-content: space-between;
       }
     }
 
-    .footer-bottom p {
+.footer-bottom p {
       font-size: 0.75rem;
       opacity: 0.6;
     }
-    /* ========== FIN: css/layout.css (parte 3 - footer) ========== */

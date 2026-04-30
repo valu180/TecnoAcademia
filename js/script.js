@@ -143,6 +143,63 @@ function getCurrentSubjectId() {
   return SUBJECTS_CONTENT[subject] ? subject : 'matematicas';
 }
 
+function createSvgIcon(className, pathData) {
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('xmlns', svgNS);
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '2');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.classList.add(className);
+
+  pathData.forEach(({ type, attrs }) => {
+    const node = document.createElementNS(svgNS, type);
+    Object.entries(attrs).forEach(([attr, value]) => {
+      node.setAttribute(attr, value);
+    });
+    svg.appendChild(node);
+  });
+
+  return svg;
+}
+
+function createObjectiveItem(text) {
+  const li = document.createElement('li');
+  li.className = 'subject-objective-item';
+
+  const icon = createSvgIcon('subject-objective-icon', [
+    { type: 'circle', attrs: { cx: '12', cy: '12', r: '10' } },
+    { type: 'path', attrs: { d: 'm9 12 2 2 4-4' } },
+  ]);
+
+  const span = document.createElement('span');
+  span.className = 'subject-objective-text';
+  span.textContent = text;
+
+  li.append(icon, span);
+  return li;
+}
+
+function createTopicItem(text, index) {
+  const item = document.createElement('div');
+  item.className = 'subject-topic-item';
+
+  const itemIndex = document.createElement('span');
+  itemIndex.className = 'subject-topic-index';
+  itemIndex.textContent = String(index + 1);
+
+  const topicText = document.createElement('span');
+  topicText.className = 'subject-topic-text';
+  topicText.textContent = text;
+
+  item.append(itemIndex, topicText);
+  return item;
+}
+
 function renderSubjectContent() {
   const subjectId = getCurrentSubjectId();
   const data = SUBJECTS_CONTENT[subjectId];
@@ -170,56 +227,49 @@ function renderSubjectContent() {
   const objectivesList = document.querySelector('[data-subject-objectives]');
   if (objectivesList) {
     objectivesList.innerHTML = '';
+    const fragment = document.createDocumentFragment();
     data.objetivos.forEach((objetivo) => {
-      const li = document.createElement('li');
-      li.className = 'subject-objective-item';
-      li.innerHTML = `
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="subject-objective-icon"
-          aria-hidden="true"
-        >
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="m9 12 2 2 4-4"></path>
-        </svg>
-        <span class="subject-objective-text">${objetivo}</span>
-      `;
-      objectivesList.appendChild(li);
+      fragment.appendChild(createObjectiveItem(objetivo));
     });
+    objectivesList.appendChild(fragment);
   }
 
   // Temas
   const topicsContainer = document.querySelector('[data-subject-topics]');
   if (topicsContainer) {
     topicsContainer.innerHTML = '';
+    const fragment = document.createDocumentFragment();
     data.temas.forEach((tema, index) => {
-      const item = document.createElement('div');
-      item.className = 'subject-topic-item';
-      item.innerHTML = `
-        <span class="subject-topic-index">${index + 1}</span>
-        <span class="subject-topic-text">${tema}</span>
-      `;
-      topicsContainer.appendChild(item);
+      fragment.appendChild(createTopicItem(tema, index));
     });
+    topicsContainer.appendChild(fragment);
   }
 
   // Activar pestaña superior actual
   document
     .querySelectorAll('[data-subject-tab]')
-    .forEach((tab) => tab.classList.toggle('active', tab.getAttribute('data-subject-tab') === subjectId));
+    .forEach((tab) => {
+      const isActive = tab.getAttribute('data-subject-tab') === subjectId;
+      tab.classList.toggle('active', isActive);
+      if (isActive) {
+        tab.setAttribute('aria-current', 'page');
+      } else {
+        tab.removeAttribute('aria-current');
+      }
+    });
 
   // Resaltar materia actual en "Otras materias"
   document
     .querySelectorAll('[data-subject-other]')
-    .forEach((link) => link.classList.toggle('active', link.getAttribute('data-subject-other') === subjectId));
+    .forEach((link) => {
+      const isActive = link.getAttribute('data-subject-other') === subjectId;
+      link.classList.toggle('active', isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
