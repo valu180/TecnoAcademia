@@ -308,11 +308,11 @@
   background: #ffffff;
   border-radius: 1rem;
   padding: 1.5rem;
-  row-gap: 0.75rem;
+  row-gap: 1.25rem;
 }
 
 .subject-info-card .subject-card-title {
-  font-size: 1.05rem;
+  font-size: 1.125rem;
   font-weight: 700;
   margin-bottom: 0;
 }
@@ -320,24 +320,29 @@
 .subject-info-item {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0 0 0.95rem;
+  grid-template-rows: auto auto;
+  column-gap: 0.75rem;
+  row-gap: 0.15rem;
+  align-items: start;
+  padding: 0 0 1rem;
 }
 
 .subject-info-card > .subject-info-item:not(:last-child) {
   border-bottom: 0.0625rem solid #d2d6d2;
 }
 
-.subject-info-card > .subject-info-item + .subject-info-item {
-  margin-top: 0.75rem;
+.subject-info-card > .subject-info-item:last-child {
+  padding-bottom: 0;
 }
 
 .subject-info-icon {
-  width: 2.55rem;
-  height: 2.55rem;
+  grid-column: 1;
+  grid-row: 1 / -1;
+  align-self: center;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 0.7rem;
-  background: #dce8dc;
+  background: #ecf2e9;
   color: var(--primary);
   display: inline-flex;
   align-items: center;
@@ -346,28 +351,26 @@
 }
 
 .subject-info-icon-svg {
-  width: 1.15rem;
-  height: 1.15rem;
-}
-
-.subject-info-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  flex: 1;
-  min-width: 0;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .subject-info-label {
-  font-size: 0.9rem;
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  font-size: 0.75rem;
   text-transform: none;
   letter-spacing: 0;
   color: #5d665b;
 }
 
 .subject-info-value {
-  font-size: 0.95rem;
-  font-weight: 600;
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
   color: #071605;
 }
 
@@ -397,24 +400,20 @@
   background: #ffffff;
   border-radius: 1rem;
   padding: 1.5rem;
-  row-gap: 0.75rem;
+  row-gap: 1.25rem;
 }
 
 .subject-other-card .subject-card-title {
-  font-size: 1.85rem;
+  font-size: 1.125rem;
   font-weight: 700;
   margin-bottom: 0;
-}
-
-.subject-other-card > .subject-other-item + .subject-other-item {
-  margin-top: 0.9rem;
 }
 
 .subject-other-icon {
   width: 2.15rem;
   height: 2.15rem;
   border-radius: 0.65rem;
-  background: #dce8dc;
+  background: #ecf2e9;
   color: var(--primary);
   display: inline-flex;
   align-items: center;
@@ -430,6 +429,7 @@
 .subject-other-text {
   font-size: 1rem;
   line-height: 1.3;
+  font-weight: 500;
   color: #071605;
 }
 
