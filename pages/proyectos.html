@@ -3,174 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TecnoAcademia Risaralda</title>
+    <title>TecnoAcademia Risaralda - Proyectos</title>
     <link rel="icon" type="image/png" href="../img/logo pagina.ico">
 
+    <!-- Fuentes y Iconos -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <!-- Estilos -->
     <link rel="stylesheet" href="../css/pages/proyectos.css">
 </head>
 
-<body>          
-
+<body>         
     <div id="header"></div>
 
-<section class="proyectos-header">
-    <div class="proyectos-container">
-        <div class="proyectos-info">
-            <h1>Todos los Proyectos</h1>
-            <p>6 proyectos encontrados</p>
-        </div>
-        
-        <div class="filtros-container">
-            <button class="filtro-btn active" data-filter="todos">Todos</button>
-            <button class="filtro-btn" data-filter="diseño">Diseño de productos</button>
-            <button class="filtro-btn" data-filter="tics">Tics e inteligencia artificial</button>
-            <button class="filtro-btn" data-filter="bio">Materiales y Biotecnología</button>
-            <button class="filtro-btn" data-filter="economia">Economía popular y campesina</button>
-        </div>
-    </div>
-</section>
-
-<section class="proyectos-grid-section">
-    <div class="proyectos-grid-container">
-        
-        <div class="proyecto-card" data-category="tics">
-            <div class="proyecto-img">
-                <img src="../img/robotica.jpg" alt="Laboratorio de Robótica">
+    <section class="proyectos-header">
+        <div class="proyectos-container">
+                <!-- Texto introductorio añadido -->
+            <div class="proyectos-intro-text">
+                <p>Descubre los proyectos de la Tecnoacademia, un espacio donde la teoría se encuentra con la práctica. Estas iniciativas tienen como objetivo principal permitir a nuestros participantes experimentar, aprender y aplicar sus conocimientos en el desarrollo de prototipos y soluciones tecnológicas.</p>
             </div>
-            <div class="proyecto-body">
-                <div class="proyecto-tags-top">
-                    <span class="tag-categoria tech">Tecnología</span>
-                    <span class="proyecto-fecha"><i class="far fa-calendar-alt"></i> Enero 2025</span>
+
+            <div class="proyectos-info">
+                <h1>Todos los Proyectos</h1>
+                <p>5 proyectos encontrados</p>
+            </div>
+            
+            <div class="filtros-container">
+                <button class="filtro-btn active" data-filter="todos">Todos</button>
+                <button class="filtro-btn" data-filter="diseño">Diseño de productos</button>
+                <button class="filtro-btn" data-filter="tics">Tics e inteligencia artificial</button>
+                <button class="filtro-btn" data-filter="bio">Materiales y Biotecnología</button>
+                <button class="filtro-btn" data-filter="economia">Economía popular y campesina</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="proyectos-grid-section">
+        <div class="proyectos-grid-container">
+            
+            <!-- Proyecto 1: Monitoreo de Agua -->
+            <div class="proyecto-card" data-category="tics">
+                <div class="proyecto-img">
+                    <img src="../img/sistema_monitoreo.png" alt="Sistema de monitoreo">
                 </div>
-                <h3>Laboratorio de Robótica Educativa</h3>
-                <p>Nuestro proyecto insignia que integra la tecnología con la educación. Los estudiantes diseñan, construyen y programan robots para resolver problemas del mundo real, desarrollando habilidades de ingeniería y trabajo en equipo.</p>
-                <button class="btn-ver-mas">Ver más</button>
-                <div class="proyecto-footer">
-                    <span class="participantes"><i class="fas fa-users"></i> 45 participantes</span>
-                    <div class="chips-container">
-                        <span class="chip">Robótica</span>
-                        <span class="chip">Programación</span>
-                        <span class="chip">STEM</span>
+                <div class="proyecto-body">
+                    <div class="proyecto-tags-top">
+                        <span class="tag-categoria tech">Tics e Inteligencia artificial</span>
+                    </div>
+                    <h3>Sistema de monitoreo de agua</h3>
+                    <p>El objetivo del proyecto es implementar un sistema de monitoreo de agua que brinde información 
+                        confiable sobre los procesos de potabilización, mediante la medición de parámetros clave como el pH, 
+                        la temperatura, el oxígeno disuelto y la turbidez. Estos valores permiten conocer en tiempo real el estado 
+                        del agua y determinar su nivel de potabilidad, asegurando que cumpla con las condiciones necesarias para el consumo humano.</p>
+                    
+                    <div class="info-extra" style="display: none;">
+                        <hr>
+                        <strong>Detalles del Proyecto:</strong>
+                        <ul>
+                          <p>Este sistema no solo facilita el control y la detección temprana de anomalías en la 
+                            calidad del agua, sino que también optimiza los procesos de tratamiento y fortalece la 
+                            gestión de los recursos hídricos. Al contar con información inmediata y precisa, se contribuye a 
+                            la protección de la salud pública, al cumplimiento de las normas de calidad y 
+                            a la sostenibilidad ambiental, garantizando un acceso seguro al agua potable.</p> 
+                        </ul>
+                    </div>
+
+                    <button class="btn-ver-mas">Ver más</button>
+
+                    <div class="proyecto-footer">
+                        <span class="participantes"><i class="fas fa-users"></i> Semillero</span>
+                        <div class="chips-container">
+                            <span class="chip">Robótica</span>
+                            <span class="chip">Programación</span>
+                            <span class="chip">STEAM</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="proyecto-card" data-category="bio">
-            <div class="proyecto-img">
-                <img src="../img/hongos.jpg" alt="Riesgo Biológico">
-            </div>
-            <div class="proyecto-body">
-                <div class="proyecto-tags-top">
-                    <span class="tag-categoria bio">Biotecnología</span>
-                    <span class="proyecto-fecha"><i class="far fa-calendar-alt"></i> Febrero 2025</span>
+            <!-- Proyecto 2: Riesgo Biológico -->
+            <div class="proyecto-card" data-category="bio">
+                <div class="proyecto-img">
+                    <img src="../img/membrana.png" alt="Membrana polimerica">
                 </div>
-                <h3>Evaluación del riesgo biológico por humedad</h3>
-                <p>Análisis de presencia de hongos en la Tecnoacademia Risaralda. Se realizó un muestreo ambiental mediante sedimentación gravitacional pasiva para identificar géneros como Aspergillus y Penicillium y su impacto respiratorio.</p>
-                <button class="btn-ver-mas">Ver más</button>
-                <div class="proyecto-footer">
-                    <span class="participantes"><i class="fas fa-users"></i> 10 participantes</span>
-                    <div class="chips-container">
-                        <span class="chip">Microbiología</span>
-                        <span class="chip">Salud</span>
+                <div class="proyecto-body">
+                    <div class="proyecto-tags-top">
+                        <span class="tag-categoria bio">Biotecnología</span>
+                    </div>
+                    <h3>Membranas Poliméricas con Nanopartículas de Cobre</h3>
+                    <p>Fabricación de membranas funcionalizadas con nanopartículas de óxido de cobre (CuO-NPs) 
+                        para la desinfección y potabilización de agua a bajo costo.</p>
+                    
+                    <div class="info-extra" style="display: none;">
+                        <hr>
+                        <strong>Detalles del Proyecto:</strong>
+                        <ul>
+                            <li>Metodología: Síntesis de CuO-NPs e incorporación en matrices poliméricas.</li>
+                            <li>Evaluación: Análisis microbiológico de coliformes totales y E. coli antes y después del tratamiento.</li>
+                            <li>Impacto: Solución innovadora para comunidades vulnerables mediante un enfoque educativo-experimental.</li>
+                        </ul>
+                    </div>
+
+                    <button class="btn-ver-mas">Ver más</button>
+
+                    <div class="proyecto-footer">
+                        <span class="participantes"><i class="fas fa-users"></i> Semillero </span>
+                        <div class="chips-container">
+                            <span class="chip">Nanotecnología</span>
+                            <span class="chip">Salud</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="proyecto-card" data-category="diseño">
-            <div class="proyecto-img">
-                <img src="../img/limon.jpg" alt="Madurez Limón">
-            </div>
-            <div class="proyecto-body">
-                <div class="proyecto-tags-top">
-                    <span class="tag-categoria diseño">Diseño de Productos</span>
-                    <span class="proyecto-fecha"><i class="far fa-calendar-alt"></i> Marzo 2025</span>
+            <!-- Proyecto 3: Limón Tahití -->
+            <div class="proyecto-card" data-category="diseño">
+                <div class="proyecto-img">
+                    <img src="../img/madurez_limon.png" alt="Madurez Limón">
                 </div>
-                <h3>Clasificación automatizada de madurez del limón Tahití</h3>
-                <p>Uso de espectro lumínico óptimo e imágenes monocromáticas para diferenciar estados de madurez. Esencial para procesos de postcosecha, exportación y transformación industrial garantizando la vida útil del producto.</p>
-                <button class="btn-ver-mas">Ver más</button>
-                <div class="proyecto-footer">
-                    <span class="participantes"><i class="fas fa-users"></i> 8 participantes</span>
-                    <div class="chips-container">
-                        <span class="chip">Automatización</span>
-                        <span class="chip">Agro</span>
+                <div class="proyecto-body">
+                    <div class="proyecto-tags-top">
+                        <span class="tag-categoria diseño">Diseño de Productos</span>
+                    </div>
+                    <h3>Clasificación automatizada de madurez del limón</h3>
+                    <p>Evaluación de espectros lumínicos óptimos para maximizar la diferenciación visual entre estados 
+                        de madurez del limón mediante imágenes monocromáticas y condiciones controladas.</p>
+                    
+                    <div class="info-extra" style="display: none;">
+                        <hr>
+                        <strong>Detalles del Proyecto:</strong>
+                        <ul>
+                            <li>Objetivo: Determinar la combinación RGB ideal para resaltar diferencias en escala de grises sin usar cámaras multiespectrales costosas.</li>
+                            <li>Tecnología: Automatización basada en visión por computadora para reducir la subjetividad del operario manual.</li>
+                            <li>Impacto: Mejora la eficiencia en procesos de postcosecha y exportación, garantizando la calidad y vida útil del producto industrial.</li>
+                        </ul>
+                    </div>
+
+                    <button class="btn-ver-mas">Ver más</button>
+
+                    <div class="proyecto-footer">
+                        <span class="participantes"><i class="fas fa-users"></i> Semillero</span>
+                        <div class="chips-container">
+                            <span class="chip">Automatización</span>
+                            <span class="chip">Agro</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="proyecto-card" data-category="tics">
-            <div class="proyecto-img">
-                <img src="../img/agua.jpg" alt="Monitoreo Agua">
-            </div>
-            <div class="proyecto-body">
-                <div class="proyecto-tags-top">
-                    <span class="tag-categoria tics">TICs e Inteligencia Artificial</span>
-                    <span class="proyecto-fecha"><i class="far fa-calendar-alt"></i> Abril 2025</span>
+            <!-- Proyecto 4: Calidad Agua IA -->
+            <div class="proyecto-card" data-category="bio">
+                <div class="proyecto-img">
+                    <img src="../img/hongos.png" alt="Hongos">
                 </div>
-                <h3>Sistema inteligente de monitoreo de calidad del agua</h3>
-                <p>Implementación de sensores en tiempo real para medir pH, temperatura y turbidez. Este sistema optimiza el tratamiento del recurso hídrico y asegura el cumplimiento de normas de calidad para salud pública.</p>
-                <button class="btn-ver-mas">Ver más</button>
-                <div class="proyecto-footer">
-                    <span class="participantes"><i class="fas fa-users"></i> 15 participantes</span>
-                    <div class="chips-container">
-                        <span class="chip">IoT</span>
-                        <span class="chip">IA</span>
+                <div class="proyecto-body">
+                    <div class="proyecto-tags-top">
+                        <span class="tag-categoria tics">Biotecnologia</span>
+                    </div>
+                    <h3>Riesgo Biológico por Hongos Ambientales</h3>
+                    <p>Estudio de la relación entre la humedad en paredes, la presencia de hongos y 
+                        los síntomas respiratorios en los usuarios de la TecnoAcademia Risaralda.</p>
+                    
+                    <div class="info-extra" style="display: none;">
+                        <hr>
+                        <strong>Detalles del Proyecto:</strong>
+                        <ul>
+                            <li>Técnica: Muestreo por sedimentación gravitacional pasiva en Agar Papa Dextrosa (PDA).</li>
+                            <li>Identificación: Caracterización macro y microscópica con tinción de azul de lactofenol.</li>
+                            <li>Géneros Detectados: Aspergillus, Penicillium, Cladosporium, Alternaria y Fusarium.</li>
+                        </ul>
+                    </div>
+
+                    <button class="btn-ver-mas">Ver más</button>
+
+                    <div class="proyecto-footer">
+                        <span class="participantes"><i class="fas fa-users"></i> Semillero </span>
+                        <div class="chips-container">
+                            <span class="chip">Biotecnologia</span>
+                            <span class="chip">Salud</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="proyecto-card" data-category="bio">
-            <div class="proyecto-img">
-                <img src="../img/nanoparticulas.jpg" alt="Purificación Agua">
-            </div>
-            <div class="proyecto-body">
-                <div class="proyecto-tags-top">
-                    <span class="tag-categoria bio">Biotecnología</span>
-                    <span class="proyecto-fecha"><i class="far fa-calendar-alt"></i> Mayo 2025</span>
+            <!-- Proyecto 5: Nanopartículas -->
+            <div class="proyecto-card" data-category="bio">
+                <div class="proyecto-img">
+                    <img src="../img/probioticos_ganado.png" alt="Microbiota Ganadera">
                 </div>
-                <h3>Membranas poliméricas con nanopartículas</h3>
-                <p>Desarrollo de membranas funcionalizadas con nanopartículas de óxido de cobre (CuO-NPs) para potabilización de bajo costo. Busca soluciones innovadoras para comunidades vulnerables mediante aprendizaje experimental.</p>
-                <button class="btn-ver-mas">Ver más</button>
-                <div class="proyecto-footer">
-                    <span class="participantes"><i class="fas fa-users"></i> 12 participantes</span>
-                    <div class="chips-container">
-                        <span class="chip">Nanotecnología</span>
-                        <span class="chip">Sustentabilidad</span>
+                <div class="proyecto-body">
+                    <div class="proyecto-tags-top">
+                        <span class="tag-categoria bio">Biotecnología</span>
+                    </div>
+                    <h3>Probióticos a partir de Microbiota Ganadera</h3>
+                    <p>Aislamiento e identificación de bacterias presentes en la microbiota 
+                        fecal de ganado con potencial para mejorar la salud y productividad animal.</p>
+                    
+                    <div class="info-extra" style="display: none;">
+                        <hr>
+                        <strong>Detalles del Proyecto:</strong>
+                        <ul>
+                            <li>Proceso: Diluciones sucesivas de muestras fecales sembradas en agar nutritivo.</li>
+                            <li>Selección: Evaluación de morfología colonial para identificar microorganismos benéficos.</li>
+                            <li>Objetivo: Desarrollar suplementos probióticos que optimicen la eficiencia productiva en el sector agropecuario.</li>
+                        </ul>
+                    </div>
+
+                    <button class="btn-ver-mas">Ver más</button>
+
+                    <div class="proyecto-footer">
+                        <span class="participantes"><i class="fas fa-users"></i> Semillero</span>
+                        <div class="chips-container">
+                            <span class="chip">Microbiologia</span>
+                            <span class="chip">Salud animal</span>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
+    </section>
 
-    </div>
-</section>
+    <section class="seccion-contador">
+        <div class="contador-container">
+            <span class="etiqueta">Visitas totales:</span>
+            <span id="visit-count" class="numero">...</span>
+        </div>
+    </section>
 
-<section class="seccion-contador">
-    <div class="contador-container">
-        <span class="etiqueta">Visitas totales:</span>
-        <span id="visit-count" class="numero">...</span>
-    </div>
-</section>
-
-<section class="cta-section">
-    <div class="cta-content">
-        <h2>¿Preparado para transformar tu talento?</h2>
-        <p>Descubre un mundo de posibilidades donde tus ideas se convierten en realidad.
-           <br> ¡El mañana no se espera, se construye hoy en la TecnoAcademia!
-        </p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfVV9l4SKODAXCpkqVYPN1qodis-aNCX2_n1AoHY08VTIhUPQ/viewform?pli=1" class="cta-button"> Quiero ser parte <i class="fas fa-arrow-right"></i></a>
-    </div>
-</section>
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>¿Preparado para transformar tu talento?</h2>
+            <p>Descubre un mundo de posibilidades donde tus ideas se convierten en realidad.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfVV9l4SKODAXCpkqVYPN1qodis-aNCX2_n1AoHY08VTIhUPQ/viewform?pli=1" class="cta-button"> Quiero ser parte <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
 
     <div id="footer"></div>
 
+    <!-- Scripts Externos -->
     <script src="../js/main.js"></script>
-
 </body>
 </html>

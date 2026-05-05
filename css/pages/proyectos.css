@@ -140,6 +140,19 @@ header {
     font-size: 0.7rem; 
 }
 
+.proyectos-intro-text {
+    max-width: 800px; /* Para que no ocupe todo el ancho y sea fácil de leer */
+    margin-bottom: 2rem; /* Espacio antes del título */
+    line-height: 1.6;
+    color: #4a5568; /* Un gris profesional */
+    font-size: 1.1rem;
+}
+
+.proyectos-intro-text p {
+    border-left: 4px solid #38a169; /* Un detalle verde (SENA) a la izquierda */
+    padding-left: 15px;
+}
+
 /* --- SECCIÓN FILTROS DE PROYECTOS --- */
 .proyectos-header {
     background-color: #f1f7f2; /* Un verde muy pálido como el de la imagen */
@@ -281,6 +294,49 @@ header {
     border-radius: 5px;
     font-size: 0.75rem;
     margin-left: 5px;
+}
+
+/* --- Mejora de "Ver más" --- */
+
+.info-extra {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+    /* Animación de entrada */
+    animation: fadeIn 0.4s ease-out;
+}
+
+.info-extra hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin-bottom: 12px;
+}
+
+.info-extra ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.info-extra li {
+    margin-bottom: 5px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estado del botón al estar activo */
+.btn-ver-mas.active {
+    background-color: #555 !important;
+    color: #fff;
 }
 
 /* --- ADICIONES NECESARIAS PARA FILTROS Y BOTÓN VER MÁS --- */

@@ -22,21 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(data => {
                 headerContainer.innerHTML = data;
-                
-                headerContainer.querySelectorAll("img").forEach(img => {
-                    const src = img.getAttribute("src");
-                    if (src && !src.startsWith("http") && !src.startsWith("/")) {
-                        img.src = pathPrefix + src;
-                    }
-                });
-
-                headerContainer.querySelectorAll("a").forEach(link => {
-                    const href = link.getAttribute("href");
-                    if (href && !href.startsWith("http") && !href.startsWith("#") && !href.startsWith("/")) {
-                        link.href = pathPrefix + href;
-                    }
-                });
-
+                actualizarRutas(headerContainer, pathPrefix);
                 inicializarDropdown();
                 inicializarMenuMovil(); 
             })
@@ -53,63 +39,46 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(data => {
                 footerContainer.innerHTML = data;
-                
-                footerContainer.querySelectorAll("img").forEach(img => {
-                    const src = img.getAttribute("src");
-                    if (src && !src.startsWith("http") && !src.startsWith("/")) {
-                        img.src = pathPrefix + src;
-                    }
-                });
-
-                footerContainer.querySelectorAll("a").forEach(link => {
-                    const href = link.getAttribute("href");
-                    if (href && !href.startsWith("http") && !href.startsWith("#") && !href.startsWith("/")) {
-                        link.href = pathPrefix + href;
-                    }
-                });
-
+                actualizarRutas(footerContainer, pathPrefix);
                 cargarContadorVisitas();
             })
             .catch(error => console.error("Error cargando footer:", error));
     }
 
-    // --- NUEVO: INICIALIZAR FILTROS ---
+    // 4. 🔹 INICIALIZAR FUNCIONALIDADES ESPECÍFICAS
     inicializarFiltrosProyectos();
-
-    // 4. 🔹 ANIMACIÓN DE TARJETAS
-    const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll(".stat-card").forEach(card => {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(20px)";
-        card.style.transition = "all 0.6s ease-out";
-        observer.observe(card);
-    });
-
-    // 5. 🔹 SLIDER
-    const slides = document.querySelectorAll(".slide");
-    let slideIndex = 0;
-
-    if (slides.length > 0) {
-        slides[0].style.opacity = "1";
-        function cambiarSlide() {
-            if (slides[slideIndex]) slides[slideIndex].style.opacity = "0";
-            slideIndex = (slideIndex + 1) % slides.length;
-            if (slides[slideIndex]) slides[slideIndex].style.opacity = "1";
-        }
-        setInterval(cambiarSlide, 3500);
-    }
+    inicializarVerMas();
+    inicializarAnimaciones();
+    inicializarSlider();
 });
 
-// 6. 🔹 FUNCIONES DE INTERACCIÓN
+// --- 🛠️ FUNCIONES DE UTILIDAD Y CORE ---
+
+function actualizarRutas(contenedor, prefix) {
+    contenedor.querySelectorAll("img, a").forEach(el => {
+        const attr = el.tagName === "IMG" ? "src" : "href";
+        const val = el.getAttribute(attr);
+        if (val && !val.startsWith("http") && !val.startsWith("#") && !val.startsWith("/")) {
+            el[attr] = prefix + val;
+        }
+    });
+}
+
+function inicializarVerMas() {
+    // Unificada la lógica para evitar alertas y duplicidad
+    const botonesVerMas = document.querySelectorAll('.btn-ver-mas');
+    botonesVerMas.forEach(boton => {
+        boton.addEventListener('click', function() {
+            const infoExtra = this.parentElement.querySelector('.info-extra');
+            if (!infoExtra) return;
+
+            const esVisible = infoExtra.style.display === 'block';
+            infoExtra.style.display = esVisible ? 'none' : 'block';
+            this.textContent = esVisible ? 'Ver más' : 'Ver menos';
+            this.classList.toggle('active', !esVisible);
+        });
+    });
+}
 
 function inicializarFiltrosProyectos() {
     const botonesFiltro = document.querySelectorAll(".filtro-btn");
@@ -118,7 +87,6 @@ function inicializarFiltrosProyectos() {
 
     botonesFiltro.forEach(boton => {
         boton.addEventListener("click", () => {
-            // Manejar estado activo de botones
             botonesFiltro.forEach(btn => btn.classList.remove("active"));
             boton.classList.add("active");
 
@@ -135,17 +103,7 @@ function inicializarFiltrosProyectos() {
                 }
             });
 
-            if (contadorTexto) {
-                contadorTexto.textContent = `${visibles} proyectos encontrados`;
-            }
-        });
-    });
-
-    // Lógica para los botones "Ver más"
-    document.querySelectorAll(".btn-ver-mas").forEach(btn => {
-        btn.addEventListener("click", function() {
-            const titulo = this.parentElement.querySelector("h3").textContent;
-            alert("Próximamente más información sobre: " + titulo);
+            if (contadorTexto) contadorTexto.textContent = `${visibles} proyectos encontrados`;
         });
     });
 }
@@ -153,24 +111,18 @@ function inicializarFiltrosProyectos() {
 function inicializarDropdown() {
     const dropdown = document.getElementById("materiasDropdown");
     if (!dropdown) return;
-
     const dropbtn = dropdown.querySelector(".dropbtn");
     if (!dropbtn) return;
 
-    const newDropbtn = dropbtn.cloneNode(true);
-    dropbtn.parentNode.replaceChild(newDropbtn, dropbtn);
-
-    newDropbtn.addEventListener("click", function (e) {
+    dropbtn.addEventListener("click", function (e) {
         if (window.innerWidth < 1024) {
             e.preventDefault();
             dropdown.classList.toggle("show");
         }
     });
 
-    document.addEventListener("click", function (e) {
-        if (!dropdown.contains(e.target)) {
-            dropdown.classList.remove("show");
-        }
+    document.addEventListener("click", (e) => {
+        if (!dropdown.contains(e.target)) dropdown.classList.remove("show");
     });
 }
 
@@ -179,7 +131,6 @@ function inicializarMenuMovil() {
     const navList = document.getElementById('nav-list');
 
     if (menuToggle && navList) {
-        menuToggle.onclick = null;
         menuToggle.onclick = () => {
             navList.classList.toggle('active');
             const icon = menuToggle.querySelector('i');
@@ -191,6 +142,38 @@ function inicializarMenuMovil() {
     }
 }
 
+function inicializarAnimaciones() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".stat-card").forEach(card => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+        card.style.transition = "all 0.6s ease-out";
+        observer.observe(card);
+    });
+}
+
+function inicializarSlider() {
+    const slides = document.querySelectorAll(".slide");
+    if (slides.length <= 1) return;
+    
+    let slideIndex = 0;
+    slides[0].style.opacity = "1";
+
+    setInterval(() => {
+        slides[slideIndex].style.opacity = "0";
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].style.opacity = "1";
+    }, 3500);
+}
+
 function cargarContadorVisitas() {
     const contador = document.getElementById("visit-count");
     if (!contador) return;
@@ -198,11 +181,7 @@ function cargarContadorVisitas() {
     fetch("https://api.countapi.xyz/hit/tecnoacademia-risaralda-web2026/visitas")
         .then(res => res.json())
         .then(data => {
-            if (data && data.value) {
-                contador.textContent = data.value;
-            }
+            if (data && data.value) contador.textContent = data.value;
         })
-        .catch(() => {
-            contador.textContent = "---";
-        });
+        .catch(() => { contador.textContent = "---"; });
 }
