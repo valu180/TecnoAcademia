@@ -384,40 +384,7 @@ header {
     display: none;
 }
 
-/* Contenedor padre para dar espacio (el "despegue") */
-.seccion-contador {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 80px 0; /* 80px de espacio arriba y abajo */
-    background-color: #f9fdfa; /* Asegura que combine con el fondo de la página */
-}
 
-/* El diseño del contador estilo "píldora" */
-.contador-container {
-    background: #ffffff;
-    padding: 12px 35px;
-    border-radius: 50px;
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Sombra muy suave */
-    border: 1px solid #eef5ef;
-}
-
-.etiqueta {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.numero {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary); /* Usa tu color verde */
-}
 
 .img-large { 
     background: url('https://images.unsplash.com/photo-1523050853064-803575f896a3?q=80&w=600') center/cover; 
@@ -756,5 +723,71 @@ header {
 
     .footer-logo, .contact-item, .social-links {
         justify-content: center;
+    }
+}
+
+/* ============================= */
+/* 📱 RESPONSIVE PROYECTOS */
+/* ============================= */
+@media (max-width: 992px) {
+    .proyectos-container {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center;
+        padding: 40px 5%;
+    }
+
+    .proyectos-info {
+        width: 100%;
+    }
+
+    .filtros-container {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .proyecto-card {
+        flex-direction: column; /* Cambia de horizontal a vertical */
+        min-height: auto;
+    }
+
+    .proyecto-img {
+        min-width: 100%;
+        height: 250px; /* Altura fija para la imagen en móvil */
+    }
+
+    .proyecto-body {
+        padding: 20px;
+    }
+
+    .proyecto-body h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .proyectos-header {
+        padding: 40px 5%;
+    }
+
+    .proyectos-info h1 {
+        font-size: 2rem;
+    }
+
+    .filtro-btn {
+        width: 100%; /* Botones de filtro ocupan todo el ancho en celulares pequeños */
+        text-align: center;
+    }
+
+    .proyecto-footer {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .proyecto-footer .chips-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
     }
 }
