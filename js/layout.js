@@ -19,7 +19,7 @@
 
   function markActiveNavigation() {
     const isHome = path === '/' || path.endsWith('/index.html');
-    const isMaterias = path.includes('/pages/materias.html');
+    const isLineasPage = path.includes('/pages/lineas.html');
 
     const navLinks = document.querySelectorAll('.desktop-nav .nav-link');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link[href]');
@@ -41,13 +41,13 @@
     });
 
     if (dropdownTrigger) {
-      dropdownTrigger.classList.toggle('active', isMaterias);
-      setCurrentPageState(dropdownTrigger, isMaterias);
+      dropdownTrigger.classList.toggle('active', isLineasPage);
+      setCurrentPageState(dropdownTrigger, isLineasPage);
     }
 
     if (mobileMateriasBtn) {
-      mobileMateriasBtn.classList.toggle('active', isMaterias);
-      setCurrentPageState(mobileMateriasBtn, isMaterias);
+      mobileMateriasBtn.classList.toggle('active', isLineasPage);
+      setCurrentPageState(mobileMateriasBtn, isLineasPage);
     }
   }
 
