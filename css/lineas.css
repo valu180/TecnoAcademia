@@ -11,15 +11,19 @@
       rgba(0, 0, 0, 0.35),
       rgba(0, 0, 0, 0.55)
     ),
-    url('../assets/matematicas-primera.png') center/cover no-repeat;
+    url('../assets/subject-math.png') center/cover no-repeat;
+  height: 28.40625rem;
   color: #ffffff;
+  display: flex;
+  align-items: center;
   margin-top: -0.5rem; /* acerca el fondo gris al header fijo */
 }
 
 .subject-hero-inner {
+  width: 100%;
   max-width: 80rem;
   margin: 0 auto;
-  padding: 4rem 1.5rem 5rem;
+  padding: 5rem 1.5rem;
 }
 
 .subject-hero-pill {
@@ -36,17 +40,18 @@
 }
 
 .subject-hero-title {
+  max-width: 42rem;
   margin-top: 0.75rem;
-  font-size: clamp(2rem, 3vw, 2.75rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 .subject-hero-subtitle {
   margin-top: 0.75rem;
   max-width: 36rem;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 1.125rem;
+  line-height: 1.6;
   opacity: 0.9;
 }
 
@@ -102,7 +107,7 @@
 }
 
 .subject-tab .icon {
-  color: #071605;
+  color: var(--foreground);
 }
 
 .subject-tab.active .icon {
@@ -184,7 +189,7 @@
   font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #071605;
+  color: var(--foreground);
 }
 
 .subject-main-description {
@@ -217,7 +222,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: #071605;
+  color: var(--foreground);
 }
 
 /* Objetivos */
@@ -246,7 +251,7 @@
 .subject-objective-text {
   font-size: 0.875rem;
   line-height: 1.6;
-  color: #071605;
+  color: var(--foreground);
 }
 
 /* Temas */
@@ -284,7 +289,7 @@
 .subject-topic-text {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #071605;
+  color: var(--foreground);
 }
 
 /* Sidebar */
@@ -315,7 +320,7 @@
   font-size: 0.95rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
-  color: #071605;
+  color: var(--foreground);
 }
 
 .subject-info-card {
@@ -387,7 +392,7 @@
   width: fit-content;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #071605;
+  color: var(--foreground);
 }
 
 .subject-other-item {
@@ -397,19 +402,19 @@
   padding: 0.75rem;
   font-size: 0.95rem;
   font-weight: 500;
-  color: #071605;
+  color: var(--foreground);
   background: transparent;
   border-radius: 0;
   transition: color 0.15s;
 }
 
 .subject-other-item:hover {
-  color: #071605;
+  color: var(--foreground);
   opacity: 0.88;
 }
 
 .subject-other-item.active {
-  color: #071605;
+  color: var(--foreground);
 }
 
 .subject-other-card {
@@ -446,7 +451,7 @@
   font-size: 0.875rem;
   line-height: 1.3;
   font-weight: 500;
-  color: #071605;
+  color: var(--foreground);
 }
 
 @media (max-width: 47.9375rem) {
