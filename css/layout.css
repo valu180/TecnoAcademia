@@ -8,6 +8,7 @@
       --primary: #39A900;
       --primary-dark: #2D8700;
       --primary-light: rgba(57, 169, 0, 0.1);
+      --subject-icon-bg: #21a2151a;
       --primary-fg: #ffffff;
       --foreground: #071605;
       --background: #f6faf4;
@@ -28,6 +29,16 @@
       --shadow-sm: 0 0.0625rem 0.1875rem rgba(26, 46, 26, 0.06);
       --shadow-md: 0 0.25rem 0.75rem rgba(26, 46, 26, 0.08);
       --shadow-lg: 0 0.5rem 1.5rem rgba(26, 46, 26, 0.1);
+
+      /* Tipografía: line-height sin unidad (proporcional al font-size) */
+      --line-height-body: 1.55;
+      --line-height-prose: 1.6;
+      --line-height-h1: 1.15;
+      --line-height-h2: 1.2;
+      --line-height-h3: 1.25;
+      --line-height-h4: 1.3;
+      --line-height-h5: 1.3;
+      --line-height-h6: 1.3;
     }
 
     * {
@@ -39,11 +50,43 @@
 body {
       font-family: "Inter", system-ui, -apple-system, sans-serif;
       color: var(--foreground);
-      line-height: 1.6;
+      line-height: var(--line-height-body);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       background: var(--background);
       padding-top: 4.25rem;
+    }
+
+    /* Títulos: interlineado compacto según nivel */
+    h1 {
+      line-height: var(--line-height-h1);
+    }
+
+    h2 {
+      line-height: var(--line-height-h2);
+    }
+
+    h3 {
+      line-height: var(--line-height-h3);
+    }
+
+    :is(h4, h5, h6) {
+      line-height: var(--line-height-h4);
+    }
+
+    /* Texto corrido y bloques descriptivos */
+    :is(
+      p,
+      li,
+      blockquote,
+      .hero-subtitle,
+      .hero-card-text,
+      .footer-brand p,
+      .subject-hero-subtitle,
+      .subject-main-description,
+      .subject-objective-text
+    ) {
+      line-height: var(--line-height-prose);
     }
 
     a {
@@ -149,14 +192,14 @@ button:focus-visible {
       font-size: 1.125rem;
       font-weight: 700;
       color: var(--foreground);
-      line-height: 1.2;
+      line-height: var(--line-height-h2);
       letter-spacing: -0.02em;
     }
 
 .logo-sub {
       font-size: 0.7rem;
       color: #6b7f6b;
-      line-height: 1.2;
+      line-height: var(--line-height-h4);
     }
 
 .desktop-nav {
@@ -429,7 +472,6 @@ button:focus-visible {
 
 .footer-brand p {
       font-size: 0.875rem;
-      line-height: 1.6;
       opacity: 0.8;
       margin-top: var(--space-md);
     }

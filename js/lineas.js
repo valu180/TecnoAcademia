@@ -2,9 +2,9 @@
 const SUBJECTS_CONTENT = {
   'matematicas': {
     id: 'matematicas',
-    nombre: 'Matemáticas',
-    inicial: 'M',
-    heroTitulo: 'Matemáticas',
+    nombre: 'Tics e inteligencia artificial',
+    inicial: 'T',
+    heroTitulo: 'Tics e inteligencia artificial',
     heroDescripcion:
       'Desarrollamos el pensamiento lógico-matemático, la capacidad de análisis y resolución de problemas complejos a través de metodologías activas y aplicaciones prácticas en el mundo real.',
     descripcion:
@@ -29,9 +29,9 @@ const SUBJECTS_CONTENT = {
   },
   'lenguaje': {
     id: 'lenguaje',
-    nombre: 'Lenguaje',
-    inicial: 'L',
-    heroTitulo: 'Lenguaje',
+    nombre: 'Orientación vocacional',
+    inicial: 'O',
+    heroTitulo: 'Orientación vocacional',
     heroDescripcion:
       'Fortalecemos las competencias comunicativas para expresar ideas con claridad, argumentar con rigor y disfrutar de la lectura crítica.',
     descripcion:
@@ -56,9 +56,9 @@ const SUBJECTS_CONTENT = {
   },
   'ciencias-naturales': {
     id: 'ciencias-naturales',
-    nombre: 'Ciencias Naturales',
-    inicial: 'C',
-    heroTitulo: 'Ciencias Naturales',
+    nombre: 'Materiales y biotecnología',
+    inicial: 'M',
+    heroTitulo: 'Materiales y biotecnología',
     heroDescripcion:
       'Exploramos los fenómenos del mundo natural a través de la observación, la experimentación y el pensamiento científico.',
     descripcion:
@@ -83,9 +83,9 @@ const SUBJECTS_CONTENT = {
   },
   'historia': {
     id: 'historia',
-    nombre: 'Historia',
-    inicial: 'H',
-    heroTitulo: 'Historia',
+    nombre: 'Economía popular y campesina',
+    inicial: 'E',
+    heroTitulo: 'Economía popular y campesina',
     heroDescripcion:
       'Analizamos los procesos históricos para comprender el presente y participar de manera crítica en la construcción del futuro.',
     descripcion:
@@ -110,9 +110,9 @@ const SUBJECTS_CONTENT = {
   },
   'tecnologia': {
     id: 'tecnologia',
-    nombre: 'Tecnología',
-    inicial: 'T',
-    heroTitulo: 'Tecnología',
+    nombre: 'Diseño de productos',
+    inicial: 'D',
+    heroTitulo: 'Diseño de productos',
     heroDescripcion:
       'Potenciamos el uso responsable y creativo de la tecnología para resolver problemas reales e innovar.',
     descripcion:
@@ -141,6 +141,16 @@ function getCurrentSubjectId() {
   const params = new URLSearchParams(window.location.search);
   const subject = params.get('subject') || 'matematicas';
   return SUBJECTS_CONTENT[subject] ? subject : 'matematicas';
+}
+
+/** Etiqueta visible del submenú superior (fuente de verdad para títulos en página). */
+function getLineLabel(subjectId) {
+  const tabLabel = document.querySelector(
+    `[data-subject-tab="${subjectId}"] span`
+  );
+  if (tabLabel) return tabLabel.textContent.trim();
+  const data = SUBJECTS_CONTENT[subjectId];
+  return data ? data.nombre : '';
 }
 
 function createSvgIcon(className, pathData) {
@@ -203,6 +213,7 @@ function createTopicItem(text, index) {
 function renderSubjectContent() {
   const subjectId = getCurrentSubjectId();
   const data = SUBJECTS_CONTENT[subjectId];
+  const lineLabel = getLineLabel(subjectId);
 
   // Títulos y descripciones
   const heroTitleEl = document.querySelector('[data-subject-hero-title]');
@@ -213,10 +224,15 @@ function renderSubjectContent() {
   const teacherEl = document.querySelector('[data-subject-teacher]');
   const hoursEl = document.querySelector('[data-subject-hours]');
   const studentsEl = document.querySelector('[data-subject-students]');
+  const mainImageEl = document.querySelector('.subject-main-image img');
 
-  if (heroTitleEl) heroTitleEl.textContent = data.heroTitulo;
+  if (heroTitleEl) heroTitleEl.textContent = lineLabel;
   if (heroSubtitleEl) heroSubtitleEl.textContent = data.heroDescripcion;
-  if (titleEl) titleEl.textContent = data.nombre;
+  if (titleEl) titleEl.textContent = lineLabel;
+  if (mainImageEl) {
+    mainImageEl.alt = `Estudiantes en la línea de ${lineLabel}`;
+  }
+  document.title = `Verde Saber - ${lineLabel}`;
   if (descEl) descEl.textContent = data.descripcion;
   if (initialEl) initialEl.textContent = data.inicial;
   if (teacherEl) teacherEl.textContent = data.docente;
