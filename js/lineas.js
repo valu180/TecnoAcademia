@@ -1,7 +1,7 @@
-// Datos de contenido por materia
-const SUBJECTS_CONTENT = {
-  'matematicas': {
-    id: 'matematicas',
+// Datos de contenido por línea
+const LINEAS_CONTENT = {
+  'tics-ia': {
+    id: 'tics-ia',
     nombre: 'Tics e inteligencia artificial',
     inicial: 'T',
     heroTitulo: 'Tics e inteligencia artificial',
@@ -27,8 +27,8 @@ const SUBJECTS_CONTENT = {
       'Trigonometría aplicada',
     ],
   },
-  'lenguaje': {
-    id: 'lenguaje',
+  'orientacion-vocacional': {
+    id: 'orientacion-vocacional',
     nombre: 'Orientación vocacional',
     inicial: 'O',
     heroTitulo: 'Orientación vocacional',
@@ -54,8 +54,8 @@ const SUBJECTS_CONTENT = {
       'Lectura crítica de medios',
     ],
   },
-  'ciencias-naturales': {
-    id: 'ciencias-naturales',
+  'materiales-biotecnologia': {
+    id: 'materiales-biotecnologia',
     nombre: 'Materiales y biotecnología',
     inicial: 'M',
     heroTitulo: 'Materiales y biotecnología',
@@ -81,8 +81,8 @@ const SUBJECTS_CONTENT = {
       'Ciencia y tecnología en la sociedad',
     ],
   },
-  'historia': {
-    id: 'historia',
+  'economia-popular-campesina': {
+    id: 'economia-popular-campesina',
     nombre: 'Economía popular y campesina',
     inicial: 'E',
     heroTitulo: 'Economía popular y campesina',
@@ -108,8 +108,8 @@ const SUBJECTS_CONTENT = {
       'Ciudadanía y derechos humanos',
     ],
   },
-  'tecnologia': {
-    id: 'tecnologia',
+  'diseno-productos': {
+    id: 'diseno-productos',
     nombre: 'Diseño de productos',
     inicial: 'D',
     heroTitulo: 'Diseño de productos',
@@ -137,19 +137,37 @@ const SUBJECTS_CONTENT = {
   },
 };
 
-function getCurrentSubjectId() {
+const DEFAULT_LINE_ID = 'tics-ia';
+
+/** Claves antiguas en URLs guardadas o enlaces externos. */
+const LEGACY_LINE_IDS = {
+  matematicas: 'tics-ia',
+  lenguaje: 'orientacion-vocacional',
+  'ciencias-naturales': 'materiales-biotecnologia',
+  historia: 'economia-popular-campesina',
+  tecnologia: 'diseno-productos',
+};
+
+function resolveLineId(rawId) {
+  if (!rawId) return DEFAULT_LINE_ID;
+  if (LINEAS_CONTENT[rawId]) return rawId;
+  if (LEGACY_LINE_IDS[rawId]) return LEGACY_LINE_IDS[rawId];
+  return DEFAULT_LINE_ID;
+}
+
+function getCurrentLineId() {
   const params = new URLSearchParams(window.location.search);
-  const subject = params.get('subject') || 'matematicas';
-  return SUBJECTS_CONTENT[subject] ? subject : 'matematicas';
+  const line = params.get('line') ?? params.get('subject');
+  return resolveLineId(line);
 }
 
 /** Etiqueta visible del submenú superior (fuente de verdad para títulos en página). */
-function getLineLabel(subjectId) {
+function getLineLabel(lineId) {
   const tabLabel = document.querySelector(
-    `[data-subject-tab="${subjectId}"] span`
+    `[data-line-tab="${lineId}"] span`
   );
   if (tabLabel) return tabLabel.textContent.trim();
-  const data = SUBJECTS_CONTENT[subjectId];
+  const data = LINEAS_CONTENT[lineId];
   return data ? data.nombre : '';
 }
 
@@ -210,20 +228,20 @@ function createTopicItem(text, index) {
   return item;
 }
 
-function renderSubjectContent() {
-  const subjectId = getCurrentSubjectId();
-  const data = SUBJECTS_CONTENT[subjectId];
-  const lineLabel = getLineLabel(subjectId);
+function renderLineContent() {
+  const lineId = getCurrentLineId();
+  const data = LINEAS_CONTENT[lineId];
+  const lineLabel = getLineLabel(lineId);
 
   // Títulos y descripciones
-  const heroTitleEl = document.querySelector('[data-subject-hero-title]');
-  const heroSubtitleEl = document.querySelector('[data-subject-hero-subtitle]');
-  const titleEl = document.querySelector('[data-subject-title]');
-  const descEl = document.querySelector('[data-subject-description]');
-  const initialEl = document.querySelector('[data-subject-initial]');
-  const teacherEl = document.querySelector('[data-subject-teacher]');
-  const hoursEl = document.querySelector('[data-subject-hours]');
-  const studentsEl = document.querySelector('[data-subject-students]');
+  const heroTitleEl = document.querySelector('[data-line-hero-title]');
+  const heroSubtitleEl = document.querySelector('[data-line-hero-subtitle]');
+  const titleEl = document.querySelector('[data-line-title]');
+  const descEl = document.querySelector('[data-line-description]');
+  const initialEl = document.querySelector('[data-line-initial]');
+  const teacherEl = document.querySelector('[data-line-teacher]');
+  const hoursEl = document.querySelector('[data-line-hours]');
+  const studentsEl = document.querySelector('[data-line-students]');
   const mainImageEl = document.querySelector('.subject-main-image img');
 
   if (heroTitleEl) heroTitleEl.textContent = lineLabel;
@@ -240,7 +258,7 @@ function renderSubjectContent() {
   if (studentsEl) studentsEl.textContent = data.estudiantes;
 
   // Objetivos
-  const objectivesList = document.querySelector('[data-subject-objectives]');
+  const objectivesList = document.querySelector('[data-line-objectives]');
   if (objectivesList) {
     objectivesList.innerHTML = '';
     const fragment = document.createDocumentFragment();
@@ -251,7 +269,7 @@ function renderSubjectContent() {
   }
 
   // Temas
-  const topicsContainer = document.querySelector('[data-subject-topics]');
+  const topicsContainer = document.querySelector('[data-line-topics]');
   if (topicsContainer) {
     topicsContainer.innerHTML = '';
     const fragment = document.createDocumentFragment();
@@ -263,9 +281,9 @@ function renderSubjectContent() {
 
   // Activar pestaña superior actual
   document
-    .querySelectorAll('[data-subject-tab]')
+    .querySelectorAll('[data-line-tab]')
     .forEach((tab) => {
-      const isActive = tab.getAttribute('data-subject-tab') === subjectId;
+      const isActive = tab.getAttribute('data-line-tab') === lineId;
       tab.classList.toggle('active', isActive);
       if (isActive) {
         tab.setAttribute('aria-current', 'page');
@@ -274,11 +292,11 @@ function renderSubjectContent() {
       }
     });
 
-  // Resaltar materia actual en "Otras materias"
+  // Resaltar línea actual en "Otras líneas"
   document
-    .querySelectorAll('[data-subject-other]')
+    .querySelectorAll('[data-line-other]')
     .forEach((link) => {
-      const isActive = link.getAttribute('data-subject-other') === subjectId;
+      const isActive = link.getAttribute('data-line-other') === lineId;
       link.classList.toggle('active', isActive);
       if (isActive) {
         link.setAttribute('aria-current', 'page');
@@ -289,9 +307,7 @@ function renderSubjectContent() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Solo ejecutar en la página de materia
   if (document.querySelector('.subject-page')) {
-    renderSubjectContent();
+    renderLineContent();
   }
 });
-
