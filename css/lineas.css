@@ -10,6 +10,14 @@
 }
 
 .subject-page {
+  --primary: #39a900;
+  --primary-dark: #2d8700;
+  --primary-light: rgba(57, 169, 0, 0.1);
+  --subject-icon-bg: #21a2151a;
+  --foreground: #071605;
+  --muted: #eef5eb;
+  --radius-lg: 1rem;
+  --line-height-h4: 1.3;
   background: #f7f9f6;
   color: #5d665b;
 }
@@ -25,7 +33,6 @@
   color: #ffffff;
   display: flex;
   align-items: center;
-  margin-top: -0.5rem; /* acerca el fondo gris al header fijo */
 }
 
 .subject-hero-inner {
@@ -69,7 +76,7 @@
   border-bottom: 0;
   box-shadow: 0 0.09375rem 0.21875rem rgba(15, 23, 42, 0.14);
   position: sticky;
-  top: 4rem; /* se fija justo debajo del header fijo, sin dejar espacio visible */
+  top: 5.625rem; /* se fija justo debajo del header fijo (90px) de TecnoAcademia */
   z-index: 90;
 }
 

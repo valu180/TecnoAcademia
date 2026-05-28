@@ -250,7 +250,7 @@ function renderLineContent() {
   if (mainImageEl) {
     mainImageEl.alt = `Estudiantes en la línea de ${lineLabel}`;
   }
-  document.title = `Verde Saber - ${lineLabel}`;
+  document.title = `TecnoAcademia Risaralda - ${lineLabel}`;
   if (descEl) descEl.textContent = data.descripcion;
   if (initialEl) initialEl.textContent = data.inicial;
   if (teacherEl) teacherEl.textContent = data.docente;
