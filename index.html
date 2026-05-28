@@ -2,272 +2,183 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Tecnoacademia Risaralda</title>
-    <link rel="stylesheet" href="css/base.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoAcademia Risaralda</title>
+    <!-- Icono de la pestaña -->
+    <link rel="icon" type="image/png" href="../TecnoAcademia/img/logo pagina.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Tu CSS -->
     <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/pages/home.css">
-
-    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dojnr09ua/image/upload/v1755973991/logo_SENA_mfo42g.png">
 </head>
-<body>
-    
-    <header>
-        <!-- Botón toggle solo visible en móviles -->
-        <button class="menu_toggle" aria-expanded="false" aria-controls="mobile-sidebar" onclick="toggleSidebar()">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755978283/icono_menu_movil_l9u3w0.png" alt="Abrir menú"> <!-- Ícono hamburguesa -->
-        </button>
-        
-        <div class="logos_header">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1756505797/Logo_Tecnoacademia_Risaralda_p2_nvg4cn.png" alt="logo" class="logo_sena_header">
+
+<body>          
+
+    <!-- HEADER GLOBAL -->
+    <div id="header"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <i class="fas fa-graduation-cap"></i> INSCRIPCIONES ABIERTAS 2026
+            </div>
+            <h1>Formando líderes<br>del mañana</h1>
+            <p>
+                En la TecnoAcademia, cada estudiante descubre su potencial 
+                a través de una educación de calidad, innovación y valores sólidos.
+            </p>
         </div>
-    </header>
-    <div class="menu">
-        <ul class="menu_navegacion">
+    </section>
 
-            <li>
-                <a href="index.html">
-                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912718/pagina-de-inicio_g7bzwk.png" alt="inicio" class="icono">
-                    <span class="texto">Inicio</span>
-                </a>
-            </li>
+<section class="stats-container">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="icon-circle">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <h3>Certificación reconocida</h3>
+        </div>
 
-            <li>
-                <a href="/pages/nosotros.html">
-                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912768/sobre-nosotros_cpvvc8.png" alt="nosotros" class="icono"> <!--descargada en 24px--> 
-                    <span class="texto">Nosotros</span>
-                </a>
-            </li>
+        <div class="stat-card">
+            <div class="icon-circle">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <h3>Acceso a la tecnologia emergente</h3>
+        </div>
 
-            <li>
-                <a href="#">
-                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912833/rompecabezas_fxzekp.png" alt="" class="icono">
-                    <span class="texto">Líneas</span>
-                </a>
-                <ul class="submenu_lineas">
-                    <li><a href="pages/lineas/diseno.html">Diseño de productos</a></li>
-                    <li><a href="pages/lineas/tics.html">Tics e Inteligencia Artificial</a></li>
-                    <li><a href="pages/lineas/biotecnologia.html">Materiales y biotecnología</a></li>
-                    <li><a href="pages/lineas/economia-campesina.html">Economia popular y campesina</a></li>
+        <div class="stat-card">
+            <div class="icon-circle">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <h3>Formacion gratuita</h3>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon-circle">
+                <i class="fas fa-diagram-project"></i>
+            </div>
+            <h3>Desarrollo de proyectos reales</h3>
+        </div>
+    </div>
+</section>
+
+<section class="about-tecno">
+    <div class="about-container">
+        <div class="about-text">
+            <span class="sub-title">NUESTRO PROPÓSITO</span>
+            <h2>¿Qué es la TecnoAcademia?</h2>
+            <p class="main-description">
+                Es un <strong>escenario de aprendizaje</strong> de vanguardia, dotado con tecnologías emergentes para potenciar el talento de estudiantes de educación básica secundaria.
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-microchip"></i>
+                    <div>
+                        <h4>Ciencia e Innovación</h4>
+                        <p>Desarrollamos competencias técnicas a través de la experimentación real.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <div>
+                        <h4>Soluciones Reales</h4>
+                        <p>Optimizamos el conocimiento para resolver problemas de los sectores productivos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-highlight">
+            <div class="highlight-card">
+                <i class="fas fa-rocket"></i>
+                <p>"Habilitamos al aprendiz para el mundo del trabajo con soluciones innovadoras."</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="poster-banner">
+    <div class="poster-overlay">
+        <div class="poster-content">
+            <span class="poster-tag">INNOVACIÓN EN ACCIÓN</span>
+            <h2>Impulsando el talento<br>hacia el futuro.</h2>
+            <div class="poster-divider"></div>
+        </div>
+    </div>
+</section>
+
+    <!-- CAMPUS -->
+    <section class="campus">
+        <div class="campus-container">
+
+            <div class="campus-info">
+                <span class="sub-title">NUESTRAS INSTALACIONES</span>
+                <h2>Un espacio diseñado para el aprendizaje</h2>
+                <p>
+                    Nuestras instalaciones cuentan con laboratorios especializados, 
+                    diseñados para la experimentación técnica, el desarrollo de proyectos de innovación y 
+                    el fortalecimiento de las habilidades blandas.
+                </p>
+
+                <ul class="check-list">
+                    <li><i class="far fa-star"></i> Laboratorios totalmente equipados para el prototipado y la experimentación.</li>
+                    <li><i class="far fa-star"></i> Contamos con un equipo de especialistas destacados en sus áreas técnicas, 
+                        que orientan cada proyecto con experiencia real en el sector tecnológico.</li>
+                    <li><i class="far fa-star"></i> Áreas dinámicas diseñadas para la creatividad, la orientación vocacional y el trabajo colaborativo.</li>
                 </ul>
-            </li>
-
-            <li>
-                <a href="pages/orientacion.html">
-                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912884/activo-intangible_tmu7jy.png" alt="" class="icono">
-                    <span class="texto">Orientación vocacional</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="pages/proyectos.html">
-                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912940/proyectos_ygcu54.png" alt="" class="icono">
-                    <span class="texto">Proyectos</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div id="mobile-sidebar" class="sidebar">
-        <button class="drawer_close" aria-label="Cerrar menú" type="button" onclick="toggleSidebar()">✕</button>
-        <nav>
-            <ul>
-                <li>
-                    <a href="index.html">
-                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912718/pagina-de-inicio_g7bzwk.png" alt="inicio" class="icono">
-                    <span class="texto">Inicio</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/pages/nosotros.html">
-                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912768/sobre-nosotros_cpvvc8.png" alt="nosotros" class="icono">
-                    <span class="texto">Nosotros</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912833/rompecabezas_fxzekp.png" alt="" class="icono">
-                    <span class="texto">Líneas</span>
-                    </a>
-                    <ul class="submenu_lineas">
-                    <li><a href="pages/lineas/diseno.html">Diseño de productos</a></li>
-                    <li><a href="pages/lineas/tics.html">Tics e Inteligencia Artificial</a></li>
-                    <li><a href="pages/lineas/biotecnologia.html">Materiales y biotecnología</a></li>
-                    <li><a href="pages/lineas/economia-campesina.html">Economia popular y campesina</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="pages/orientacion.html">
-                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912884/activo-intangible_tmu7jy.png" alt="" class="icono">
-                    <span class="texto">Orientación vocacional</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="pages/proyectos.html">
-                    <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755912940/proyectos_ygcu54.png" alt="" class="icono">
-                    <span class="texto">Proyectos</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <!-- BACKDROP ÚNICO: debe ir justo después del sidebar -->
-    <div class="drawer_backdrop" hidden></div>
-
-
-
-    <div class="reveal">
-        <div class="slider_1 slider_container"> 
-            <ul>
-                <li><img src="https://senasofiapluseduco.com/wp-content/uploads/2013/09/Estudie-gratis-en-el-SENA-Virtual-1.png" alt=""></li>
-                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXwDKeyMf2e25asG44T5bQ_N44yBTODWf96w&s" alt=""></li>
-                <li><img src="https://www.elestudiante.com.co/wp-content/uploads/2020/02/sena-aprendizaje-1.jpg" alt=""></li>
-            </ul>
-            <button class="prev">&#10094;</button>
-            <button class="next">&#10095;</button>
-        </div>
-    </div>
-    
-    
-    <div class="reveal">
-        <h1 id="conoce_la_tecno">CONOCE LA TECNO</h1>
-        <!-- slider recorrido virtual -->
-        <div class="slider_tecno slider_container">
-            <ul>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755913979/entrada_tecno_yfaefh.jpg" alt="entrada_tecno"></li>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755914215/pasillo_principal_fhfwko.jpg" alt="pasillo_principal"></li>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755914491/pasillo_robotica_biotecnologia_b1xpio.jpg" alt="pasillo_robotica_biotecnologia"></li>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755914570/robotica_hxvhfc.jpg" alt="laboratorio_robotica"></li>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755914688/laboratorio_quimica2_sdq7n3.jpg" alt="laboratorio_quimica"></li>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755914839/quimica_clwnxa.jpg" alt="laboratorio_quimica"></li>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755915038/biotecnologia_wpoctr.jpg" alt="laboratorio_biotecnologia"></li>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755915217/biotecnologia_3_ggppq6.jpg" alt="laboratorio_biotecnologia"></li>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755915313/biotecnologia_4_burxtn.jpg" alt="laboratorio_biotecnologia"></li>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755915425/pasiillo_tics_fisica_j1cnrr.jpg" alt="pasillo_tics_fisica"></li>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755915605/tics_mmkrgu.jpg" alt="tics"></li>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755915772/diseno_cipyxi.jpg" alt="diseno"></li>
-                <li><img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755915891/fisica_qgtgmm.jpg" alt="laboratorio_fisica"></li>
-            </ul>
-            <!-- <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="next" onclick="moveSlide(1)">&#10095;</button> -->
-            <button class="prev">&#10094;</button>
-            <button class="next">&#10095;</button>
-        </div>
-    </div>
-
-    <div class="reveal">
-        <!-- tarjetas giratorias -->
-
-        <div class="tarjetas_flex">
-            <!-- Tarjeta 1 -->
-            <div class="tarjetas_container">
-                <div class="tarjeta">
-                    <div class="front">
-                        <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755916030/colegio_sin_fondo_65x65_xxkmnl.png" alt="graduado">
-                        <h3>APRENDICES EGRESADOS</h3>
-                    </div>
-                    <div class="back">
-                        <img src="#" alt="">
-                        <h3>+ 10.000 EGRESADOS</h3>
-                    </div>
-                </div>
             </div>
 
-            <!-- Tarjeta 2 (tarjeta_colegio) -->
-            <div class="tarjetas_container">
-                <div class="tarjeta tarjeta_colegio">
-                    <div class="front">
-                        <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755916078/graduado_sin_fondo_65x65_wzw4e9.png" alt="colegio">
-                        <h3>COLEGIOS</h3>
-                    </div>
-                    <div class="back">
-                        <img src="#" alt="">
-                        <h3>+ 35 COLEGIOS VINCULADOS</h3>
-                    </div>
-                </div>
+        <div class="campus-visual">
+
+            <div class="slider">
+
+                <img src="img/entrada_tecno_yfaefh.webp" class="slide active">
+                <img src="img/robotica_hxvhfc+.webp" class="slide">
+                <img src="img/pasillo_robotica_biotecnologia_b1xpio.webp" class="slide">
+                <img src="img/pasillo_principal_fhfwko.webp" class="slide">
+                <img src="img/pasiillo_tics_fisica_j1cnrr.webp" class="slide">
+                <img src="img/laboratorio_quimica2_sdq7n3.webp" class="slide">
+                <img src="img/fisica_qgtgmm.webp" class="slide">
+                <img src="img/tecno1.webp" class="slide">
+                <img src="img/diseno_cipyxi.webp" class="slide">
+                <img src="img/biotecnologia_wpoctr.webp" class="slide">
+                <img src="img/biotecnologia_4_burxtn.webp" class="slide">
+
             </div>
+
         </div>
-        <button class="drawer_close" aria-label="Cerrar menú">×</button>
+         <!-- CONTADOR DE VISITAS -->
+        <div class="contador-container">
+
+            <span class="etiqueta">Visitas totales:</span>
+
+            <span id="visit-count" class="numero">...</span>
+
+        </div>
+    </section>
+
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>¿Listo para ser parte de la TecnoAcademia?</h2>
+        <p>Es una oportunidad para descubrir talento y llevarlo al siguiente nivel.
+           <br> La tecnoAcademia es un espacio para aprender, crear e innovar.
+        </p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfVV9l4SKODAXCpkqVYPN1qodis-aNCX2_n1AoHY08VTIhUPQ/viewform?pli=1" class="cta-button"> Quiero ser parte <i class="fas fa-arrow-right"></i></a>
     </div>
-    <div class="drawer_backdrop" hidden></div>
+</section>
 
+    <!-- FOOTER GLOBAL -->
+    <div id="footer"></div>
 
-    <div class="container_colegios">
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1757548992/fabio_vasquez_m3_xcco4e.png" alt="Fabio Vasquez">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1756821737/manuel_elkin_patarrollo_nycmtc.png" alt="Manuel Elkin Patarrollo">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1757546815/aquilino_bedoya_hmnnua.png" alt="Aqulino Bedoya">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1757547194/alfonso_jaramillo_z7wwe1.png" alt="Alfonso Jaramillo">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1757547037/la_bella_elur03.png" alt="La Bella">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1757546446/nueva_granada_qppgfr.png" alt="Nueva Granada">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1757544106/maria_dolorosa_wiqvol_SF_fvqcuc.png" alt="Maria Dolorosa">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1756821735/ciudadela_cuba_vcqszi.png" alt="Ciudadela Cuba">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1756821735/hans_drews_aunak5.png" alt="Hans Drews Arango">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1757544454/augusto_zuluaga_SF_xugzol.png" alt="Augusto Zuluaga">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/f_auto,q_auto,dpr_auto,w_768,h_768,c_pad,b_transparent/v1756842871/lestonnac_eu5rsa.png" alt="Lestonnac">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1756842908/combia_jzovvu.png" alt="Combia">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1756842908/combia_jzovvu.png" alt="Deogracias Cardona">
-        </div>
-        <div class="colegio">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1757548262/nuestra_senora_guadalupe_m1_w5ylzc.png" alt="Nuestra Señora de Guadalupe">
-        </div>
-    </div>
-
-
-    <footer>
-        <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.5263413429902!2d-75.65605342694268!3d4.851063740339706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3881103709114d%3A0x1ca766051337dab8!2sTecnoAcademia%20-%20Risaralda!5e0!3m2!1ses-419!2sco!4v1751063407258!5m2!1ses-419!2sco" width="70%" height="100" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-
-        <div class="steam">
-            <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1761341441/steam_logo_cyaear.png" alt="imgen steam">
-        </div>
-
-        <!-- Redes sociales -->
-        <div class="logos_redes">
-            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
-                <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755975335/facebook_wzmg0q.png" alt="Facebook">
-            </a>
-            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
-                <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755975334/instagram_hj4fwt.png" alt="Instagram">
-            </a>
-            <a href="https://wa.me/573001112233" target="_blank" aria-label="WhatsApp">
-                <img src="https://res.cloudinary.com/dojnr09ua/image/upload/v1755975340/whatsapp_btgpbn.png" alt="WhatsApp">
-            </a>
-        </div>
-    </footer>
-
+    <!-- JS -->
     <script src="js/main.js"></script>
-    <script src="js/components/slider.js"></script>
-    <script src="js/components/carrusel-colegios.js"></script>
+
 </body>
 </html>
