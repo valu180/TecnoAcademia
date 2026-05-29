@@ -4,9 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const path = window.location.pathname;
     let pathPrefix = "";
 
-    if (path.includes("/pages/lineas/")) {
-        pathPrefix = "../../"; 
-    } else if (path.includes("/pages/")) {
+    if (path.includes("/pages/")) {
         pathPrefix = "../"; 
     } else {
         pathPrefix = ""; 

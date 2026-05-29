@@ -28,7 +28,7 @@
       rgba(7, 22, 5, 0.68),
       rgba(7, 22, 5, 0.78)
     ),
-    url('../assets/subject-math.png') center/cover no-repeat;
+    url('../img/subject-math.png') center/cover no-repeat;
   height: 28.40625rem;
   color: #ffffff;
   display: flex;
