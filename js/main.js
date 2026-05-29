@@ -176,10 +176,24 @@ function cargarContadorVisitas() {
     const contador = document.getElementById("visit-count");
     if (!contador) return;
 
-    fetch("https://api.countapi.xyz/hit/tecnoacademia-risaralda-web2026/visitas")
-        .then(res => res.json())
-        .then(data => {
-            if (data && data.value) contador.textContent = data.value;
+    const API_URL = "https://api.countapi.xyz/hit/tecnoacademia-risaralda-web2026/visitas";
+
+    fetch(API_URL)
+        .then((res) => {
+            if (!res.ok) throw new Error("Respuesta no válida del contador");
+            return res.json();
         })
-        .catch(() => { contador.textContent = "---"; });
+        .then((data) => {
+            if (typeof data?.value === "number") {
+                contador.textContent = data.value.toLocaleString("es-CO");
+                contador.removeAttribute("title");
+            } else {
+                throw new Error("Formato de respuesta inesperado");
+            }
+        })
+        .catch(() => {
+            contador.textContent = "—";
+            contador.title =
+                "El servicio de conteo de visitas (CountAPI) no está disponible. Revisa tu conexión o sustituye el contador por otro servicio.";
+        });
 }

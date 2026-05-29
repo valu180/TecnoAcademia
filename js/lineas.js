@@ -139,6 +139,15 @@ const LINEAS_CONTENT = {
 
 const DEFAULT_LINE_ID = 'tics-ia';
 
+/** Iconos Font Awesome (mismos que el menú del header). */
+const LINE_ICONS = {
+  'tics-ia': 'fa-robot',
+  'orientacion-vocacional': 'fa-compass',
+  'materiales-biotecnologia': 'fa-dna',
+  'economia-popular-campesina': 'fa-seedling',
+  'diseno-productos': 'fa-pencil-ruler',
+};
+
 /** Claves antiguas en URLs guardadas o enlaces externos. */
 const LEGACY_LINE_IDS = {
   matematicas: 'tics-ia',
@@ -171,38 +180,13 @@ function getLineLabel(lineId) {
   return data ? data.nombre : '';
 }
 
-function createSvgIcon(className, pathData) {
-  const svgNS = 'http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(svgNS, 'svg');
-  svg.setAttribute('xmlns', svgNS);
-  svg.setAttribute('viewBox', '0 0 24 24');
-  svg.setAttribute('fill', 'none');
-  svg.setAttribute('stroke', 'currentColor');
-  svg.setAttribute('stroke-width', '2');
-  svg.setAttribute('stroke-linecap', 'round');
-  svg.setAttribute('stroke-linejoin', 'round');
-  svg.setAttribute('aria-hidden', 'true');
-  svg.classList.add(className);
-
-  pathData.forEach(({ type, attrs }) => {
-    const node = document.createElementNS(svgNS, type);
-    Object.entries(attrs).forEach(([attr, value]) => {
-      node.setAttribute(attr, value);
-    });
-    svg.appendChild(node);
-  });
-
-  return svg;
-}
-
 function createObjectiveItem(text) {
   const li = document.createElement('li');
   li.className = 'subject-objective-item';
 
-  const icon = createSvgIcon('subject-objective-icon', [
-    { type: 'circle', attrs: { cx: '12', cy: '12', r: '10' } },
-    { type: 'path', attrs: { d: 'm9 12 2 2 4-4' } },
-  ]);
+  const icon = document.createElement('i');
+  icon.className = 'fas fa-check-circle subject-objective-icon';
+  icon.setAttribute('aria-hidden', 'true');
 
   const span = document.createElement('span');
   span.className = 'subject-objective-text';
@@ -243,6 +227,11 @@ function renderLineContent() {
   const hoursEl = document.querySelector('[data-line-hours]');
   const studentsEl = document.querySelector('[data-line-students]');
   const mainImageEl = document.querySelector('.subject-main-image img');
+
+  const iconEl = document.querySelector('[data-line-icon]');
+  if (iconEl) {
+    iconEl.className = `fas ${LINE_ICONS[lineId] || 'fa-layer-group'} subject-main-icon-fa`;
+  }
 
   if (heroTitleEl) heroTitleEl.textContent = lineLabel;
   if (heroSubtitleEl) heroSubtitleEl.textContent = data.heroDescripcion;
