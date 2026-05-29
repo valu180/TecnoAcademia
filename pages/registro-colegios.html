@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Colegios | TecnoAcademia Risaralda</title>
+    <!-- Icono de la pestaña -->
+    <link rel="icon" type="image/png" href="../img/logo pagina.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Header/footer globales + estilos de la página -->
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/pages/registro-colegios.css">
+</head>
+
+<body>
+
+    <!-- HEADER GLOBAL -->
+    <div id="header"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <i class="fas fa-school"></i> REGISTRO ESCOLAR 2026
+            </div>
+            <h1>Inscribe a tu <br>institución educativa</h1>
+            <p>
+                Completa el siguiente formulario para registrar el interés de tu colegio
+                en los programas de formación de la TecnoAcademia Risaralda.
+            </p>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE REGISTRO -->
+    <section class="registro-section">
+        <div class="registro-card">
+            <div class="registro-header">
+                <span class="sub-title-centrado">FORMULARIO DE REGISTRO</span>
+                <h2 class="titulo-centrado">Datos del registro escolar</h2>
+                <p class="registro-intro">
+                    Los campos marcados con <span class="req-mark">*</span> son obligatorios.
+                </p>
+            </div>
+
+            <form id="form-registro" novalidate>
+
+                <!-- 1. INFORMACIÓN DEL ESTUDIANTE -->
+                <fieldset class="form-fieldset">
+                    <legend><i class="fas fa-user-graduate"></i> Información del Estudiante</legend>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="estudiante-nombre">Nombre completo <span class="req-mark">*</span></label>
+                            <input type="text" id="estudiante-nombre" name="nombreEstudiante"
+                                   placeholder="Ej: Ana María López Pérez" required>
+                            <span class="form-error" data-error-for="estudiante-nombre"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="estudiante-documento">Documento de identidad <span class="req-mark">*</span></label>
+                            <input type="text" id="estudiante-documento" name="documento"
+                                   placeholder="Número de documento" inputmode="numeric" required>
+                            <span class="form-error" data-error-for="estudiante-documento"></span>
+                        </div>
+
+                        <div class="form-group form-group-full">
+                            <label for="estudiante-residencia">Residencia <span class="req-mark">*</span></label>
+                            <input type="text" id="estudiante-residencia" name="residencia"
+                                   placeholder="Ciudad / municipio / barrio" required>
+                            <span class="form-error" data-error-for="estudiante-residencia"></span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- 2. SELECCIÓN DE INSTITUCIÓN -->
+                <fieldset class="form-fieldset">
+                    <legend><i class="fas fa-school"></i> Selección de Institución</legend>
+
+                    <div class="form-grid">
+                        <div class="form-group form-group-full">
+                            <label for="institucion">Institución educativa <span class="req-mark">*</span></label>
+                            <select id="institucion" name="colegio" required>
+                                <option value="" disabled selected>Selecciona una institución...</option>
+                                <!-- TODO: reemplazar por las instituciones reales de la región -->
+                                <option value="Institución Educativa Ejemplo 1">Institución Educativa Ejemplo 1</option>
+                                <option value="Institución Educativa Ejemplo 2">Institución Educativa Ejemplo 2</option>
+                                <option value="Institución Educativa Ejemplo 3">Institución Educativa Ejemplo 3</option>
+                                <option value="Institución Educativa Ejemplo 4">Institución Educativa Ejemplo 4</option>
+                                <option value="Institución Educativa Ejemplo 5">Institución Educativa Ejemplo 5</option>
+                                <option value="Otra">Otra</option>
+                            </select>
+                            <span class="form-error" data-error-for="institucion"></span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- 3. INFORMACIÓN DE LOS PADRES / ACUDIENTE -->
+                <fieldset class="form-fieldset">
+                    <legend><i class="fas fa-people-roof"></i> Información del Acudiente</legend>
+
+                    <div class="form-grid">
+                        <div class="form-group form-group-full">
+                            <label for="acudiente-nombre">Nombre del acudiente / padre <span class="req-mark">*</span></label>
+                            <input type="text" id="acudiente-nombre" name="nombreAcudiente"
+                                   placeholder="Nombre completo del acudiente" required>
+                            <span class="form-error" data-error-for="acudiente-nombre"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="acudiente-correo">Correo electrónico <span class="req-mark">*</span></label>
+                            <input type="email" id="acudiente-correo" name="correo"
+                                   placeholder="correo@ejemplo.com" required>
+                            <span class="form-error" data-error-for="acudiente-correo"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="acudiente-telefono">Teléfono <span class="req-mark">*</span></label>
+                            <input type="tel" id="acudiente-telefono" name="telefono"
+                                   placeholder="Ej: 3001234567" inputmode="tel" required>
+                            <span class="form-error" data-error-for="acudiente-telefono"></span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- 4. INFORMACIÓN GENERAL -->
+                <fieldset class="form-fieldset">
+                    <legend><i class="fas fa-comment-dots"></i> Información General</legend>
+
+                    <div class="form-grid">
+                        <div class="form-group form-group-full">
+                            <label for="observaciones">Observaciones adicionales del estudiante</label>
+                            <textarea id="observaciones" name="observaciones" rows="5"
+                                      placeholder="Comparte cualquier información relevante (opcional)"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- MENSAJE DE FEEDBACK -->
+                <div id="form-mensaje" class="form-mensaje" role="status" aria-live="polite" hidden></div>
+
+                <div class="form-actions">
+                    <button type="submit" id="form-submit" class="form-submit-btn">
+                        <span class="btn-text">Enviar registro</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER GLOBAL -->
+    <div id="footer"></div>
+
+    <!-- JS -->
+    <script src="../js/main.js"></script>
+    <script src="../js/registro-colegios.js"></script>
+
+</body>
+</html>
