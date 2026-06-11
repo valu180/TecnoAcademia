@@ -1,0 +1,156 @@
+/* =====================================================================
+   NOSOTROS.CSS - Estilos exclusivos de la página Nosotros
+   ===================================================================== */
+
+.titulo_quienes_somos,
+.titulo_nuestro_equipo {
+    text-align: center;
+    color: #333;
+    background-color: #fff;
+    font-weight: bold;
+    margin: 2.5rem auto 1rem;
+}
+
+.titulo_quienes_somos {
+    font-size: 48px;
+    margin-top: 3.5rem;
+}
+
+.titulo_nuestro_equipo {
+    font-size: 38px;
+    margin-top: 2.5rem;
+}
+
+/* Texto introductorio */
+.container_texto {
+    width: 80%;
+    max-width: 1000px;
+    margin: 1rem auto 2.5rem;
+    padding: 20px;
+    text-align: justify;
+    line-height: 1.6;
+    background-color: #ebebec;
+    border-radius: 8px;
+    font-family: "Work Sans", Arial, sans-serif;
+    font-size: 1.15rem;
+}
+
+/* Contenedores de tarjetas */
+.container_fila1,
+.container_fila2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Tarjeta de equipo */
+.card {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 3 / 4;
+    margin: 15px;
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+}
+
+.foto {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center top;
+}
+
+.pie {
+    padding: 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.pie h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.pie p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.info_extra {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -100%;
+    padding: 14px;
+    text-align: center;
+    background-color: #cfecea;
+    transition: bottom 0.3s ease;
+}
+
+.card:hover .info_extra {
+    bottom: 0;
+}
+
+/* Media queries específicas de Nosotros */
+@media (max-width: 1200px) {
+    .container_fila1,
+    .container_fila2 {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 992px) {
+    .foto {
+        height: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .titulo_quienes_somos {
+        font-size: 32px;
+        margin-top: 0;
+    }
+    .titulo_nuestro_equipo {
+        font-size: 26px;
+        margin-top: 1.25rem;
+    }
+    .container_texto {
+        width: 92%;
+        font-size: 1rem;
+        padding: 16px;
+    }
+    .container_fila1,
+    .container_fila2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        width: min(100%, 720px);
+        margin: 0 auto 40px;
+        padding: 0 12px;
+        justify-content: center;
+        justify-items: center;
+    }
+    .foto {
+        height: 240px;
+    }
+}
+
+/* Negrita en el título principal dentro de info_extra */
+.info_extra .titulo_principal {
+    font-weight: bold;
+    margin-bottom: 8px;  /* opcional: un poco de espacio abajo para mejor lectura */
+}
