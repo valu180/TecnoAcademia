@@ -3,150 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Colegios | TecnoAcademia Risaralda</title>
-    <!-- Icono de la pestaña -->
+    <title>Formulario de inscripción | TecnoAcademia Risaralda</title>
     <link rel="icon" type="image/png" href="../img/logo pagina.ico">
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <!-- Header/footer globales + estilos de la página -->
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/pages/registro-colegios.css">
 </head>
 
 <body>
 
-    <!-- HEADER GLOBAL -->
     <div id="header"></div>
 
-    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
             <div class="badge">
-                <i class="fas fa-school"></i> REGISTRO ESCOLAR 2026
+                <i class="fas fa-clipboard-list"></i> INSCRIPCIÓN 2026
             </div>
-            <h1>Inscribe a tu <br>institución educativa</h1>
+            <h1>Formulario de<br>inscripción</h1>
             <p>
-                Completa el siguiente formulario para registrar el interés de tu colegio
-                en los programas de formación de la TecnoAcademia Risaralda.
+                Registra tus datos para participar en los programas de formación
+                de la TecnoAcademia Risaralda.
             </p>
         </div>
     </section>
 
-    <!-- FORMULARIO DE REGISTRO -->
     <section class="registro-section">
         <div class="registro-card">
-            <div class="registro-header">
-                <span class="sub-title-centrado">FORMULARIO DE REGISTRO</span>
-                <h2 class="titulo-centrado">Datos del registro escolar</h2>
-                <p class="registro-intro">
-                    Los campos marcados con <span class="req-mark">*</span> son obligatorios.
-                </p>
-            </div>
+            <header class="registro-form-header">
+                <span class="registro-form-badge">REGISTRO</span>
+                <h2>Formulario de inscripción</h2>
+                <p>Completa los siguientes datos. Los campos marcados con <span class="req-mark">*</span> son obligatorios.</p>
+            </header>
 
             <form id="form-registro" novalidate>
 
-                <!-- 1. INFORMACIÓN DEL ESTUDIANTE -->
-                <fieldset class="form-fieldset">
-                    <legend><i class="fas fa-user-graduate"></i> Información del Estudiante</legend>
-
+                <!-- 1. Documento de identidad -->
+                <section class="form-section-card" aria-labelledby="sec-doc-title">
+                    <div class="form-section-title" id="sec-doc-title">
+                        <span class="form-section-num">1</span>
+                        <h3>Documento de identidad</h3>
+                    </div>
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="estudiante-nombre">Nombre completo <span class="req-mark">*</span></label>
-                            <input type="text" id="estudiante-nombre" name="nombreEstudiante"
-                                   placeholder="Ej: Ana María López Pérez" required>
-                            <span class="form-error" data-error-for="estudiante-nombre"></span>
+                            <label for="tipo-documento">Tipo de documento <span class="req-mark">*</span></label>
+                            <div class="input-wrap input-wrap-select">
+                                <select id="tipo-documento" name="tipoDocumento" required>
+                                    <option value="" disabled selected>Seleccione...</option>
+                                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                                    <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                                    <option value="Cédula de extranjería">Cédula de extranjería</option>
+                                    <option value="Pasaporte">Pasaporte</option>
+                                </select>
+                            </div>
+                            <span class="form-error" data-error-for="tipo-documento"></span>
                         </div>
-
                         <div class="form-group">
-                            <label for="estudiante-documento">Documento de identidad <span class="req-mark">*</span></label>
-                            <input type="text" id="estudiante-documento" name="documento"
-                                   placeholder="Número de documento" inputmode="numeric" required>
-                            <span class="form-error" data-error-for="estudiante-documento"></span>
+                            <label for="numero-documento">Número de documento <span class="req-mark">*</span></label>
+                            <input type="text" id="numero-documento" name="numeroDocumento"
+                                   inputmode="numeric" maxlength="10" autocomplete="off"
+                                   placeholder="Ej: 1098765432" required>
+                            <span class="form-error" data-error-for="numero-documento"></span>
                         </div>
-
-                        <div class="form-group form-group-full">
-                            <label for="estudiante-residencia">Residencia <span class="req-mark">*</span></label>
-                            <input type="text" id="estudiante-residencia" name="residencia"
-                                   placeholder="Ciudad / municipio / barrio" required>
-                            <span class="form-error" data-error-for="estudiante-residencia"></span>
+                        <div class="form-group">
+                            <label for="lugar-expedicion">Lugar de expedición <span class="req-mark">*</span></label>
+                            <input type="text" id="lugar-expedicion" name="lugarExpedicion"
+                                   maxlength="80" autocomplete="address-level2"
+                                   placeholder="Ej: Pereira" required>
+                            <span class="form-error" data-error-for="lugar-expedicion"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha-expedicion">Fecha de expedición del documento <span class="req-mark">*</span></label>
+                            <div class="input-wrap input-wrap-date">
+                                <input type="date" id="fecha-expedicion" name="fechaExpedicion" required>
+                            </div>
+                            <span class="form-error" data-error-for="fecha-expedicion"></span>
                         </div>
                     </div>
-                </fieldset>
+                </section>
 
-                <!-- 2. SELECCIÓN DE INSTITUCIÓN -->
-                <fieldset class="form-fieldset">
-                    <legend><i class="fas fa-school"></i> Selección de Institución</legend>
-
+                <!-- 2. Información básica -->
+                <section class="form-section-card" aria-labelledby="sec-basica-title">
+                    <div class="form-section-title" id="sec-basica-title">
+                        <span class="form-section-num">2</span>
+                        <h3>Información básica</h3>
+                    </div>
                     <div class="form-grid">
-                        <div class="form-group form-group-full">
-                            <label for="institucion">Institución educativa <span class="req-mark">*</span></label>
-                            <select id="institucion" name="colegio" required>
-                                <option value="" disabled selected>Selecciona una institución...</option>
-                                <!-- TODO: reemplazar por las instituciones reales de la región -->
-                                <option value="Institución Educativa Ejemplo 1">Institución Educativa Ejemplo 1</option>
-                                <option value="Institución Educativa Ejemplo 2">Institución Educativa Ejemplo 2</option>
-                                <option value="Institución Educativa Ejemplo 3">Institución Educativa Ejemplo 3</option>
-                                <option value="Institución Educativa Ejemplo 4">Institución Educativa Ejemplo 4</option>
-                                <option value="Institución Educativa Ejemplo 5">Institución Educativa Ejemplo 5</option>
-                                <option value="Otra">Otra</option>
-                            </select>
-                            <span class="form-error" data-error-for="institucion"></span>
+                        <div class="form-group">
+                            <label for="nombres">Nombre(s) <span class="req-mark">*</span></label>
+                            <input type="text" id="nombres" name="nombres"
+                                   maxlength="60" autocomplete="given-name"
+                                   placeholder="Ej: Ana María" required>
+                            <span class="form-error" data-error-for="nombres"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="primer-apellido">Primer apellido <span class="req-mark">*</span></label>
+                            <input type="text" id="primer-apellido" name="primerApellido"
+                                   maxlength="40" autocomplete="family-name"
+                                   placeholder="Ej: López" required>
+                            <span class="form-error" data-error-for="primer-apellido"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="segundo-apellido">Segundo apellido (opcional)</label>
+                            <input type="text" id="segundo-apellido" name="segundoApellido"
+                                   maxlength="40" autocomplete="additional-name"
+                                   placeholder="Ej: García">
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha-nacimiento">Fecha de nacimiento <span class="req-mark">*</span></label>
+                            <div class="input-wrap input-wrap-date">
+                                <input type="date" id="fecha-nacimiento" name="fechaNacimiento" required>
+                            </div>
+                            <span class="form-error" data-error-for="fecha-nacimiento"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="lugar-nacimiento">Lugar de nacimiento <span class="req-mark">*</span></label>
+                            <input type="text" id="lugar-nacimiento" name="lugarNacimiento"
+                                   maxlength="80" autocomplete="off"
+                                   placeholder="Ej: Dosquebradas" required>
+                            <span class="form-error" data-error-for="lugar-nacimiento"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="genero">Género <span class="req-mark">*</span></label>
+                            <div class="input-wrap input-wrap-select">
+                                <select id="genero" name="genero" required>
+                                    <option value="" disabled selected>Seleccione...</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="No binario">No binario</option>
+                                </select>
+                            </div>
+                            <span class="form-error" data-error-for="genero"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="estrato">Estrato socioeconómico <span class="req-mark">*</span></label>
+                            <div class="input-wrap input-wrap-select">
+                                <select id="estrato" name="estrato" required>
+                                    <option value="" disabled selected>Seleccione...</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <span class="form-error" data-error-for="estrato"></span>
                         </div>
                     </div>
-                </fieldset>
+                </section>
 
-                <!-- 3. INFORMACIÓN DE LOS PADRES / ACUDIENTE -->
-                <fieldset class="form-fieldset">
-                    <legend><i class="fas fa-people-roof"></i> Información del Acudiente</legend>
-
+                <!-- 3. Datos de contacto -->
+                <section class="form-section-card" aria-labelledby="sec-contacto-title">
+                    <div class="form-section-title" id="sec-contacto-title">
+                        <span class="form-section-num">3</span>
+                        <h3>Datos de contacto</h3>
+                    </div>
                     <div class="form-grid">
-                        <div class="form-group form-group-full">
-                            <label for="acudiente-nombre">Nombre del acudiente / padre <span class="req-mark">*</span></label>
-                            <input type="text" id="acudiente-nombre" name="nombreAcudiente"
-                                   placeholder="Nombre completo del acudiente" required>
-                            <span class="form-error" data-error-for="acudiente-nombre"></span>
-                        </div>
-
                         <div class="form-group">
-                            <label for="acudiente-correo">Correo electrónico <span class="req-mark">*</span></label>
-                            <input type="email" id="acudiente-correo" name="correo"
+                            <label for="ciudad-residencia">Ciudad de residencia <span class="req-mark">*</span></label>
+                            <input type="text" id="ciudad-residencia" name="ciudadResidencia"
+                                   maxlength="80" autocomplete="address-level2"
+                                   placeholder="Ej: Pereira" required>
+                            <span class="form-error" data-error-for="ciudad-residencia"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion-residencia">Dirección de residencia (opcional)</label>
+                            <input type="text" id="direccion-residencia" name="direccionResidencia"
+                                   maxlength="120" autocomplete="street-address"
+                                   placeholder="Ej: Calle 10 # 25-30">
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo electrónico <span class="req-mark">*</span></label>
+                            <input type="email" id="correo" name="correo"
+                                   maxlength="100" autocomplete="email"
                                    placeholder="correo@ejemplo.com" required>
-                            <span class="form-error" data-error-for="acudiente-correo"></span>
+                            <span class="form-error" data-error-for="correo"></span>
                         </div>
-
                         <div class="form-group">
-                            <label for="acudiente-telefono">Teléfono <span class="req-mark">*</span></label>
-                            <input type="tel" id="acudiente-telefono" name="telefono"
-                                   placeholder="Ej: 3001234567" inputmode="tel" required>
-                            <span class="form-error" data-error-for="acudiente-telefono"></span>
+                            <label for="celular">Celular <span class="req-mark">*</span></label>
+                            <input type="tel" id="celular" name="celular"
+                                   inputmode="numeric" maxlength="10" autocomplete="tel"
+                                   placeholder="3001234567" required>
+                            <span class="form-error" data-error-for="celular"></span>
                         </div>
                     </div>
-                </fieldset>
+                </section>
 
-                <!-- 4. INFORMACIÓN GENERAL -->
-                <fieldset class="form-fieldset">
-                    <legend><i class="fas fa-comment-dots"></i> Información General</legend>
-
+                <!-- 4. Familiar o acudiente -->
+                <section class="form-section-card" aria-labelledby="sec-familiar-title">
+                    <div class="form-section-title" id="sec-familiar-title">
+                        <span class="form-section-num">4</span>
+                        <h3>Datos de un familiar o acudiente</h3>
+                    </div>
                     <div class="form-grid">
-                        <div class="form-group form-group-full">
-                            <label for="observaciones">Observaciones adicionales del estudiante</label>
-                            <textarea id="observaciones" name="observaciones" rows="5"
-                                      placeholder="Comparte cualquier información relevante (opcional)"></textarea>
+                        <div class="form-group">
+                            <label for="nombre-familiar">Nombre y apellidos del familiar <span class="req-mark">*</span></label>
+                            <input type="text" id="nombre-familiar" name="nombreFamiliar"
+                                   maxlength="80" autocomplete="name"
+                                   placeholder="Ej: María López García" required>
+                            <span class="form-error" data-error-for="nombre-familiar"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="celular-familiar">Número de celular <span class="req-mark">*</span></label>
+                            <input type="tel" id="celular-familiar" name="celularFamiliar"
+                                   inputmode="numeric" maxlength="10" autocomplete="tel"
+                                   placeholder="3001234567" required>
+                            <span class="form-error" data-error-for="celular-familiar"></span>
                         </div>
                     </div>
-                </fieldset>
+                </section>
 
-                <!-- MENSAJE DE FEEDBACK -->
                 <div id="form-mensaje" class="form-mensaje" role="status" aria-live="polite" hidden></div>
 
                 <div class="form-actions">
                     <button type="submit" id="form-submit" class="form-submit-btn">
-                        <span class="btn-text">Enviar registro</span>
+                        <span class="btn-text">Enviar inscripción</span>
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
@@ -155,10 +226,8 @@
         </div>
     </section>
 
-    <!-- FOOTER GLOBAL -->
     <div id="footer"></div>
 
-    <!-- JS -->
     <script src="../js/main.js"></script>
     <script src="../js/registro-colegios.js"></script>
 

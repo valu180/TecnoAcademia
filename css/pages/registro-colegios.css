@@ -1,51 +1,55 @@
 /* =========================================================
-   REGISTRO DE COLEGIOS
-   Estilos propios del formulario. El shell (header, footer,
-   hero y variables) provienen de layout.css.
+   FORMULARIO DE INSCRIPCIÓN
+   Arquitectura por secciones numeradas; colores del sitio.
    ========================================================= */
 
 .registro-section {
-    padding: 70px 8% 90px;
+    padding: 50px 8% 90px;
     display: flex;
     justify-content: center;
     background: #e7efe8;
 }
 
 .registro-card {
-    background: var(--white);
     width: 100%;
-    max-width: 760px;
-    padding: 45px 50px 50px;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    max-width: 900px;
 }
 
-/* --- Encabezado del formulario --- */
-.registro-header {
-    text-align: center;
-    margin-bottom: 35px;
+/* --- Cabecera del formulario --- */
+.registro-form-header {
+    background: linear-gradient(135deg, #1e7a3c 0%, #29b43e 100%);
+    color: var(--white);
+    padding: 32px 36px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 24px rgba(41, 180, 62, 0.2);
 }
 
-.registro-header .sub-title-centrado {
-    display: block;
-    color: var(--primary);
-    font-weight: 600;
-    font-size: 0.85rem;
+.registro-form-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    color: #e8ffe9;
+    font-size: 0.72rem;
+    font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-bottom: 8px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
 }
 
-.registro-header .titulo-centrado {
-    color: var(--dark-green);
-    font-size: 2rem;
+.registro-form-header h2 {
+    font-size: 1.85rem;
     font-weight: 700;
     margin-bottom: 10px;
+    line-height: 1.2;
 }
 
-.registro-intro {
-    color: #6b7280;
+.registro-form-header p {
     font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
 }
 
 .req-mark {
@@ -53,40 +57,49 @@
     font-weight: 700;
 }
 
-/* --- Fieldsets / bloques --- */
-.form-fieldset {
-    border: none;
-    border-top: 1px solid #eef2ee;
-    padding: 28px 0 6px;
-    margin: 0;
+/* --- Tarjetas de sección --- */
+.form-section-card {
+    background: var(--white);
+    border: 1px solid #dce5dd;
+    border-radius: 14px;
+    padding: 28px 32px 32px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
 }
 
-.form-fieldset:first-of-type {
-    border-top: none;
-    padding-top: 0;
-}
-
-.form-fieldset legend {
+.form-section-title {
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: var(--dark-green);
-    font-size: 1.15rem;
-    font-weight: 600;
-    padding: 0;
-    margin-bottom: 20px;
+    gap: 14px;
+    margin-bottom: 24px;
 }
 
-.form-fieldset legend i {
-    color: var(--primary);
-    font-size: 1.1rem;
+.form-section-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-section-title h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin: 0;
 }
 
 /* --- Grid de campos --- */
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 26px 20px;
+    gap: 22px 24px;
     align-items: start;
 }
 
@@ -95,66 +108,106 @@
     flex-direction: column;
 }
 
-.form-group-full {
-    grid-column: 1 / -1;
-}
-
 .form-group label {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 500;
     color: #374151;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    line-height: 1.35;
 }
 
 .form-group input,
-.form-group select,
-.form-group textarea {
+.form-group select {
     width: 100%;
     padding: 12px 14px;
-    border: 1px solid #d8e0d9;
+    border: 1px solid #d0dbd2;
     border-radius: 10px;
-    background: #fbfdfb;
+    background: var(--white);
     font-size: 0.95rem;
     color: #1f2937;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
+.form-group input::placeholder {
     color: #9ca3af;
 }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 110px;
-}
-
 .form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.form-group select:focus {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(41, 180, 62, 0.15);
 }
 
-/* Estado inválido */
+/* Select con chevron */
+.input-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.input-wrap-select select {
+    appearance: none;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.input-wrap-select::after {
+    content: "\f078";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    font-size: 0.75rem;
+    pointer-events: none;
+}
+
+/* Date inputs */
+.input-wrap-date input[type="date"] {
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.input-wrap-date input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    cursor: pointer;
+}
+
+.input-wrap-date::after {
+    content: "\f073";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
 .form-group.has-error input,
-.form-group.has-error select,
-.form-group.has-error textarea {
+.form-group.has-error select {
     border-color: #e11d48;
     box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.12);
 }
 
 .form-error {
     min-height: 16px;
-    margin-top: 6px;
-    font-size: 0.8rem;
+    margin-top: 5px;
+    font-size: 0.78rem;
     color: #e11d48;
 }
 
 /* --- Mensaje de feedback --- */
 .form-mensaje {
-    margin-top: 28px;
+    margin-top: 8px;
     padding: 16px 20px;
     border-radius: 12px;
     font-size: 0.95rem;
@@ -178,7 +231,7 @@
 }
 
 .form-mensaje.exito::before {
-    content: "\f058"; /* fa-circle-check */
+    content: "\f058";
 }
 
 .form-mensaje.error {
@@ -188,7 +241,7 @@
 }
 
 .form-mensaje.error::before {
-    content: "\f06a"; /* fa-circle-exclamation */
+    content: "\f06a";
 }
 
 @keyframes form-msg-in {
@@ -198,7 +251,7 @@
 
 /* --- Botón de envío --- */
 .form-actions {
-    margin-top: 30px;
+    margin-top: 28px;
     text-align: center;
 }
 
@@ -214,7 +267,7 @@
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     box-shadow: 0 10px 20px rgba(41, 180, 62, 0.25);
 }
 
@@ -231,16 +284,20 @@
 }
 
 /* --- Responsive --- */
-@media (max-width: 640px) {
-    .registro-card {
-        padding: 30px 22px 35px;
+@media (max-width: 720px) {
+    .registro-form-header {
+        padding: 24px 22px;
+    }
+
+    .registro-form-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-section-card {
+        padding: 22px 18px 26px;
     }
 
     .form-grid {
         grid-template-columns: 1fr;
-    }
-
-    .registro-header .titulo-centrado {
-        font-size: 1.6rem;
     }
 }
