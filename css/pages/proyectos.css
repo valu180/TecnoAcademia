@@ -1,66 +1,397 @@
-/* =====================================================================
-   PROYECTOS.CSS - Estilos exclusivos de la página Proyectos
-   ===================================================================== */
-
-/* Título principal */
-.titulo_proyecto {
-    width: 80%;
-    max-width: 1000px;
-    margin: 3rem auto 1.5rem;     /* espacio arriba y abajo reducido */
-    text-align: right;              /* alineado a la derecha */
-    font-size: 3.5rem;
-    font-weight: bold;
-    color: #333333;
-    /* Sin fondo, sin padding, sin caja */
+:root {
+    --primary: #29b43e;
+    --dark-green: #051408;
+    --text-gray: #a0a0a0;
+    --white: #ffffff;
 }
 
-/* Subtítulos de cada línea */
-.subtitulo_linea,
-.subtitulo_linea_diseño,
-.subtitulo_linea_c {
-    width: 80%;
-    max-width: 1000px;
-    margin: 3rem auto 1.4rem;     /* más pegado arriba y abajo */
-    text-align: right;              /* alineado a la derecha */
-    font-size: 2.8rem;
-    font-weight: bold;
-    color: #333333;
-    /* Sin fondo, sin padding, sin caja */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body {
+    background-color: #f1f7f2;
+    padding-top: 90px; 
 }
 
-/* Contenedor de texto (sin cambios importantes) */
-.container_texto {
-    width: 80%;
-    max-width: 1000px;
-    margin: 0.8rem auto 2rem;
-    padding: 1.8rem 2rem;
-    text-align: justify;
+/* NOTA: el header, navbar, dropdown y footer son GLOBALES y viven en css/layout.css
+   (esta página lo importa antes que su propio CSS). Aquí solo van estilos de proyectos. */
+
+.proyectos-intro-text {
+    max-width: 800px; /* Para que no ocupe todo el ancho y sea fácil de leer */
+    margin-bottom: 2rem; /* Espacio antes del título */
     line-height: 1.6;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.15rem;
-    background-color: #ebebec;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: #4a5568; /* Un gris profesional */
+    font-size: 1.1rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .titulo_proyecto {
-        font-size: 2.6rem;
-        margin: 2rem auto 0.6rem;
+.proyectos-intro-text p {
+    border-left: 4px solid #38a169; /* Un detalle verde (SENA) a la izquierda */
+    padding-left: 15px;
+}
+
+/* --- SECCIÓN FILTROS DE PROYECTOS --- */
+.proyectos-header {
+    background-color: #f1f7f2; /* Un verde muy pálido como el de la imagen */
+    padding: 60px 8%;
+    width: 100%;
+}
+
+.proyectos-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Para que en móvil se acomode */
+    gap: 30px;
+}
+
+.proyectos-info h1 {
+    font-size: 2.5rem;
+    color: #051408; /* Tu color dark-green */
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.proyectos-info p {
+    color: #888;
+    font-size: 0.95rem;
+}
+
+.filtros-container {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.filtro-btn {
+    padding: 10px 22px;
+    border-radius: 12px;
+    border: 1px solid #e0eadd;
+    background-color: var(--white);
+    color: #444;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filtro-btn:hover {
+    background-color: #f8fdf9;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.filtro-btn.active {
+    background-color: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    box-shadow: 0 4px 15px rgba(41, 180, 62, 0.3);
+}
+
+.proyectos-grid-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.proyecto-card {
+    display: flex; /* Mantiene el formato horizontal */
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #e0eadd;
+    min-height: 300px;
+}
+
+.proyecto-img {
+    flex: 1;
+    min-width: 300px;
+}
+
+.proyecto-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.proyecto-body {
+    flex: 2;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.proyecto-tags-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.tag-categoria {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* Colores según tu paleta */
+.tech, .bio, .tics { background: #e8f5e9; color: #29b43e; }
+.diseño { background: #fff3e0; color: #ff8c2e; }
+
+.proyecto-body h3 {
+    font-size: 1.8rem;
+    color: #051408;
+    margin-bottom: 10px;
+}
+
+.proyecto-body p {
+    color: #666;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.proyecto-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.chip {
+    background: #f1f7f2;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    margin-left: 5px;
+}
+
+/* --- Mejora de "Ver más" --- */
+
+.info-extra {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+    /* Animación de entrada */
+    animation: fadeIn 0.4s ease-out;
+}
+
+.info-extra hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin-bottom: 12px;
+}
+
+.info-extra ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.info-extra li {
+    margin-bottom: 5px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estado del botón al estar activo */
+.btn-ver-mas.active {
+    background-color: #555 !important;
+    color: #fff;
+}
+
+/* --- ADICIONES NECESARIAS PARA FILTROS Y BOTÓN VER MÁS --- */
+
+/* Asegura que el botón activo resalte (clase que pondrá el JS) */
+.filtro-btn.active {
+    background-color: var(--primary) !important;
+    color: var(--white) !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 4px 12px rgba(41, 180, 62, 0.2);
+}
+
+/* Estilo del botón "Ver más" dentro de la tarjeta */
+.btn-ver-mas {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    width: fit-content;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-ver-mas:hover {
+    background-color: var(--dark-green);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Animación de entrada para cuando se filtran los proyectos */
+.proyecto-card {
+    transition: all 0.4s ease;
+}
+
+/* Clase de utilidad para ocultar proyectos que no coinciden con el filtro */
+.proyecto-card.hidden {
+    display: none;
+}
+
+.img-large { 
+    background: url('https://images.unsplash.com/photo-1523050853064-803575f896a3?q=80&w=600') center/cover; 
+    border-radius: 15px; 
+}
+
+.img-small-grid { 
+    display: grid; 
+    grid-template-rows: 1fr 1fr; 
+    gap: 15px; 
+}
+
+.img-s1 { 
+    background: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=300') center/cover; 
+    border-radius: 15px; 
+}
+
+.img-s2 { 
+    background: url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=300') center/cover; 
+    border-radius: 15px; 
+}
+
+.cta-section {
+    min-height: 450px;
+    position: relative;
+    padding: 100px 8%; /* Espaciado superior e inferior para dar aire */
+    text-align: center;
+    color: white; /* Texto blanco para que resalte sobre el verde */
+    
+    /* EFECTO CLAVE: Degradado lineal verde semi-transparente SOBRE la imagen */
+    background: 
+        linear-gradient(rgba(41, 180, 62, 0.85), rgba(41, 180, 62, 0.85)), 
+        url("../../img/fondo-equipo.JPG") center/cover no-repeat;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta-content h2 {
+    font-size: 2.8rem; /* Tamaño de letra grande para el título */
+    font-weight: 700;
+    margin-bottom: 20px;
+    max-width: 800px; /* Limitamos el ancho para que no ocupe toda la pantalla */
+    line-height: 1.2;
+}
+
+.cta-content p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    opacity: 0.9; /* Hacemos el texto del párrafo un poco más sutil */
+}
+
+/* Estilos para el botón blanco */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el texto y el icono */
+    background: white;
+    color: #333; /* Texto oscuro para contraste */
+    padding: 15px 35px;
+    border-radius: 8px; /* Bordes redondeados */
+    text-decoration: none; /* Quitamos el subrayado */
+    font-weight: 600;
+    transition: 0.3s; /* Animación suave al pasar el mouse */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Sombra suave */
+}
+
+.cta-button:hover {
+    transform: translateY(-3px); /* Pequeño movimiento hacia arriba */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+}
+
+/* ============================= */
+/* 📱 RESPONSIVE PROYECTOS */
+/* ============================= */
+@media (max-width: 992px) {
+    .proyectos-container {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center;
+        padding: 40px 5%;
     }
 
-    .subtitulo_linea,
-    .subtitulo_linea_diseño,
-    .subtitulo_linea_c {
-        font-size: 2.2rem;
-        margin: 1.8rem auto 0.5rem;
+    .proyectos-info {
+        width: 100%;
     }
 
-    .container_texto {
-        width: 92%;
-        margin: 0.6rem auto 1.5rem;
-        padding: 1.4rem 1.2rem;
-        font-size: 1.05rem;
+    .filtros-container {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .proyecto-card {
+        flex-direction: column; /* Cambia de horizontal a vertical */
+        min-height: auto;
+    }
+
+    .proyecto-img {
+        min-width: 100%;
+        height: 250px; /* Altura fija para la imagen en móvil */
+    }
+
+    .proyecto-body {
+        padding: 20px;
+    }
+
+    .proyecto-body h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .proyectos-header {
+        padding: 40px 5%;
+    }
+
+    .proyectos-info h1 {
+        font-size: 2rem;
+    }
+
+    .filtro-btn {
+        width: 100%; /* Botones de filtro ocupan todo el ancho en celulares pequeños */
+        text-align: center;
+    }
+
+    .proyecto-footer {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .proyecto-footer .chips-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
     }
 }
