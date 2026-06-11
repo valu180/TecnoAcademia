@@ -165,7 +165,12 @@
 /* Layout principal */
 .subject-layout {
   background: #f9fdfa;
-  padding: 60px 8% 80px;
+  padding: 60px 8% 100px;
+}
+
+/* Separación entre contenido y CTA */
+.subject-page + .cta-section {
+  margin-top: 80px;
 }
 
 .subject-layout-inner {
@@ -498,6 +503,10 @@
   }
 
   .subject-layout {
-    padding: 40px 5% 60px;
+    padding: 40px 5% 70px;
+  }
+
+  .subject-page + .cta-section {
+    margin-top: 50px;
   }
 }

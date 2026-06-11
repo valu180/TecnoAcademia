@@ -89,9 +89,13 @@ body {
     box-shadow: 0 4px 15px rgba(41, 180, 62, 0.3);
 }
 
+.proyectos-grid-section {
+    padding-bottom: 40px;
+}
+
 .proyectos-grid-container {
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 40px auto 80px;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -280,6 +284,7 @@ body {
 }
 
 .cta-section {
+    margin-top: 80px;
     min-height: 450px;
     position: relative;
     padding: 100px 8%; /* Espaciado superior e inferior para dar aire */
