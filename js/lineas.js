@@ -4,6 +4,8 @@ const LINEAS_CONTENT = {
     id: 'tics-ia',
     nombre: 'Tics e inteligencia artificial',
     inicial: 'T',
+    heroImage: '../img/tics-1.jpg',
+    mainImage: '../img/tics-2.jpg',
     heroTitulo: 'Tics e inteligencia artificial',
     heroDescripcion:
       'Desarrollamos el pensamiento lógico-matemático, la capacidad de análisis y resolución de problemas complejos a través de metodologías activas y aplicaciones prácticas en el mundo real.',
@@ -31,6 +33,8 @@ const LINEAS_CONTENT = {
     id: 'orientacion-vocacional',
     nombre: 'Orientación vocacional',
     inicial: 'O',
+    heroImage: '../img/orientacion-1.jpg',
+    mainImage: '../img/orientacion-2.jpg',
     heroTitulo: 'Orientación vocacional',
     heroDescripcion:
       'Fortalecemos las competencias comunicativas para expresar ideas con claridad, argumentar con rigor y disfrutar de la lectura crítica.',
@@ -58,6 +62,8 @@ const LINEAS_CONTENT = {
     id: 'materiales-biotecnologia',
     nombre: 'Materiales y biotecnología',
     inicial: 'M',
+    heroImage: '../img/biotecnologia-1.jpg',
+    mainImage: '../img/biotecnologia-2.jpg',
     heroTitulo: 'Materiales y biotecnología',
     heroDescripcion:
       'Exploramos los fenómenos del mundo natural a través de la observación, la experimentación y el pensamiento científico.',
@@ -85,6 +91,8 @@ const LINEAS_CONTENT = {
     id: 'economia-popular-campesina',
     nombre: 'Economía popular y campesina',
     inicial: 'E',
+    heroImage: '../img/economia-popular-1.jpg',
+    mainImage: '../img/economia-popular-2.jpg',
     heroTitulo: 'Economía popular y campesina',
     heroDescripcion:
       'Analizamos los procesos históricos para comprender el presente y participar de manera crítica en la construcción del futuro.',
@@ -112,6 +120,8 @@ const LINEAS_CONTENT = {
     id: 'diseno-productos',
     nombre: 'Diseño de productos',
     inicial: 'D',
+    heroImage: '../img/diseno-1.jpg',
+    mainImage: '../img/diseno-2.jpg',
     heroTitulo: 'Diseño de productos',
     heroDescripcion:
       'Potenciamos el uso responsable y creativo de la tecnología para resolver problemas reales e innovar.',
@@ -172,10 +182,6 @@ function getCurrentLineId() {
 
 /** Etiqueta visible del submenú superior (fuente de verdad para títulos en página). */
 function getLineLabel(lineId) {
-  const tabLabel = document.querySelector(
-    `[data-line-tab="${lineId}"] span`
-  );
-  if (tabLabel) return tabLabel.textContent.trim();
   const data = LINEAS_CONTENT[lineId];
   return data ? data.nombre : '';
 }
@@ -226,6 +232,7 @@ function renderLineContent() {
   const teacherEl = document.querySelector('[data-line-teacher]');
   const hoursEl = document.querySelector('[data-line-hours]');
   const studentsEl = document.querySelector('[data-line-students]');
+  const heroEl = document.querySelector('.subject-hero');
   const mainImageEl = document.querySelector('.subject-main-image img');
 
   const iconEl = document.querySelector('[data-line-icon]');
@@ -236,7 +243,15 @@ function renderLineContent() {
   if (heroTitleEl) heroTitleEl.textContent = lineLabel;
   if (heroSubtitleEl) heroSubtitleEl.textContent = data.heroDescripcion;
   if (titleEl) titleEl.textContent = lineLabel;
+  if (heroEl && data.heroImage) {
+    heroEl.style.setProperty('--line-hero-image', `url('${data.heroImage}')`);
+    heroEl.style.setProperty(
+      '--line-hero-position',
+      lineId === 'orientacion-vocacional' ? 'center center' : 'center 38%'
+    );
+  }
   if (mainImageEl) {
+    if (data.mainImage) mainImageEl.src = data.mainImage;
     mainImageEl.alt = `Estudiantes en la línea de ${lineLabel}`;
   }
   document.title = `TecnoAcademia Risaralda - ${lineLabel}`;

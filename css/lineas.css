@@ -16,9 +16,13 @@
 
 /* Hero (misma lógica visual que .hero en layout.css) */
 .subject-hero {
-  height: 450px;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('../img/subject-math.png') center/cover no-repeat;
+  height: clamp(28rem, 52vh, 36rem);
+  min-height: 32rem;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    var(--line-hero-image, url('../img/tics-1.jpg'));
+  background-position: center, var(--line-hero-position, center 38%);
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   padding: 0 8%;
@@ -487,13 +491,17 @@
   }
 
   .subject-hero {
-    height: auto;
-    min-height: 320px;
+    min-height: 26rem;
     padding: 80px 5%;
   }
 }
 
 @media (max-width: 47.9375rem) {
+  .subject-hero {
+    min-height: 22rem;
+    padding: 70px 5%;
+  }
+
   .subject-main-header {
     align-items: center;
   }
