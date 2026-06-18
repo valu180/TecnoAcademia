@@ -8,54 +8,60 @@ const LINEAS_CONTENT = {
     mainImage: '../img/tics-2.jpg',
     heroTitulo: 'Tics e inteligencia artificial',
     heroDescripcion:
-      'Desarrollamos el pensamiento lógico-matemático, la capacidad de análisis y resolución de problemas complejos a través de metodologías activas y aplicaciones prácticas en el mundo real.',
-    descripcion:
-      'Desarrollamos el pensamiento lógico-matemático, la capacidad de análisis y resolución de problemas complejos a través de metodologías activas y aplicaciones prácticas en el mundo real.',
-    docente: 'Prof. Andrés Caicedo',
+      'Integrar robótica y sistemas inteligentes para impulsar la innovación.',
+    descripcion: [
+      'En la línea de TICS e Inteligencia Artificial de la Tecnoacademia, la robótica y la IA se articulan para dar vida a dispositivos y sistemas automatizados que responden a necesidades reales.',
+      'Mediante el uso de sensores, actuadores, microcontroladores y circuitos, los aprendices adquieren habilidades para diseñar, ensamblar y programar prototipos funcionales, integrando conocimientos de mecánica, programación y control.',
+      'Esta área impulsa la creatividad y la capacidad de resolver problemas, preparando a los participantes para un entorno tecnológico en constante evolución.',
+    ],
+    docente: 'Jose Sanchez',
     intensidad: '6 horas/semana',
     estudiantes: '180 estudiantes',
     objetivos: [
-      'Resolver problemas complejos aplicando razonamiento lógico y matemático.',
-      'Utilizar herramientas tecnológicas para el modelado y análisis de datos.',
-      'Comprender los fundamentos del cálculo y sus aplicaciones en ciencias.',
-      'Desarrollar competencias en estadística para la toma de decisiones.',
+      'Desarrollar sistemas capaces de aprender, predecir y tomar decisiones inteligentes.',
+      'Diseñar y construir dispositivos automatizados que integran control, sensores y actuadores.',
+      'Crear soluciones tecnológicas mediante el ensamblaje de componentes electrónicos y estructuras mecánicas sencillas.',
+      'Programar y poner en funcionamiento dispositivos que realicen tareas de forma automática para resolver situaciones del entorno.',
     ],
     temas: [
-      'Álgebra y funciones',
-      'Geometría analítica',
-      'Cálculo diferencial e integral',
-      'Estadística y probabilidad',
-      'Lógica matemática',
-      'Trigonometría aplicada',
+      'Electrónica básica y circuitos',
+      'Sensores, actuadores y sistemas de control',
+      'Robótica y automatización',
+      'Inteligencia artificial y aprendizaje automático',
+      'Fundamentos de programación',
+      'Desarrollo de proyectos tecnológicos',
     ],
   },
   'orientacion-vocacional': {
     id: 'orientacion-vocacional',
-    nombre: 'Orientación vocacional',
+    nombre: 'Orientación Vocacional',
     inicial: 'O',
     heroImage: '../img/orientacion-1.jpg',
     mainImage: '../img/orientacion-2.jpg',
-    heroTitulo: 'Orientación vocacional',
+    heroTitulo: 'Orientación Vocacional',
     heroDescripcion:
-      'Fortalecemos las competencias comunicativas para expresar ideas con claridad, argumentar con rigor y disfrutar de la lectura crítica.',
-    descripcion:
-      'Promovemos la lectura, la escritura y la expresión oral como herramientas fundamentales para el pensamiento crítico y la construcción de ciudadanía.',
-    docente: 'Prof. Laura Gómez',
+      'Descubrir intereses, fortalecer habilidades y proyectar decisiones para el futuro académico y profesional.',
+    descripcion: [
+      'En la línea de Orientación Vocacional de la Tecnoacademia, los aprendices participan en actividades diseñadas para reconocer sus intereses, habilidades y fortalezas, facilitando la construcción de un proyecto de vida acorde con sus metas personales y profesionales.',
+      'A través de talleres, pruebas de orientación, espacios de reflexión y experiencias de exploración académica y ocupacional, los participantes adquieren herramientas para tomar decisiones informadas sobre su futuro educativo y laboral.',
+      'Esta línea promueve el desarrollo de habilidades para la vida, la autonomía, el autoconocimiento y la capacidad de adaptación a los cambios del entorno, fortaleciendo la confianza en la toma de decisiones.',
+    ],
+    docente: 'Lorena Parra',
     intensidad: '5 horas/semana',
     estudiantes: '165 estudiantes',
     objetivos: [
-      'Desarrollar habilidades de comprensión lectora en diversos tipos de textos.',
-      'Fomentar la producción escrita con coherencia, cohesión y corrección gramatical.',
-      'Promover la argumentación oral y escrita en contextos académicos.',
-      'Valorar la literatura como expresión cultural y artística.',
+      'Aplicar pruebas de orientación vocacional y evaluación de competencias para ofrecer un diagnóstico sobre las aptitudes y preferencias profesionales de los aprendices.',
+      'Diseñar e implementar talleres y charlas sobre exploración ocupacional, toma de decisiones, Habilidades para la vida y planificación de proyectos de vida.',
+      'Fomentar la participación en eventos académicos y ferias profesionales que permitan a los aprendices conocer opciones de estudio y oportunidades en el sector productivo.',
+      'Realizar seguimiento y acompañamiento a los aprendices para evaluar el impacto de la orientación vocacional en su trayectoria educativa y ocupacional.',
     ],
     temas: [
-      'Comprensión y producción de textos',
-      'Gramática y ortografía',
-      'Redacción académica',
-      'Literatura clásica y contemporánea',
-      'Argumentación y debate',
-      'Lectura crítica de medios',
+      'Autoconocimiento y reconocimiento de fortalezas',
+      'Intereses vocacionales y proyecto de vida',
+      'Toma de decisiones y planificación del futuro',
+      'Habilidades para la vida y autonomía',
+      'Exploración académica y ocupacional',
+      'Adaptación al cambio y desarrollo personal',
     ],
   },
   'materiales-biotecnologia': {
@@ -66,83 +72,94 @@ const LINEAS_CONTENT = {
     mainImage: '../img/biotecnologia-2.jpg',
     heroTitulo: 'Materiales y biotecnología',
     heroDescripcion:
-      'Exploramos los fenómenos del mundo natural a través de la observación, la experimentación y el pensamiento científico.',
-    descripcion:
-      'Integrando biología, física y química, fomentamos la curiosidad científica y la comprensión del impacto de la ciencia en la vida diaria.',
-    docente: 'Prof. Daniela Ruiz',
+      'Comprender los procesos biológicos y su aplicación en el desarrollo de soluciones sostenibles.',
+    descripcion: [
+      'En la Tecnoacademia, la biología se aborda cómo la ciencia que estudia la vida en todas sus formas y niveles de organización.',
+      'Los aprendices exploran la diversidad de los seres vivos, sus funciones vitales y las interacciones que mantienen con su entorno, comprendiendo así la importancia de los procesos biológicos para el equilibrio de los ecosistemas y el bienestar humano.',
+      'Este aprendizaje se enriquece con actividades de observación, análisis y experimentación, que permiten aplicar los conocimientos adquiridos a contextos reales.',
+      'De esta manera, se fomenta la conciencia ambiental, la curiosidad científica y la capacidad de integrar saberes biológicos en soluciones sostenibles y responsables.',
+    ],
+    docente: 'Luis Olaya',
     intensidad: '6 horas/semana',
     estudiantes: '170 estudiantes',
     objetivos: [
-      'Comprender los principios básicos que rigen los fenómenos naturales.',
-      'Aplicar el método científico en la resolución de problemas.',
-      'Reconocer la importancia de la ciencia en el cuidado del medio ambiente.',
-      'Desarrollar habilidades prácticas en laboratorio de forma segura.',
+      'Explorar los seres vivos y sus procesos para comprender su interacción con el entorno.',
+      'Observar e interpretar las características, funciones y relaciones de los organismos en diferentes ecosistemas.',
+      'Aplicar técnicas básicas de observación y experimentación para estudiar fenómenos biológicos.',
+      'Reconocer el potencial de los procesos biológicos para desarrollar soluciones responsables que contribuyan al bienestar humano y ambiental.',
     ],
     temas: [
-      'Estructura y función de los seres vivos',
-      'Materia y energía',
-      'Fuerzas y movimiento',
-      'Ecosistemas y sostenibilidad',
-      'Transformaciones químicas',
-      'Ciencia y tecnología en la sociedad',
+      'Diversidad de los seres vivos',
+      'Niveles de organización biológica',
+      'Funciones vitales de los organismos',
+      'Ecosistemas e interacción con el entorno',
+      'Observación y experimentación biológica',
+      'Sostenibilidad y conciencia ambiental',
     ],
   },
   'economia-popular-campesina': {
     id: 'economia-popular-campesina',
-    nombre: 'Economía popular y campesina',
+    nombre: 'Economía Popular y Campesina',
     inicial: 'E',
     heroImage: '../img/economia-popular-1.jpg',
     mainImage: '../img/economia-popular-2.jpg',
-    heroTitulo: 'Economía popular y campesina',
+    heroTitulo: 'Economía Popular y Campesina',
     heroDescripcion:
-      'Analizamos los procesos históricos para comprender el presente y participar de manera crítica en la construcción del futuro.',
-    descripcion:
-      'Estudiamos las transformaciones sociales, políticas, económicas y culturales que han marcado a la humanidad y a nuestro país.',
-    docente: 'Prof. Santiago Pérez',
+      'Comprender la materia y sus transformaciones a través de la experimentación científica.',
+    descripcion: [
+      'En la Tecnoacademia, la química se estudia como una herramienta fundamental para comprender la composición, estructura y propiedades de las sustancias que nos rodean.',
+      'A través del trabajo en laboratorio, los aprendices desarrollan habilidades para observar, medir y analizar diferentes materiales, comprendiendo las transformaciones que experimentan en diversas condiciones.',
+      'Este enfoque fomenta el pensamiento crítico, la precisión y la curiosidad científica, permitiendo identificar aplicaciones de la química en ámbitos como la salud, la industria y el medio ambiente.',
+      'Mediante actividades prácticas, se impulsa la capacidad de relacionar la teoría con la experiencia, fortaleciendo una base sólida para afrontar retos científicos.',
+    ],
+    docente: 'Levi Bonilla',
     intensidad: '4 horas/semana',
     estudiantes: '140 estudiantes',
     objetivos: [
-      'Comprender los principales procesos históricos a nivel mundial y nacional.',
-      'Analizar causas y consecuencias de los hechos históricos.',
-      'Promover el respeto por la diversidad cultural y la memoria histórica.',
-      'Desarrollar pensamiento crítico frente a las fuentes históricas.',
+      'Estudiar la composición y propiedades de las sustancias para entender sus transformaciones.',
+      'Aplicar procedimientos básicos de laboratorio para observar, medir y analizar materiales de manera segura.',
+      'Identificar y explicar los cambios físicos y químicos presentes en situaciones cotidianas y experimentales.',
+      'Relacionar los conceptos químicos con problemáticas y soluciones en áreas como la salud, la industria y el medio ambiente.',
     ],
     temas: [
-      'Civilizaciones antiguas',
-      'Historia de Colombia',
-      'Revoluciones y cambios sociales',
-      'Conflictos y construcción de paz',
-      'Globalización y mundo contemporáneo',
-      'Ciudadanía y derechos humanos',
+      'Composición y estructura de la materia',
+      'Propiedades físicas y químicas de las sustancias',
+      'Transformaciones químicas',
+      'Técnicas de laboratorio y medición',
+      'Análisis de materiales y sustancias',
+      'Aplicaciones de la química en la salud, la industia y el medio ambiente',
     ],
   },
   'diseno-productos': {
     id: 'diseno-productos',
-    nombre: 'Diseño de productos',
+    nombre: 'Diseño de Productos',
     inicial: 'D',
     heroImage: '../img/diseno-1.jpg',
     mainImage: '../img/diseno-2.jpg',
-    heroTitulo: 'Diseño de productos',
+    heroTitulo: 'Diseño de Productos',
     heroDescripcion:
-      'Potenciamos el uso responsable y creativo de la tecnología para resolver problemas reales e innovar.',
-    descripcion:
-      'A través del diseño de proyectos, la programación y la robótica, desarrollamos competencias digitales para el siglo XXI.',
-    docente: 'Prof. Natalia Herrera',
+      'Diseñar, modelar y fabricar prototipos mediante herramientas digitales y tecnologías de fabricación.',
+    descripcion: [
+      'En la línea de Diseño de Productos de la Tecnoacademia, los aprendices exploran el proceso de creación de productos desde la conceptualización de una idea hasta su representación y fabricación digital.',
+      'A través del uso de software de modelado 3D y herramientas de diseño asistido por computador, los participantes desarrollan habilidades para diseñar piezas, estructuras y prototipos digitales, fortaleciendo su creatividad y pensamiento espacial.',
+      'Además, conocen el funcionamiento de tecnologías de fabricación digital, como las impresoras 3D y otros equipos especializados, comprendiendo cómo transformar modelos virtuales en objetos físicos.',
+    ],
+    docente: 'Andres Diaz',
     intensidad: '5 horas/semana',
     estudiantes: '155 estudiantes',
     objetivos: [
-      'Comprender el impacto de la tecnología en la sociedad.',
-      'Desarrollar soluciones tecnológicas a problemas del entorno.',
-      'Fortalecer competencias en programación y pensamiento computacional.',
-      'Promover el uso ético y seguro de las herramientas digitales.',
+      'Diseñar y representar objetos digitales utilizando herramientas de modelado tridimensional.',
+      'Comprender el funcionamiento y la aplicación de tecnologías como la impresión 3D y otras máquinas de fabricación.',
+      'Utilizar programas de diseño y modelado para crear, modificar y optimizar prototipos digitales.',
+      'Aplicar conceptos básicos de representación técnica para diseñar piezas y productos con dimensiones precisas.',
     ],
     temas: [
-      'Pensamiento computacional',
-      'Fundamentos de programación',
-      'Diseño y prototipado de proyectos',
-      'Robótica educativa',
-      'Tecnologías web y multimedia',
-      'Innovación y emprendimiento digital',
+      'Conceptualización de ideas y diseño de productos',
+      'Modelado 3D',
+      'Diseño asistido por computador (CAD)',
+      'Pensamiento espacial y representación digital',
+      'Fabricación digital',
+      'Impresión 3D y tecnologías de prototipado',
     ],
   },
 };
@@ -255,7 +272,13 @@ function renderLineContent() {
     mainImageEl.alt = `Estudiantes en la línea de ${lineLabel}`;
   }
   document.title = `TecnoAcademia Risaralda - ${lineLabel}`;
-  if (descEl) descEl.textContent = data.descripcion;
+  if (descEl) {
+    if (Array.isArray(data.descripcion)) {
+      descEl.innerHTML = data.descripcion.map((parrafo) => `<p>${parrafo}</p>`).join('');
+    } else {
+      descEl.innerHTML = `<p>${data.descripcion}</p>`;
+    }
+  }
   if (initialEl) initialEl.textContent = data.inicial;
   if (teacherEl) teacherEl.textContent = data.docente;
   if (hoursEl) hoursEl.textContent = data.intensidad;
@@ -310,8 +333,48 @@ function renderLineContent() {
     });
 }
 
+function updateSubjectTabsFade() {
+  const nav = document.querySelector('.subject-tabs-nav');
+  if (!nav) return;
+
+  const isDesktop = window.matchMedia('(min-width: 60rem)').matches;
+  if (isDesktop) {
+    nav.classList.remove('is-scroll-end');
+    return;
+  }
+
+  const atEnd = nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 2;
+  nav.classList.toggle('is-scroll-end', atEnd);
+}
+
+function setHeaderHeightVar() {
+  const header = document.querySelector('.header-main');
+  if (header) {
+    document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
+  }
+}
+
+function initSubjectTabsScroll() {
+  const nav = document.querySelector('.subject-tabs-nav');
+  if (!nav) return;
+
+  updateSubjectTabsFade();
+  nav.addEventListener('scroll', updateSubjectTabsFade, { passive: true });
+
+  if (typeof ResizeObserver !== 'undefined') {
+    const observer = new ResizeObserver(() => updateSubjectTabsFade());
+    observer.observe(nav);
+    if (nav.parentElement) observer.observe(nav.parentElement);
+  } else {
+    window.addEventListener('resize', updateSubjectTabsFade);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.subject-page')) {
+    setHeaderHeightVar();
+    window.addEventListener('resize', setHeaderHeightVar);
     renderLineContent();
+    initSubjectTabsScroll();
   }
 });
