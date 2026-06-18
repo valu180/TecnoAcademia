@@ -3,13 +3,19 @@
     --dark-green: #051408;
     --text-gray: #a0a0a0;
     --white: #ffffff;
+    --header-height: 90px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     background-color: #f9fdfa;
-    padding-top: 90px; 
+    padding-top: var(--header-height);
+    overflow-x: hidden;
 }
 
 /* NAVBAR */
@@ -20,14 +26,17 @@ body {
     top: 0; 
     left: 0;
     width: 100%;
-    z-index: 1000; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    box-shadow: 0 6px 18px -4px rgba(0, 0, 0, 0.14);
 }
 
 .navbar { 
     display: flex; 
     justify-content: space-between; 
     align-items: center;
+    position: relative;
+    width: 100%;
 }
 
 .logo { 
@@ -152,6 +161,11 @@ body {
     color: white;
 }
 
+.hero-content {
+    width: 100%;
+    max-width: 42rem;
+}
+
 .hero h1 { 
     font-size: 3.5rem; 
     line-height: 1.1; 
@@ -181,7 +195,9 @@ body {
 .stats-grid { 
     display: grid; 
     grid-template-columns: repeat(4, 1fr); 
-    gap: 20px; 
+    gap: 20px;
+    width: 100%;
+    margin-inline: auto;
 }
 
 .stat-card { 
@@ -707,35 +723,90 @@ body {
         display: block;
     }
 
+    .about-tecno {
+        padding-inline: 5%;
+    }
+
     .about-container {
         grid-template-columns: 1fr;
+        justify-items: stretch;
+        width: 100%;
+        max-width: 100%;
         text-align: center;
     }
+
+    .about-text,
+    .about-highlight {
+        width: 100%;
+        max-width: 100%;
+        margin-inline: auto;
+    }
+
+    .about-text h2 {
+        font-size: 2rem;
+    }
+
     .feature-item {
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    .feature-item i {
+        display: block;
+        margin-inline: auto;
+    }
+
+    .features-grid {
+        width: 100%;
+        justify-items: center;
+    }
+
+    .about-text .features-grid,
+    .about-text .main-description,
+    .about-text .sub-title,
+    .about-text h2 {
+        text-align: center;
+    }
+
+    .feature-item > div {
+        text-align: center;
+        width: 100%;
+    }
+
+    .highlight-card {
+        width: 100%;
+        max-width: 100%;
+        margin-inline: auto;
+    }
+
+    .header-main {
+        overflow-x: clip;
     }
 
     /* 2. Convertir el menú en una barra lateral o desplegable */
     .nav-links {
-        position: absolute;
-        top: 100%; /* Justo debajo del header */
-        right: -100%; /* Escondido a la derecha */
+        position: fixed;
+        top: var(--header-height, 90px);
+        right: 0;
         width: 80%;
         max-width: 300px;
-        height: 100vh;
+        height: calc(100vh - var(--header-height, 90px));
         background: white;
-        flex-direction: column; /* Menú vertical */
+        flex-direction: column;
         align-items: flex-start !important;
         padding: 40px 20px;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        transition: 0.4s ease;
+        transition: transform 0.4s ease;
         z-index: 999;
+        transform: translateX(100%);
     }
 
     /* Clase que activaremos con JS para mostrar el menú */
     .nav-links.active {
-        right: 0;
+        transform: translateX(0);
     }
 
     .nav-item {
@@ -747,6 +818,24 @@ body {
     .stats-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
         gap: 15px;
+    }
+
+    .hero {
+        justify-content: center;
+        text-align: center;
+        padding-inline: 5%;
+    }
+
+    .hero-content {
+        margin-inline: auto;
+    }
+
+    .hero .badge {
+        margin-inline: auto;
+    }
+
+    .stats-container {
+        padding-inline: 5%;
     }
 
     /* 4. Ajustes del Footer */
@@ -780,11 +869,21 @@ body {
     }
     
     .stats-grid {
-        grid-template-columns: 1fr; /* 1 columna en celulares pequeños */
+        grid-template-columns: 1fr;
+        max-width: 22rem;
+        margin-inline: auto;
     }
 
     .hero h1 {
         font-size: 2.2rem;
+    }
+
+    .hero p {
+        margin-inline: auto;
+    }
+
+    .about-text h2 {
+        font-size: 1.75rem;
     }
 
     .campus-container {
@@ -793,13 +892,15 @@ body {
 
     .slider {
         margin-left: 0;
+        margin-inline: auto;
         height: 250px;
     }
-}
 
-.cta-content h2 {
+    .cta-content h2 {
         font-size: 2rem;
     }
+
     .cta-section {
         padding: 60px 5%;
     }
+}

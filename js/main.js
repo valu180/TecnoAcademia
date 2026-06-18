@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 headerContainer.innerHTML = data;
                 actualizarRutas(headerContainer, pathPrefix);
+                marcarPaginaActivaEnNav(headerContainer);
                 inicializarDropdown();
                 inicializarMenuMovil(); 
             })
@@ -60,6 +61,30 @@ function actualizarRutas(contenedor, prefix) {
             el[attr] = prefix + val;
         }
     });
+}
+
+function obtenerSeccionNavActual() {
+    const path = window.location.pathname.toLowerCase();
+    const page = path.split("/").pop() || "index.html";
+
+    if (page === "index.html" || page === "") return "inicio";
+    if (page === "equipo.html") return "equipo";
+    if (page === "lineas.html") return "lineas";
+    if (page === "proyectos.html") return "proyectos";
+
+    return null;
+}
+
+function marcarPaginaActivaEnNav(headerContainer) {
+    const seccion = obtenerSeccionNavActual();
+    if (!seccion) return;
+
+    headerContainer.querySelectorAll(".nav-item").forEach((item) => {
+        item.classList.remove("active");
+    });
+
+    const activo = headerContainer.querySelector(`[data-nav="${seccion}"]`);
+    if (activo) activo.classList.add("active");
 }
 
 function inicializarVerMas() {
