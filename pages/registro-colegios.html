@@ -33,192 +33,360 @@
             <header class="registro-form-header">
                 <span class="registro-form-badge">REGISTRO</span>
                 <h2>Formulario de inscripción</h2>
-                <p>Completa los siguientes datos. Los campos marcados con <span class="req-mark">*</span> son obligatorios.</p>
+                <p>Completa los siguientes datos en 4 pasos. Los campos marcados con <span class="req-mark">*</span> son obligatorios.</p>
             </header>
 
             <form id="form-registro" novalidate>
 
-                <!-- 1. Documento de identidad -->
-                <section class="form-section-card" aria-labelledby="sec-doc-title">
-                    <div class="form-section-title" id="sec-doc-title">
-                        <span class="form-section-num">1</span>
-                        <h3>Documento de identidad</h3>
+                <nav class="form-stepper" aria-label="Progreso del formulario">
+                    <ol class="form-stepper-list">
+                        <li class="form-stepper-item is-active" data-stepper="1">
+                            <span class="form-stepper-num">1</span>
+                            <span class="form-stepper-label">Información básica</span>
+                        </li>
+                        <li class="form-stepper-item" data-stepper="2">
+                            <span class="form-stepper-num">2</span>
+                            <span class="form-stepper-label">Documentación y salud</span>
+                        </li>
+                        <li class="form-stepper-item" data-stepper="3">
+                            <span class="form-stepper-num">3</span>
+                            <span class="form-stepper-label">Residencia y educación</span>
+                        </li>
+                        <li class="form-stepper-item" data-stepper="4">
+                            <span class="form-stepper-num">4</span>
+                            <span class="form-stepper-label">Programación</span>
+                        </li>
+                    </ol>
+                    <div class="form-stepper-bar" aria-hidden="true">
+                        <div class="form-stepper-bar-fill" id="stepper-bar-fill"></div>
                     </div>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="tipo-documento">Tipo de documento <span class="req-mark">*</span></label>
-                            <div class="input-wrap input-wrap-select">
-                                <select id="tipo-documento" name="tipoDocumento" required>
-                                    <option value="" disabled selected>Seleccione...</option>
-                                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
-                                    <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
-                                    <option value="Cédula de extranjería">Cédula de extranjería</option>
-                                    <option value="Pasaporte">Pasaporte</option>
-                                </select>
+                </nav>
+
+                <!-- PASO 1 -->
+                <section class="form-step is-active" data-step="1" aria-labelledby="step-1-title">
+                    <div class="form-section-card">
+                        <div class="form-section-title" id="step-1-title">
+                            <span class="form-section-num">1</span>
+                            <h3>Información básica y contacto del aprendiz</h3>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="nombres">Nombre(s) <span class="req-mark">*</span></label>
+                                <input type="text" id="nombres" maxlength="60" autocomplete="given-name" placeholder="Ej: Ana María" required>
+                                <span class="form-error" data-error-for="nombres"></span>
                             </div>
-                            <span class="form-error" data-error-for="tipo-documento"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="numero-documento">Número de documento <span class="req-mark">*</span></label>
-                            <input type="text" id="numero-documento" name="numeroDocumento"
-                                   inputmode="numeric" maxlength="10" autocomplete="off"
-                                   placeholder="Ej: 1098765432" required>
-                            <span class="form-error" data-error-for="numero-documento"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="lugar-expedicion">Lugar de expedición <span class="req-mark">*</span></label>
-                            <input type="text" id="lugar-expedicion" name="lugarExpedicion"
-                                   maxlength="80" autocomplete="address-level2"
-                                   placeholder="Ej: Pereira" required>
-                            <span class="form-error" data-error-for="lugar-expedicion"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="fecha-expedicion">Fecha de expedición del documento <span class="req-mark">*</span></label>
-                            <div class="input-wrap input-wrap-date">
-                                <input type="date" id="fecha-expedicion" name="fechaExpedicion" required>
+                            <div class="form-group">
+                                <label for="primer-apellido">Primer apellido <span class="req-mark">*</span></label>
+                                <input type="text" id="primer-apellido" maxlength="40" autocomplete="family-name" placeholder="Ej: López" required>
+                                <span class="form-error" data-error-for="primer-apellido"></span>
                             </div>
-                            <span class="form-error" data-error-for="fecha-expedicion"></span>
+                            <div class="form-group">
+                                <label for="segundo-apellido">Segundo apellido (opcional)</label>
+                                <input type="text" id="segundo-apellido" maxlength="40" autocomplete="additional-name" placeholder="Ej: García">
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha-nacimiento">Fecha de nacimiento <span class="req-mark">*</span></label>
+                                <input type="date" id="fecha-nacimiento" class="js-datepicker" data-dp-role="nacimiento" required>
+                                <span class="form-error" data-error-for="fecha-nacimiento"></span>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <span class="field-label">Género <span class="req-mark">*</span></span>
+                                <div class="form-option-list" id="genero-group" role="radiogroup" aria-labelledby="genero-label">
+                                    <label class="form-option">
+                                        <input type="radio" name="genero-radio" id="genero-m" value="Masculino">
+                                        <span>Masculino</span>
+                                    </label>
+                                    <label class="form-option">
+                                        <input type="radio" name="genero-radio" id="genero-f" value="Femenino">
+                                        <span>Femenino</span>
+                                    </label>
+                                    <label class="form-option">
+                                        <input type="radio" name="genero-radio" id="genero-o" value="Otros">
+                                        <span>Otros</span>
+                                    </label>
+                                </div>
+                                <div class="form-conditional" id="genero-otros-wrap" hidden>
+                                    <label for="genero-otros-texto">Especifica tu género <span class="req-mark">*</span></label>
+                                    <input type="text" id="genero-otros-texto" maxlength="40" placeholder="Especifica...">
+                                </div>
+                                <span class="form-error" data-error-for="genero-group"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="pais-nacimiento">País de nacimiento <span class="req-mark">*</span></label>
+                                <input type="text" id="pais-nacimiento" maxlength="60" placeholder="Ej: Colombia" required>
+                                <span class="form-error" data-error-for="pais-nacimiento"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="depto-nacimiento">Departamento de nacimiento <span class="req-mark">*</span></label>
+                                <input type="text" id="depto-nacimiento" maxlength="60" placeholder="Ej: Risaralda" required>
+                                <span class="form-error" data-error-for="depto-nacimiento"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="municipio-nacimiento">Municipio de nacimiento <span class="req-mark">*</span></label>
+                                <input type="text" id="municipio-nacimiento" maxlength="60" placeholder="Ej: Pereira" required>
+                                <span class="form-error" data-error-for="municipio-nacimiento"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="estrato">Estrato socioeconómico <span class="req-mark">*</span></label>
+                                <div class="input-wrap input-wrap-select">
+                                    <select id="estrato" required>
+                                        <option value="" disabled selected>Seleccione...</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </div>
+                                <span class="form-error" data-error-for="estrato"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="correo">Correo electrónico <span class="req-mark">*</span></label>
+                                <input type="email" id="correo" maxlength="100" autocomplete="email" placeholder="correo@ejemplo.com" required>
+                                <span class="form-error" data-error-for="correo"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="celular">Celular <span class="req-mark">*</span></label>
+                                <input type="tel" id="celular" inputmode="numeric" maxlength="15" autocomplete="tel" placeholder="3001234567" required>
+                                <span class="form-error" data-error-for="celular"></span>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 2. Información básica -->
-                <section class="form-section-card" aria-labelledby="sec-basica-title">
-                    <div class="form-section-title" id="sec-basica-title">
-                        <span class="form-section-num">2</span>
-                        <h3>Información básica</h3>
-                    </div>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="nombres">Nombre(s) <span class="req-mark">*</span></label>
-                            <input type="text" id="nombres" name="nombres"
-                                   maxlength="60" autocomplete="given-name"
-                                   placeholder="Ej: Ana María" required>
-                            <span class="form-error" data-error-for="nombres"></span>
+                <!-- PASO 2 -->
+                <section class="form-step" data-step="2" aria-labelledby="step-2-title" hidden>
+                    <div class="form-section-card">
+                        <div class="form-section-title" id="step-2-title">
+                            <span class="form-section-num">2</span>
+                            <h3>Documentación e información de salud</h3>
                         </div>
-                        <div class="form-group">
-                            <label for="primer-apellido">Primer apellido <span class="req-mark">*</span></label>
-                            <input type="text" id="primer-apellido" name="primerApellido"
-                                   maxlength="40" autocomplete="family-name"
-                                   placeholder="Ej: López" required>
-                            <span class="form-error" data-error-for="primer-apellido"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="segundo-apellido">Segundo apellido (opcional)</label>
-                            <input type="text" id="segundo-apellido" name="segundoApellido"
-                                   maxlength="40" autocomplete="additional-name"
-                                   placeholder="Ej: García">
-                        </div>
-                        <div class="form-group">
-                            <label for="fecha-nacimiento">Fecha de nacimiento <span class="req-mark">*</span></label>
-                            <div class="input-wrap input-wrap-date">
-                                <input type="date" id="fecha-nacimiento" name="fechaNacimiento" required>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="tipo-documento">Tipo de documento <span class="req-mark">*</span></label>
+                                <div class="input-wrap input-wrap-select">
+                                    <select id="tipo-documento" required>
+                                        <option value="" disabled selected>Seleccione...</option>
+                                        <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                                        <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+                                        <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                                        <option value="PPT">PPT</option>
+                                        <option value="Otros">Otros</option>
+                                    </select>
+                                </div>
+                                <div class="form-conditional" id="tipo-documento-otros-wrap" hidden>
+                                    <label for="tipo-documento-otros-texto">Especifica el tipo de documento <span class="req-mark">*</span></label>
+                                    <input type="text" id="tipo-documento-otros-texto" maxlength="40" placeholder="Especifica...">
+                                </div>
+                                <span class="form-error" data-error-for="tipo-documento"></span>
                             </div>
-                            <span class="form-error" data-error-for="fecha-nacimiento"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="lugar-nacimiento">Lugar de nacimiento <span class="req-mark">*</span></label>
-                            <input type="text" id="lugar-nacimiento" name="lugarNacimiento"
-                                   maxlength="80" autocomplete="off"
-                                   placeholder="Ej: Dosquebradas" required>
-                            <span class="form-error" data-error-for="lugar-nacimiento"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="genero">Género <span class="req-mark">*</span></label>
-                            <div class="input-wrap input-wrap-select">
-                                <select id="genero" name="genero" required>
-                                    <option value="" disabled selected>Seleccione...</option>
-                                    <option value="Masculino">Masculino</option>
-                                    <option value="Femenino">Femenino</option>
-                                    <option value="No binario">No binario</option>
-                                </select>
+                            <div class="form-group">
+                                <label for="numero-documento">Número de documento <span class="req-mark">*</span></label>
+                                <input type="text" id="numero-documento" inputmode="numeric" maxlength="15" autocomplete="off" placeholder="Ej: 1098765432" required>
+                                <span class="form-error" data-error-for="numero-documento"></span>
                             </div>
-                            <span class="form-error" data-error-for="genero"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="estrato">Estrato socioeconómico <span class="req-mark">*</span></label>
-                            <div class="input-wrap input-wrap-select">
-                                <select id="estrato" name="estrato" required>
-                                    <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
+                            <div class="form-group">
+                                <label for="fecha-expedicion">Fecha de expedición del documento <span class="req-mark">*</span></label>
+                                <input type="date" id="fecha-expedicion" class="js-datepicker" data-dp-role="expedicion" required>
+                                <span class="form-error" data-error-for="fecha-expedicion"></span>
                             </div>
-                            <span class="form-error" data-error-for="estrato"></span>
+                            <div class="form-group">
+                                <label for="pais-expedicion">País de expedición <span class="req-mark">*</span></label>
+                                <input type="text" id="pais-expedicion" maxlength="60" placeholder="Ej: Colombia" required>
+                                <span class="form-error" data-error-for="pais-expedicion"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="depto-expedicion">Departamento de expedición <span class="req-mark">*</span></label>
+                                <input type="text" id="depto-expedicion" maxlength="60" placeholder="Ej: Risaralda" required>
+                                <span class="form-error" data-error-for="depto-expedicion"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="municipio-expedicion">Municipio de expedición <span class="req-mark">*</span></label>
+                                <input type="text" id="municipio-expedicion" maxlength="60" placeholder="Ej: Pereira" required>
+                                <span class="form-error" data-error-for="municipio-expedicion"></span>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <span class="field-label">RH (Tipo de sangre) <span class="req-mark">*</span></span>
+                                <div class="rh-grid">
+                                    <div class="rh-block">
+                                        <span class="rh-block-title">Grupo</span>
+                                        <div class="form-option-list form-option-list form-option-list--compact" id="rh-grupo-group" role="radiogroup">
+                                            <label class="form-option"><input type="radio" name="rh-grupo" value="A"><span>A</span></label>
+                                            <label class="form-option"><input type="radio" name="rh-grupo" value="B"><span>B</span></label>
+                                            <label class="form-option"><input type="radio" name="rh-grupo" value="AB"><span>AB</span></label>
+                                            <label class="form-option"><input type="radio" name="rh-grupo" value="O"><span>O</span></label>
+                                        </div>
+                                        <span class="form-error" data-error-for="rh-grupo-group"></span>
+                                    </div>
+                                    <div class="rh-block">
+                                        <span class="rh-block-title">Factor</span>
+                                        <div class="form-option-list form-option-list form-option-list--compact" id="rh-factor-group" role="radiogroup">
+                                            <label class="form-option"><input type="radio" name="rh-factor" value="+"><span>+</span></label>
+                                            <label class="form-option"><input type="radio" name="rh-factor" value="-"><span>−</span></label>
+                                        </div>
+                                        <span class="form-error" data-error-for="rh-factor-group"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="eps">¿En qué EPS está afiliado? <span class="req-mark">*</span></label>
+                                <input type="text" id="eps" maxlength="80" placeholder="Ej: Sura, Nueva EPS..." required>
+                                <span class="form-error" data-error-for="eps"></span>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <span class="field-label">¿Cuenta con alguna discapacidad o condición especial? <span class="req-mark">*</span></span>
+                                <div class="form-option-list" id="discapacidad-group" role="radiogroup">
+                                    <label class="form-option">
+                                        <input type="radio" name="discapacidad-radio" value="No">
+                                        <span>No</span>
+                                    </label>
+                                    <label class="form-option">
+                                        <input type="radio" name="discapacidad-radio" value="Sí">
+                                        <span>Sí</span>
+                                    </label>
+                                </div>
+                                <div class="form-conditional" id="discapacidad-detalle-wrap" hidden>
+                                    <label for="discapacidad-detalle">Detalla la condición <span class="req-mark">*</span></label>
+                                    <input type="text" id="discapacidad-detalle" maxlength="120" placeholder="Describe la condición...">
+                                </div>
+                                <span class="form-error" data-error-for="discapacidad-group"></span>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 3. Datos de contacto -->
-                <section class="form-section-card" aria-labelledby="sec-contacto-title">
-                    <div class="form-section-title" id="sec-contacto-title">
-                        <span class="form-section-num">3</span>
-                        <h3>Datos de contacto</h3>
-                    </div>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="ciudad-residencia">Ciudad de residencia <span class="req-mark">*</span></label>
-                            <input type="text" id="ciudad-residencia" name="ciudadResidencia"
-                                   maxlength="80" autocomplete="address-level2"
-                                   placeholder="Ej: Pereira" required>
-                            <span class="form-error" data-error-for="ciudad-residencia"></span>
+                <!-- PASO 3 -->
+                <section class="form-step" data-step="3" aria-labelledby="step-3-title" hidden>
+                    <div class="form-section-card">
+                        <div class="form-section-title" id="step-3-title">
+                            <span class="form-section-num">3</span>
+                            <h3>Residencia, acudiente y educación</h3>
                         </div>
-                        <div class="form-group">
-                            <label for="direccion-residencia">Dirección de residencia (opcional)</label>
-                            <input type="text" id="direccion-residencia" name="direccionResidencia"
-                                   maxlength="120" autocomplete="street-address"
-                                   placeholder="Ej: Calle 10 # 25-30">
-                        </div>
-                        <div class="form-group">
-                            <label for="correo">Correo electrónico <span class="req-mark">*</span></label>
-                            <input type="email" id="correo" name="correo"
-                                   maxlength="100" autocomplete="email"
-                                   placeholder="correo@ejemplo.com" required>
-                            <span class="form-error" data-error-for="correo"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="celular">Celular <span class="req-mark">*</span></label>
-                            <input type="tel" id="celular" name="celular"
-                                   inputmode="numeric" maxlength="10" autocomplete="tel"
-                                   placeholder="3001234567" required>
-                            <span class="form-error" data-error-for="celular"></span>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="depto-residencia">Departamento de residencia <span class="req-mark">*</span></label>
+                                <input type="text" id="depto-residencia" maxlength="60" placeholder="Ej: Risaralda" required>
+                                <span class="form-error" data-error-for="depto-residencia"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="municipio-residencia">Municipio de residencia <span class="req-mark">*</span></label>
+                                <input type="text" id="municipio-residencia" maxlength="60" placeholder="Ej: Pereira" required>
+                                <span class="form-error" data-error-for="municipio-residencia"></span>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <label for="direccion-residencia">Dirección de residencia (opcional)</label>
+                                <input type="text" id="direccion-residencia" maxlength="120" autocomplete="street-address" placeholder="Ej: Calle 10 # 25-30">
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre-familiar">Nombre y apellidos del familiar <span class="req-mark">*</span></label>
+                                <input type="text" id="nombre-familiar" maxlength="80" autocomplete="name" placeholder="Ej: María López García" required>
+                                <span class="form-error" data-error-for="nombre-familiar"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="celular-familiar">Número de celular familiar <span class="req-mark">*</span></label>
+                                <input type="tel" id="celular-familiar" inputmode="numeric" maxlength="15" autocomplete="tel" placeholder="3001234567" required>
+                                <span class="form-error" data-error-for="celular-familiar"></span>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <label for="institucion-educativa">¿Institución educativa? <span class="req-mark">*</span></label>
+                                <div class="input-wrap input-wrap-select">
+                                    <select id="institucion-educativa" required>
+                                        <option value="" disabled selected>Seleccione...</option>
+                                        <option value="Deogracias Cardona">Deogracias Cardona</option>
+                                        <option value="Aquilino Bedoya">Aquilino Bedoya</option>
+                                        <option value="Instituto Técnico Superior">Instituto Técnico Superior</option>
+                                        <option value="Publica Combia">Publica Combia</option>
+                                        <option value="La Bella">La Bella</option>
+                                        <option value="Augusto Zuluaga Patiño">Augusto Zuluaga Patiño</option>
+                                        <option value="Hans Drews Arango">Hans Drews Arango</option>
+                                        <option value="Ciudadela Cuba">Ciudadela Cuba</option>
+                                        <option value="Fabio Vásquez Botero">Fabio Vásquez Botero</option>
+                                        <option value="Nueva Granada">Nueva Granada</option>
+                                        <option value="Alfonso Jaramillo Gutiérrez">Alfonso Jaramillo Gutiérrez</option>
+                                        <option value="Lestonnac">Lestonnac</option>
+                                        <option value="Manuel Elkin Patarroyo">Manuel Elkin Patarroyo</option>
+                                        <option value="María Dolorosa - Francisco Javier">María Dolorosa - Francisco Javier</option>
+                                        <option value="Popular Diocesano">Popular Diocesano</option>
+                                        <option value="Bosques de la Acuarela">Bosques de la Acuarela</option>
+                                        <option value="Jesús María Ormaza">Jesús María Ormaza</option>
+                                        <option value="Otros">Otros</option>
+                                    </select>
+                                </div>
+                                <div class="form-conditional" id="institucion-otros-wrap" hidden>
+                                    <label for="institucion-otros-texto">Especifica la institución <span class="req-mark">*</span></label>
+                                    <input type="text" id="institucion-otros-texto" maxlength="80" placeholder="Nombre del colegio...">
+                                </div>
+                                <p class="form-note">Colocar un punto (.) si la respuesta es negativa o no aplica.</p>
+                                <span class="form-error" data-error-for="institucion-educativa"></span>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <span class="field-label">Grado <span class="req-mark">*</span></span>
+                                <div class="form-option-list" id="grado-group" role="radiogroup">
+                                    <label class="form-option"><input type="radio" name="grado-radio" value="Octavo"><span>Octavo</span></label>
+                                    <label class="form-option"><input type="radio" name="grado-radio" value="Noveno"><span>Noveno</span></label>
+                                    <label class="form-option"><input type="radio" name="grado-radio" value="Caminar 1"><span>Caminar 1</span></label>
+                                    <label class="form-option"><input type="radio" name="grado-radio" value="Caminar 2"><span>Caminar 2</span></label>
+                                    <label class="form-option"><input type="radio" name="grado-radio" value="Otros"><span>Otros</span></label>
+                                </div>
+                                <div class="form-conditional" id="grado-otros-wrap" hidden>
+                                    <label for="grado-otros-texto">Especifica el grado <span class="req-mark">*</span></label>
+                                    <input type="text" id="grado-otros-texto" maxlength="40" placeholder="Especifica...">
+                                </div>
+                                <span class="form-error" data-error-for="grado-group"></span>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 4. Familiar o acudiente -->
-                <section class="form-section-card" aria-labelledby="sec-familiar-title">
-                    <div class="form-section-title" id="sec-familiar-title">
-                        <span class="form-section-num">4</span>
-                        <h3>Datos de un familiar o acudiente</h3>
-                    </div>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="nombre-familiar">Nombre y apellidos del familiar <span class="req-mark">*</span></label>
-                            <input type="text" id="nombre-familiar" name="nombreFamiliar"
-                                   maxlength="80" autocomplete="name"
-                                   placeholder="Ej: María López García" required>
-                            <span class="form-error" data-error-for="nombre-familiar"></span>
+                <!-- PASO 4 -->
+                <section class="form-step" data-step="4" aria-labelledby="step-4-title" hidden>
+                    <div class="form-section-card">
+                        <div class="form-section-title" id="step-4-title">
+                            <span class="form-section-num">4</span>
+                            <h3>Programación TecnoAcademia</h3>
                         </div>
-                        <div class="form-group">
-                            <label for="celular-familiar">Número de celular <span class="req-mark">*</span></label>
-                            <input type="tel" id="celular-familiar" name="celularFamiliar"
-                                   inputmode="numeric" maxlength="10" autocomplete="tel"
-                                   placeholder="3001234567" required>
-                            <span class="form-error" data-error-for="celular-familiar"></span>
+                        <div class="form-grid form-grid-single">
+                            <div class="form-group form-group-full">
+                                <span class="field-label">¿Estuvo antes en algún curso de TecnoAcademia? <span class="req-mark">*</span></span>
+                                <div class="form-option-list" id="curso-anterior-group" role="radiogroup">
+                                    <label class="form-option"><input type="radio" name="curso-anterior-radio" value="Sí"><span>Sí</span></label>
+                                    <label class="form-option"><input type="radio" name="curso-anterior-radio" value="No"><span>No</span></label>
+                                </div>
+                                <span class="form-error" data-error-for="curso-anterior-group"></span>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <span class="field-label">Jornada en la que asistirá a la TecnoAcademia <span class="req-mark">*</span></span>
+                                <div class="form-option-list" id="jornada-group" role="radiogroup">
+                                    <label class="form-option"><input type="radio" name="jornada-radio" value="8 a.m a 12 a.m"><span>8 a.m a 12 a.m</span></label>
+                                    <label class="form-option"><input type="radio" name="jornada-radio" value="2 p.m a 6 p.m"><span>2 p.m a 6 p.m</span></label>
+                                </div>
+                                <span class="form-error" data-error-for="jornada-group"></span>
+                            </div>
+                        </div>
+                        <div class="form-nav-actions form-nav-actions-final" hidden>
+                            <button type="button" id="btn-anterior-final" class="form-nav-btn form-nav-btn-secondary">
+                                <i class="fas fa-arrow-left"></i>
+                                <span>Anterior</span>
+                            </button>
+                            <button type="submit" id="form-submit" class="form-nav-btn form-nav-btn-primary">
+                                <span class="btn-text">Enviar formulario</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
                         </div>
                     </div>
                 </section>
 
                 <div id="form-mensaje" class="form-mensaje" role="status" aria-live="polite" hidden></div>
 
-                <div class="form-actions">
-                    <button type="submit" id="form-submit" class="form-submit-btn">
-                        <span class="btn-text">Enviar inscripción</span>
-                        <i class="fas fa-paper-plane"></i>
+                <div class="form-nav-actions form-nav-actions-global is-first-step">
+                    <button type="button" id="btn-anterior" class="form-nav-btn form-nav-btn-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Anterior</span>
+                    </button>
+                    <button type="button" id="btn-siguiente" class="form-nav-btn form-nav-btn-primary">
+                        <span>Siguiente</span>
+                        <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
 
