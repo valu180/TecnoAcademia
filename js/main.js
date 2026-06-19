@@ -39,12 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 footerContainer.innerHTML = data;
                 actualizarRutas(footerContainer, pathPrefix);
-                cargarContadorVisitas();
             })
             .catch(error => console.error("Error cargando footer:", error));
     }
 
     // 4. 🔹 INICIALIZAR FUNCIONALIDADES ESPECÍFICAS
+    cargarContadorVisitas();
     inicializarFiltrosProyectos();
     inicializarVerMas();
     inicializarAnimaciones();
@@ -65,12 +65,13 @@ function actualizarRutas(contenedor, prefix) {
 
 function obtenerSeccionNavActual() {
     const path = window.location.pathname.toLowerCase();
-    const page = path.split("/").pop() || "index.html";
+    const segment = path.split("/").pop() || "";
+    const page = segment.split("?")[0].replace(/\.html$/, "");
 
-    if (page === "index.html" || page === "") return "inicio";
-    if (page === "equipo.html") return "equipo";
-    if (page === "lineas.html") return "lineas";
-    if (page === "proyectos.html") return "proyectos";
+    if (page === "" || page === "index") return "inicio";
+    if (page === "equipo") return "equipo";
+    if (page === "lineas") return "lineas";
+    if (page === "proyectos") return "proyectos";
 
     return null;
 }
@@ -199,9 +200,17 @@ function inicializarSlider() {
 
 function cargarContadorVisitas() {
     const contador = document.getElementById("visit-count");
-    if (!contador) return;
+    if (!contador || contador.dataset.loaded === "true") return;
 
-    const API_URL = "https://api.countapi.xyz/hit/tecnoacademia-risaralda-web2026/visitas";
+    const baseUrl = window.TECNO_ACADEMIA?.appsScriptUrl;
+    if (!baseUrl) {
+        contador.textContent = "—";
+        contador.title = "Configura js/config.js con la URL del Apps Script.";
+        return;
+    }
+
+    contador.dataset.loaded = "true";
+    const API_URL = `${baseUrl}?action=visit`;
 
     fetch(API_URL)
         .then((res) => {
@@ -217,8 +226,9 @@ function cargarContadorVisitas() {
             }
         })
         .catch(() => {
+            contador.dataset.loaded = "false";
             contador.textContent = "—";
             contador.title =
-                "El servicio de conteo de visitas (CountAPI) no está disponible. Revisa tu conexión o sustituye el contador por otro servicio.";
+                "No se pudo cargar el contador. Verifica que el Apps Script tenga doGet con action=visit y esté desplegado.";
         });
 }
