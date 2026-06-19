@@ -37,7 +37,7 @@ Para visualizar y probar el proyecto en tu entorno local, sigue estos sencillos 
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone [https://github.com/valu180/TecnoAcademia.git](https://github.com/valu180/TecnoAcademia.git)
+    git clone https://github.com/valu180/TecnoAcademia.git
     ```
 2.  **Navegar a la carpeta del proyecto:**
     ```bash
@@ -48,8 +48,55 @@ Para visualizar y probar el proyecto en tu entorno local, sigue estos sencillos 
     * Simplemente busca y abre el archivo `index.html` en tu navegador web de preferencia.
     * O bien, utiliza una extensión como *Live Server* en Visual Studio Code para levantar un servidor local rápido.
 
-### 🌐 Despliegue en Producción
-El proyecto está optimizado para ser desplegado en cualquier proveedor de servicios de hosting estático o servidor frontend (como GitHub Pages, Vercel, Netlify, Firebase Hosting, etc.). 
+### 🌐 Despliegue en Producción (Firebase Hosting)
+
+El sitio se publica con **Firebase Hosting**. La configuración vive en `firebase.json` y `.firebaserc` (proyecto `tecnoacademiarisaralda-site`).
+
+**Requisitos:**
+
+- [Node.js](https://nodejs.org/) (LTS o superior)
+- Firebase CLI:
+
+```bash
+npm install -g firebase-tools
+```
+
+**Iniciar sesión (una sola vez):**
+
+```bash
+firebase login
+```
+
+**Publicar cambios:**
+
+```bash
+firebase deploy --only hosting
+```
+
+Tras el despliegue, el sitio queda disponible en:
+
+- https://tecnoacademiarisaralda-site.web.app
+
+> **Nota para Node 19+ (workaround temporal):** con Node 19 o superior, la
+> versión actual de `firebase-tools` puede fallar el login/deploy con el mensaje
+> `Your credentials are no longer valid` debido a un bug de keep-alive en su
+> dependencia interna `node-fetch@2`. Si te ocurre, crea un archivo
+> `no-keepalive.cjs` (ignorado por git) con:
+>
+> ```js
+> require('http').globalAgent.keepAlive = false;
+> require('https').globalAgent.keepAlive = false;
+> ```
+>
+> Y ejecuta los comandos de Firebase con:
+>
+> ```bash
+> # Windows (cmd)
+> set NODE_OPTIONS=--require ./no-keepalive.cjs
+>
+> # macOS / Linux
+> export NODE_OPTIONS="--require ./no-keepalive.cjs"
+> ```
 
 ---
 
