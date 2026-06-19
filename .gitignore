@@ -27,6 +27,10 @@ build/
 .env
 .env.*
 
+# Firebase
+.firebase/
+no-keepalive.cjs
+
 # Archivos comprimidos
 *.zip
 *.tar
