@@ -117,7 +117,8 @@
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-group textarea {
     width: 100%;
     padding: 12px 14px;
     border: 1px solid #d0dbd2;
@@ -128,18 +129,48 @@
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.form-group textarea {
+    min-height: 88px;
+    resize: vertical;
+}
+
 .form-group input::placeholder {
     color: #9ca3af;
 }
 
 .form-group input:focus,
-.form-group select:focus {
+.form-group select:focus,
+.form-group textarea:focus {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(41, 180, 62, 0.15);
 }
 
-/* Select con chevron */
+/* Select base (mejorado luego a select personalizado por JS) */
+.input-wrap-select {
+    border: 1px solid #d0dbd2;
+    border-radius: 10px;
+    background: var(--white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-wrap-select:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(41, 180, 62, 0.15);
+}
+
+.input-wrap-select select {
+    border: none;
+    box-shadow: none;
+    min-height: 44px;
+    background: transparent;
+}
+
+.input-wrap-select select:focus {
+    border: none;
+    box-shadow: none;
+}
+
 .input-wrap {
     position: relative;
     width: 100%;
@@ -164,38 +195,28 @@
     pointer-events: none;
 }
 
-/* Date inputs */
-.input-wrap-date input[type="date"] {
-    padding-right: 40px;
-    cursor: pointer;
-}
-
-.input-wrap-date input[type="date"]::-webkit-calendar-picker-indicator {
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    width: 40px;
-    height: 100%;
-    cursor: pointer;
-}
-
-.input-wrap-date::after {
-    content: "\f073";
-    font-family: "Font Awesome 6 Free";
-    font-weight: 400;
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--primary);
-    font-size: 0.9rem;
-    pointer-events: none;
-}
-
 .form-group.has-error input,
-.form-group.has-error select {
+.form-group.has-error select,
+.form-group.has-error textarea,
+.form-group.has-error .input-wrap-select {
     border-color: #e11d48;
     box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.12);
+}
+
+.form-group.has-error .input-wrap-select select {
+    border: none;
+    box-shadow: none;
+}
+
+.form-group.has-error .datepicker-native {
+    box-shadow: none;
+}
+
+.form-group.has-error .form-option-list,
+.rh-block.has-error .form-option-list {
+    outline: 2px solid #e11d48;
+    outline-offset: 2px;
+    border-radius: 10px;
 }
 
 .form-error {
@@ -206,8 +227,357 @@
 }
 
 /* --- Mensaje de feedback --- */
-.form-mensaje {
+.form-nav-actions-global.is-first-step {
+    justify-content: center;
+}
+
+.form-nav-actions-global.is-first-step #btn-anterior {
+    display: none !important;
+}
+
+.form-nav-actions-global.has-back {
+    justify-content: space-between;
+}
+
+/* --- Select personalizado --- */
+.form-custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.form-native-select {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+}
+
+.form-custom-select-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid #d0dbd2;
+    border-radius: 10px;
+    background: var(--white);
+    font-size: 0.95rem;
+    color: #1f2937;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    text-align: left;
+}
+
+.form-custom-select-trigger i {
+    color: var(--primary);
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+}
+
+.form-custom-select.is-open .form-custom-select-trigger {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(41, 180, 62, 0.15);
+}
+
+.form-custom-select.is-open .form-custom-select-trigger i {
+    transform: rotate(180deg);
+}
+
+.form-custom-select-value.is-placeholder {
+    color: #9ca3af;
+}
+
+.form-custom-select-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    z-index: 30;
+    list-style: none;
+    margin: 0;
+    padding: 6px;
+    max-height: 240px;
+    overflow-y: auto;
+    background: var(--white);
+    border: 1px solid #dce5dd;
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.form-custom-select-menu[hidden] {
+    display: none !important;
+}
+
+.form-custom-select-option {
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    color: #374151;
+    cursor: pointer;
+}
+
+.form-custom-select-option:hover,
+.form-custom-select-option.is-selected {
+    background: #f0faf2;
+    color: var(--dark-green);
+}
+
+.form-group.has-error .form-custom-select-trigger {
+    border-color: #e11d48;
+    box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.12);
+}
+
+/* --- Datepicker personalizado --- */
+.datepicker {
+    position: relative;
+    width: 100%;
+}
+
+.datepicker-native {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.datepicker-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid #d0dbd2;
+    border-radius: 10px;
+    background: var(--white);
+    font-size: 0.95rem;
+    color: #1f2937;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.datepicker-trigger i {
+    color: var(--primary);
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.datepicker.is-open .datepicker-trigger {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(41, 180, 62, 0.15);
+}
+
+.datepicker-value.is-placeholder {
+    color: #9ca3af;
+}
+
+.form-group.has-error .datepicker-trigger {
+    border-color: #e11d48;
+    box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.12);
+}
+
+.datepicker-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 20, 8, 0.45);
+    z-index: 1200;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.datepicker-backdrop.is-visible {
+    opacity: 1;
+}
+
+.datepicker-backdrop[hidden] {
+    display: none;
+}
+
+.datepicker-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 1300;
+    width: 300px;
+    max-width: calc(100vw - 32px);
+    padding: 16px;
+    background: var(--white);
+    border: 1px solid #dce5dd;
+    border-radius: 16px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+    font-family: 'Inter', sans-serif;
+}
+
+.datepicker-panel[hidden] {
+    display: none;
+}
+
+.datepicker-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.datepicker-nav {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border: 1px solid #dce5dd;
+    border-radius: 9px;
+    background: var(--white);
+    color: var(--dark-green);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.datepicker-nav:hover {
+    background: #ecfdf3;
+    border-color: var(--primary);
+}
+
+.datepicker-head-selects {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+}
+
+.datepicker-month-label {
+    flex: 1;
+    text-align: center;
+    font-weight: 600;
+    color: var(--dark-green);
+    font-size: 0.95rem;
+    align-self: center;
+    text-transform: capitalize;
+}
+
+.datepicker-year {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 6px 28px 6px 10px;
+    border: 1px solid #d0dbd2;
+    border-radius: 8px;
+    background: var(--white)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%2329b43e' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E")
+        no-repeat right 10px center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--dark-green);
+    cursor: pointer;
+}
+
+.datepicker-year:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(41, 180, 62, 0.15);
+}
+
+.datepicker-weekdays,
+.datepicker-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.datepicker-weekday {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #6b7280;
+    padding: 6px 0;
+    text-transform: uppercase;
+}
+
+.datepicker-day {
+    aspect-ratio: 1 / 1;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #374151;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.datepicker-day.is-empty {
+    pointer-events: none;
+}
+
+.datepicker-day:hover:not(:disabled) {
+    background: #ecfdf3;
+}
+
+.datepicker-day.is-today {
+    font-weight: 700;
+    box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.datepicker-day.is-selected {
+    background: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.datepicker-day.is-selected:hover {
+    background: #1e7a3c;
+}
+
+.datepicker-day:disabled {
+    color: #cbd5d0;
+    cursor: not-allowed;
+}
+
+/* Bottom sheet en móvil */
+@media (max-width: 600px) {
+    .datepicker-panel {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 18px 18px 0 0;
+        padding: 20px 18px calc(20px + env(safe-area-inset-bottom, 0px));
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .datepicker-panel.is-open {
+        transform: translateY(0);
+    }
+
+    .datepicker-day {
+        font-size: 0.95rem;
+    }
+}
+
+.form-nav-actions-final {
     margin-top: 8px;
+    padding-top: 8px;
+}
+
+.form-mensaje {
+    margin-top: 16px;
+    margin-bottom: 4px;
     padding: 16px 20px;
     border-radius: 12px;
     font-size: 0.95rem;
@@ -215,7 +585,6 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    animation: form-msg-in 0.35s ease;
 }
 
 .form-mensaje::before {
@@ -249,34 +618,283 @@
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Botón de envío --- */
-.form-actions {
-    margin-top: 28px;
+/* --- Stepper --- */
+.form-stepper {
+    background: var(--white);
+    border: 1px solid #dce5dd;
+    border-radius: 14px;
+    padding: 24px 28px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.form-stepper-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.form-stepper-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
     text-align: center;
 }
 
-.form-submit-btn {
+.form-stepper-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #d0dbd2;
+    background: var(--white);
+    color: #6b7280;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.form-stepper-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #6b7280;
+    line-height: 1.3;
+}
+
+.form-stepper-item.is-active .form-stepper-num {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+}
+
+.form-stepper-item.is-active .form-stepper-label {
+    color: var(--dark-green);
+    font-weight: 600;
+}
+
+.form-stepper-item.is-completed .form-stepper-num {
+    background: #ecfdf3;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.form-stepper-item.is-completed .form-stepper-label {
+    color: #374151;
+}
+
+.form-stepper-bar {
+    height: 4px;
+    background: #e5ebe6;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.form-stepper-bar-fill {
+    height: 100%;
+    width: 25%;
+    background: linear-gradient(90deg, #1e7a3c 0%, var(--primary) 100%);
+    border-radius: 4px;
+    transition: width 0.35s ease;
+}
+
+/* --- Pasos del formulario --- */
+.form-step[hidden] {
+    display: none !important;
+}
+
+.form-step.is-active {
+    display: block;
+}
+
+.form-nav-actions-global[hidden],
+.form-nav-actions-final[hidden] {
+    display: none !important;
+}
+
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+.form-grid-single {
+    grid-template-columns: 1fr;
+}
+
+.field-label {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+    line-height: 1.35;
+    display: block;
+}
+
+/* --- Opciones (radio) estables sin parpadeo --- */
+.form-option-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    padding: 6px 4px;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    border-radius: 10px;
+}
+
+.form-option-list--compact {
+    gap: 12px 18px;
+}
+
+.form-option {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--primary);
-    color: var(--white);
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.95rem;
+    color: #374151;
+    line-height: 24px;
+    min-height: 24px;
+}
+
+/* Radio totalmente personalizado: dimensiones fijas en todos los estados.
+   El punto interior se dibuja con box-shadow (inset), el borde siempre mide 2px,
+   por lo que ningún cambio de estado altera el tamaño del contenedor. */
+.form-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    flex-shrink: 0;
+    border: 2px solid #c3cfc6;
+    border-radius: 50%;
+    background: var(--white);
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-option input[type="radio"]:checked {
+    border-color: var(--primary);
+    box-shadow: inset 0 0 0 4px var(--primary);
+}
+
+.form-option input[type="radio"]:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 4px var(--primary), 0 0 0 3px rgba(41, 180, 62, 0.22);
+}
+
+.form-option span {
+    pointer-events: none;
+}
+
+/* --- Campos condicionales --- */
+.form-conditional {
+    margin-top: 12px;
+}
+
+.form-conditional[hidden] {
+    display: none !important;
+}
+
+.form-conditional label {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.form-conditional input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d0dbd2;
+    border-radius: 10px;
+    background: var(--white);
+    font-size: 0.95rem;
+    color: #1f2937;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-conditional input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(41, 180, 62, 0.15);
+}
+
+.form-note {
+    margin-top: 8px;
+    font-size: 0.78rem;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+/* --- RH --- */
+.rh-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.rh-block-title {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+/* --- Navegación entre pasos --- */
+.form-nav-actions {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.form-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     border: none;
-    padding: 15px 40px;
+    padding: 15px 32px;
     border-radius: 10px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.2s ease;
+}
+
+.form-nav-btn-primary {
+    background: var(--primary);
+    color: var(--white);
     box-shadow: 0 10px 20px rgba(41, 180, 62, 0.25);
 }
 
-.form-submit-btn:hover {
+.form-nav-btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 30px rgba(41, 180, 62, 0.3);
 }
 
-.form-submit-btn:disabled {
+.form-nav-btn-secondary {
+    background: var(--white);
+    color: var(--dark-green);
+    border: 1px solid #d0dbd2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.form-nav-btn-secondary:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.form-nav-btn:disabled {
     opacity: 0.7;
     cursor: not-allowed;
     transform: none;
@@ -299,5 +917,32 @@
 
     .form-grid {
         grid-template-columns: 1fr;
+    }
+
+    .form-stepper {
+        padding: 18px 16px 14px;
+    }
+
+    .form-stepper-list {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 14px;
+    }
+
+    .form-stepper-label {
+        font-size: 0.68rem;
+    }
+
+    .rh-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-nav-actions {
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+
+    .form-nav-btn {
+        width: 100%;
+        justify-content: center;
     }
 }
