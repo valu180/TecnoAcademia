@@ -394,8 +394,27 @@
         </div>
     </section>
 
+    <div id="form-success-toast" class="form-success-toast" role="alertdialog" aria-modal="true"
+        aria-labelledby="form-success-title" aria-describedby="form-success-desc" hidden>
+        <div class="form-success-toast-card">
+            <div class="form-success-toast-icon" aria-hidden="true">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="form-success-toast-body">
+                <p id="form-success-title" class="form-success-toast-title">¡Formulario enviado!</p>
+                <p id="form-success-desc" class="form-success-toast-text">
+                    Tu inscripción fue recibida correctamente.
+                </p>
+            </div>
+            <button type="button" class="form-success-toast-close" id="form-success-close" aria-label="Cerrar aviso">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
     <div id="footer"></div>
 
+    <script src="../js/config.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/registro-colegios.js"></script>
 

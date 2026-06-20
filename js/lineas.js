@@ -15,7 +15,7 @@ const LINEAS_CONTENT = {
       'Esta área impulsa la creatividad y la capacidad de resolver problemas, preparando a los participantes para un entorno tecnológico en constante evolución.',
     ],
     docente: 'Jose Sanchez',
-    intensidad: '6 horas/semana',
+    intensidad: '8 horas/diarias',
     estudiantes: '180 estudiantes',
     objetivos: [
       'Desarrollar sistemas capaces de aprender, predecir y tomar decisiones inteligentes.',
@@ -80,7 +80,7 @@ const LINEAS_CONTENT = {
       'De esta manera, se fomenta la conciencia ambiental, la curiosidad científica y la capacidad de integrar saberes biológicos en soluciones sostenibles y responsables.',
     ],
     docente: 'Luis Olaya',
-    intensidad: '6 horas/semana',
+    intensidad: '8 horas/diarias',
     estudiantes: '170 estudiantes',
     objetivos: [
       'Explorar los seres vivos y sus procesos para comprender su interacción con el entorno.',
