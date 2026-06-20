@@ -14,6 +14,41 @@
  */
 const SHEET_NAME = "Sheet1"; // Pestaña de registros del formulario
 const SHEET_VISITAS = "ContadorVisitas"; // Pestaña para el contador de visitas
+const VISIT_SUMMARY_ROW = 2; // Fila fija del resumen "Total Visitas"
+const VISIT_DATA_COLS = 2; // Columnas A y B para registros de visitas
+const VISIT_LABEL_COL = 4; // Columna D ("Métrica") para la etiqueta
+const VISIT_TOTAL_COL = 5; // Columna E ("Total") para el conteo
+
+/**
+ * Configura el resumen estático en D/E (no se mueve al insertar visitas en A:B).
+ * Usa COUNTA en inglés (setFormula exige el nombre en inglés) y una referencia
+ * de columna completa (A:A) que NO se desplaza al insertar celdas.
+ */
+function configurarFilaResumenVisitas(sheet) {
+  sheet.getRange(1, VISIT_LABEL_COL).setValue("Métrica").setFontWeight("bold");
+  sheet.getRange(1, VISIT_TOTAL_COL).setValue("Total").setFontWeight("bold");
+  sheet.getRange(VISIT_SUMMARY_ROW, VISIT_LABEL_COL).setValue("Total Visitas:").setFontWeight("bold");
+  sheet.getRange(VISIT_SUMMARY_ROW, VISIT_TOTAL_COL).setFormula("=COUNTA(A:A)-1");
+  sheet.setFrozenRows(1);
+}
+
+/**
+ * Ejecutar una vez si la hoja ya tiene datos y el contador quedó abajo.
+ * Mueve el resumen a la fila 2 sin borrar registros existentes.
+ */
+function repararContadorVisitas() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName(SHEET_VISITAS);
+  if (!sheet) return;
+
+  const headersVisitas = ["Marca de tiempo", "Página/Módulo"];
+  sheet.getRange(1, 1, 1, headersVisitas.length).setValues([headersVisitas]).setFontWeight("bold");
+
+  // Limpia restos de la versión anterior que escribía el resumen en C2:D2
+  sheet.getRange(VISIT_SUMMARY_ROW, 3, 1, 2).clearContent();
+
+  configurarFilaResumenVisitas(sheet);
+}
 
 /**
  * Función para inicializar la hoja con los nuevos encabezados unificados (Orden Versión B)
@@ -49,6 +84,7 @@ function inicializarHoja() {
   }
   const headersVisitas = ["Marca de tiempo", "Página/Módulo"];
   sheetVisitas.getRange(1, 1, 1, headersVisitas.length).setValues([headersVisitas]).setFontWeight("bold");
+  configurarFilaResumenVisitas(sheetVisitas);
 }
 
 /**
@@ -95,7 +131,7 @@ function guardarRegistro(datos) {
 }
 
 /**
- * Registra una visita en la pestaña independiente
+ * Registra una visita desplazando solo las columnas A y B (D2:E2 quedan fijas).
  * @param {Object} datosVisita - Objeto con los detalles de la visita
  */
 function registrarVisita(datosVisita) {
@@ -108,8 +144,14 @@ function registrarVisita(datosVisita) {
     datosVisita.modulo || "Inicio/General"
   ];
 
-  sheet.insertRowBefore(2);
-  sheet.getRange(2, 1, 1, nuevaFilaVisita.length).setValues([nuevaFilaVisita]);
+  if (!sheet.getRange(VISIT_SUMMARY_ROW, VISIT_TOTAL_COL).getFormula()) {
+    configurarFilaResumenVisitas(sheet);
+  }
+
+  // Inserta solo las celdas A:B de la fila 2 (D/E con el resumen no se mueven)
+  const rangoInsercion = sheet.getRange(VISIT_SUMMARY_ROW, 1, 1, VISIT_DATA_COLS);
+  rangoInsercion.insertCells(SpreadsheetApp.Dimension.ROWS);
+  sheet.getRange(VISIT_SUMMARY_ROW, 1, 1, VISIT_DATA_COLS).setValues([nuevaFilaVisita]);
 }
 
 /**
@@ -119,6 +161,10 @@ function obtenerTotalVisitas() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheet = ss.getSheetByName(SHEET_VISITAS);
   if (!sheet) return 0;
+
+  const totalCelda = sheet.getRange(VISIT_SUMMARY_ROW, VISIT_TOTAL_COL).getValue();
+  if (typeof totalCelda === "number") return totalCelda;
+
   return Math.max(0, sheet.getLastRow() - 1);
 }
 
