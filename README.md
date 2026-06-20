@@ -37,7 +37,7 @@ Para visualizar y probar el proyecto en tu entorno local, sigue estos sencillos 
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone https://github.com/valu180/TecnoAcademia.git
+    git clone https://github.com/tecnoacademiarisaralda-alt/TecnoAcademia.git
     ```
 2.  **Navegar a la carpeta del proyecto:**
     ```bash
@@ -114,4 +114,4 @@ Para garantizar la estabilidad de la interfaz y el correcto funcionamiento de lo
 
 Para conocer a fondo la arquitectura del diseño, los wireframes, manuales o bitácoras del desarrollo, te invitamos a revisar nuestra documentación oficial alojada en la pestaña de la sección de conocimiento del repositorio:
 
-🌐 [Visitar la Wiki de GitHub del Proyecto](https://github.com/valu180/TecnoAcademia/wiki)
+🌐 [Visitar la Wiki de GitHub del Proyecto](https://github.com/tecnoacademiarisaralda-alt/TecnoAcademia/wiki)
