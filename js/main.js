@@ -209,6 +209,17 @@ function cargarContadorVisitas() {
         return;
     }
 
+    const SESSION_KEY = "tecnoacademia-visit-counted";
+    const COUNT_KEY = "tecnoacademia-visit-count";
+    const visitaYaContada = sessionStorage.getItem(SESSION_KEY) === "1";
+    const totalGuardado = sessionStorage.getItem(COUNT_KEY);
+
+    if (visitaYaContada && totalGuardado) {
+        contador.textContent = Number(totalGuardado).toLocaleString("es-CO");
+        contador.dataset.loaded = "true";
+        return;
+    }
+
     contador.dataset.loaded = "true";
     const API_URL = `${baseUrl}?action=visit`;
 
@@ -219,6 +230,8 @@ function cargarContadorVisitas() {
         })
         .then((data) => {
             if (typeof data?.value === "number") {
+                sessionStorage.setItem(SESSION_KEY, "1");
+                sessionStorage.setItem(COUNT_KEY, String(data.value));
                 contador.textContent = data.value.toLocaleString("es-CO");
                 contador.removeAttribute("title");
             } else {
