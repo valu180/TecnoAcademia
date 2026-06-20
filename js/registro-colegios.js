@@ -2,8 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("form-registro");
     if (!form) return;
 
-    const ENDPOINT =
-        "https://script.google.com/macros/s/AKfycbxTaGsTd2LOI5LWG1U6y1UVIeli5JBJFll56g1QHqhVEqGWNm7O05lQnNBUAShzdhpc/exec";
+    const ENDPOINT = window.TECNO_ACADEMIA?.appsScriptUrl || "";
     const STORAGE_KEY = "tecnoacademia-registro-form-v1";
     const TOTAL_STEPS = 4;
     const MAX_DIGITOS = 15;
@@ -22,6 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitBtn = document.getElementById("form-submit");
     const btnText = submitBtn.querySelector(".btn-text");
     const mensaje = document.getElementById("form-mensaje");
+    const successToast = document.getElementById("form-success-toast");
+    const successToastClose = document.getElementById("form-success-close");
+    let successToastTimer = null;
     const stepperBarFill = document.getElementById("stepper-bar-fill");
     const steps = [...form.querySelectorAll(".form-step")];
     const stepperItems = [...form.querySelectorAll(".form-stepper-item")];
@@ -58,11 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "curso-anterior-radio",
         "jornada-radio",
     ];
-
-    function esDocAlfanumerico() {
-        const tipo = tipoDocumento.value;
-        return tipo === "Cédula de Extranjería" || tipo === "PPT" || tipo === "Otros";
-    }
 
     function getRadioValue(name) {
         const checked = form.querySelector(`input[name="${name}"]:checked`);
@@ -119,13 +116,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function actualizarModoDocumento() {
         numeroDocumento.maxLength = MAX_DIGITOS;
-        if (esDocAlfanumerico()) {
-            numeroDocumento.inputMode = "text";
-            numeroDocumento.value = numeroDocumento.value.replace(RE.docAlfanumerico, "").toUpperCase().slice(0, MAX_DIGITOS);
-        } else {
-            numeroDocumento.inputMode = "numeric";
-            numeroDocumento.value = numeroDocumento.value.replace(RE.soloDigitos, "").slice(0, MAX_DIGITOS);
-        }
+        numeroDocumento.inputMode = "numeric";
+        numeroDocumento.value = numeroDocumento.value.replace(RE.soloDigitos, "").slice(0, MAX_DIGITOS);
+    }
+
+    function aplicarSoloDigitos(campo, maxLen, errorId) {
+        campo.addEventListener("input", () => {
+            const start = campo.selectionStart ?? 0;
+            const before = campo.value;
+            const digitsBeforeCursor = before.slice(0, start).replace(RE.soloDigitos, "").length;
+            const cleaned = before.replace(RE.soloDigitos, "").slice(0, maxLen);
+
+            if (before !== cleaned) {
+                campo.value = cleaned;
+                const newPos = Math.min(digitsBeforeCursor, cleaned.length);
+                campo.setSelectionRange(newPos, newPos);
+            }
+
+            limpiarErrorCampo(errorId);
+        });
     }
 
     function toggleConditional(wrapId, show) {
@@ -657,11 +666,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    sanitizar("numero-documento", (v) =>
-        esDocAlfanumerico()
-            ? v.replace(RE.docAlfanumerico, "").toUpperCase().slice(0, MAX_DIGITOS)
-            : v.replace(RE.soloDigitos, "").slice(0, MAX_DIGITOS)
-    );
+    aplicarSoloDigitos(numeroDocumento, MAX_DIGITOS, "numero-documento");
 
     sanitizar("nombres", (v) => v.replace(RE.soloLetrasNumNombre, ""));
 
@@ -801,10 +806,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function esDocumentoValido(valor) {
-        if (!valor) return false;
-        if (esDocAlfanumerico()) {
-            return /^[A-Z0-9]+$/.test(valor) && valor.length >= 1 && valor.length <= MAX_DIGITOS;
-        }
         return esValorNumericoValido(valor);
     }
 
@@ -1099,6 +1100,21 @@ document.addEventListener("DOMContentLoaded", () => {
         mensaje.scrollIntoView({ behavior: "smooth", block: "center" });
     }
 
+    function ocultarToastExito() {
+        if (!successToast) return;
+        clearTimeout(successToastTimer);
+        successToast.classList.remove("is-visible");
+        successToast.hidden = true;
+    }
+
+    function mostrarToastExito() {
+        if (!successToast) return;
+        successToast.hidden = false;
+        requestAnimationFrame(() => successToast.classList.add("is-visible"));
+        clearTimeout(successToastTimer);
+        successToastTimer = setTimeout(ocultarToastExito, 8000);
+    }
+
     function setCargando(cargando) {
         submitBtn.disabled = cargando;
         btnSiguiente.disabled = cargando;
@@ -1145,6 +1161,11 @@ document.addEventListener("DOMContentLoaded", () => {
     btnAnterior.addEventListener("click", retrocederPaso);
     btnAnteriorFinal.addEventListener("click", retrocederPaso);
 
+    successToastClose?.addEventListener("click", ocultarToastExito);
+    successToast?.addEventListener("click", (e) => {
+        if (e.target === successToast) ocultarToastExito();
+    });
+
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         trimFormulario();
@@ -1156,6 +1177,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setCargando(true);
 
+        if (!ENDPOINT) {
+            mostrarMensaje("error", "No está configurada la URL del formulario. Revisa js/config.js.");
+            setCargando(false);
+            return;
+        }
+
         try {
             await fetch(ENDPOINT, {
                 method: "POST",
@@ -1163,11 +1190,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 mode: "no-cors",
             });
 
-            mostrarMensaje(
-                "exito",
-                "¡Inscripción enviada con éxito! Pronto nos pondremos en contacto contigo."
-            );
             resetFormulario();
+            mostrarToastExito();
         } catch (error) {
             console.error("Error al enviar la inscripción:", error);
             mostrarMensaje(
